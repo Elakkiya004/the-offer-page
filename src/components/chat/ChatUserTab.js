@@ -10,16 +10,16 @@ export const data = [
 		userType: "Seller",
 		value: "vendor",
 	},
-	{
-		id: 2,
-		userType: "Delivery Man",
-		value: "delivery_man",
-	},
-	{
-		id: 3,
-		userType: "Admin",
-		value: "admin",
-	},
+	// {
+	// 	id: 2,
+	// 	userType: "Delivery Man",
+	// 	value: "delivery_man",
+	// },
+	// {
+	// 	id: 3,
+	// 	userType: "Admin",
+	// 	value: "admin",
+	// },
 ];
 
 const ChatUserTab = ({ setUserType, userType, setChannelId, handleReset }) => {

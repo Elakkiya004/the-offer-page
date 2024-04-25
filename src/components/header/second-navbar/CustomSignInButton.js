@@ -36,7 +36,7 @@ const CustomSignButton = ({from}) => {
                             style={{color: theme.palette.whiteContainer.main}}
                         />
                         <Typography color={theme.palette.whiteContainer.main}>
-                            {t("Sign Inssss")}
+                            {t("Sign In")}
                         </Typography>
                     </CustomStackFullWidth>
                 </SignInButton>

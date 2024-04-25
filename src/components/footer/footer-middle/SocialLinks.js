@@ -29,7 +29,7 @@ const SocialLinks = (props) => {
 	};
 	return (
 		<CustomStackFullWidth spacing={2}>
-			<Typography sx={{ fontSize: "16px", mb: 2 }}>
+			<Typography sx={{ fontSize: "16px", }}>
 				{landingPageData?.fixed_footer_description}
 			</Typography>
 			<CustomStackFullWidth

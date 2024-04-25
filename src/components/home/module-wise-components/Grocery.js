@@ -20,6 +20,7 @@ import PharmacyStaticBanners from "./pharmacy/pharmacy-banners/PharmacyStaticBan
 const menus = ["All", "Beauty", "Bread & Juice", "Drinks", "Milks"];
 const Grocery = (props) => {
   const { configData } = props;
+  console.log(props)
   const { data, refetch, isLoading } = useGetOtherBanners();
   useEffect(() => {
     refetch();
@@ -27,7 +28,7 @@ const Grocery = (props) => {
 
   return (
     <Grid container spacing={1}>
-      <Grid item xs={12} sx={{ marginTop: { xs: "-10px", sm: "10px" } }}>
+      <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "10px" } }}>
         <CustomContainer>
           <FeaturedCategories configData={configData} />
         </CustomContainer>
@@ -75,11 +76,11 @@ const Grocery = (props) => {
           />
         </CustomContainer>
       </Grid>
-      {/*<Grid item xs={12}>*/}
-      {/*  <CustomContainer>*/}
-      {/*    <DiscountedProductRedirectBanner />*/}
-      {/*  </CustomContainer>*/}
-      {/*</Grid>*/}
+      {/* <Grid item xs={12}>
+      <CustomContainer>
+        <DiscountedProductRedirectBanner />
+     </CustomContainer>
+      </Grid> */}
       <Grid item xs={12}>
         <CustomContainer>
           <RunningCampaigns />

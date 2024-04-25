@@ -10,8 +10,11 @@ import CallToAdmin from "../../CallToAdmin";
 import CustomContainer from "../../container";
 import LogoSide from "../../logo/LogoSide";
 import DrawerMenu from "./drawer-menu/DrawerMenu";
+import SocialLinks from "../../footer/footer-middle/SocialLinks";
 
-const TopNavBar = () => {
+const TopNavBar = (props) => {
+	const {landingPageData } = props;
+
 	const { configData, countryCode, language } = useSelector(
 		(state) => state.configData
 	);
@@ -57,16 +60,20 @@ const TopNavBar = () => {
 									</CustomStackForLoaction>
 									<Stack
 										direction="row"
-										spacing={2}
-										justifyContent="end"
+										spacing={3}
+										justifyContent="flex-end"
 										alignItems="center"
 									>
 										<ThemeSwitches />
 										<CallToAdmin configData={configData} />
-										<CustomLanguage
+										<SocialLinks
+                configData={configData}
+                // landingPageData={landingPageData}
+              />
+										{/* <CustomLanguage
 											countryCode={countryCode}
 											language={language}
-										/>
+										/> */}
 									</Stack>
 								</Stack>
 							</Box>

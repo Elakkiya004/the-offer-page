@@ -19,7 +19,9 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
     <Stack
       direction="row"
       alignItems="center"
-      spacing={2}
+      justifyContent="center"
+      spacing={3}
+     
       sx={{ paddingRight: "20px" }}
     >
       {zoneid && (
@@ -44,6 +46,15 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
                 openModal={openRestaurantModal}
                 setModal={setRestaurantModal}
               />
+              <Link href="/referral-code">
+            <NavLinkStyle
+              underline="none"
+              // language_direction={language_direction}
+              sx={{ cursor: "pointer"}}
+            >
+              {t("Refer & Earn")}
+            </NavLinkStyle>
+          </Link>
             </>
           ) : (
             <Link href="/help-and-support">

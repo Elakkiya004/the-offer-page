@@ -43,9 +43,9 @@ const UserLayout = (props) => {
           <MenuBar configData={configData} t={t} />
         </Grid>
 
-        <Grid item md={9} lg={9.5} xs={12}>
+        {/* <Grid item md={9} lg={9.5} xs={12}>
           <CustomBodyContent>{component}</CustomBodyContent>
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );

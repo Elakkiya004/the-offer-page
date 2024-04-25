@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ComponentOne from "./ComponentOne";
 import Registration from "./Registration";
@@ -14,6 +15,9 @@ import { NoSsr, useMediaQuery, useTheme } from "@mui/material";
 import DiscountBanner from "./DiscountBanner";
 import CookiesConsent from "../CookiesConsent";
 import useGetGuest from "../../api-manage/hooks/react-query/guest/useGetGuest";
+import CustomContainer from "../container";
+import CardCategories from "../home/category-card";
+import PromotionalBanner from "../home/PromotionalBanner";
 
 const LandingPage = ({ configData, landingPageData }) => {
   const Testimonials = dynamic(() => import("./Testimonials"), {
@@ -69,19 +73,27 @@ const LandingPage = ({ configData, landingPageData }) => {
   return (
     <>
       <PushNotificationLayout>
+        <Grid container spacing={1}>
         <HeroSection
           configData={configData}
           landingPageData={landingPageData}
           handleOrderNow={handleOrderNow}
         />
-        <ComponentOne
+      <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "10px" } }}>
+        <CustomContainer>
+          <CardCategories configData={configData} />
+        </CustomContainer>
+      </Grid>
+      </Grid>
+      {landingPageData?.promotion_banners?.length > 0 && (
+          <Banners landingPageData={landingPageData} isSmall={isSmall} />
+        )}
+        {/* <ComponentOne
           landingPageData={landingPageData}
           configData={configData}
           handleOrderNow={handleOrderNow}
-        />
-        {landingPageData?.promotion_banners?.length > 0 && (
-          <Banners landingPageData={landingPageData} isSmall={isSmall} />
-        )}
+        /> */}
+         
         <ComponentTwo
           configData={configData}
           landingPageData={landingPageData}
@@ -100,17 +112,17 @@ const LandingPage = ({ configData, landingPageData }) => {
             isSmall={isSmall}
           />
         )}
-        {(landingPageData?.business_title ||
+        {/* {(landingPageData?.business_title ||
           landingPageData?.business_sub_title ||
           landingPageData?.business_image) && (
           <AppDownloadSection
             configData={configData}
             landingPageData={landingPageData}
           />
-        )}
-        {landingPageData?.testimonial_list?.length > 0 && (
+        )} */}
+        {/* {landingPageData?.testimonial_list?.length > 0 && (
           <Testimonials landingPageData={landingPageData} isSmall={isSmall} />
-        )}
+        )} */}
         {open && (
           <MapModal
             open={open}
