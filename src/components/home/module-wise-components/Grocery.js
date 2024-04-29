@@ -42,7 +42,6 @@ const Grocery = (props) => {
           </CustomContainer>
         )}
       </Grid>
-
       <Grid item xs={12}>
         <CustomContainer>
           <PopularItemsNearby

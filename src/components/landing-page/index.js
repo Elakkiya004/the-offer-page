@@ -1,8 +1,8 @@
-import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ComponentOne from "./ComponentOne";
 import Registration from "./Registration";
 import ComponentTwo from "./ComponentTwo";
+import OfferBanner from "./OfferBanner";
 import HeroSection from "./hero-section/HeroSection";
 import dynamic from "next/dynamic";
 import PushNotificationLayout from "../PushNotificationLayout";
@@ -11,13 +11,26 @@ import { useGeolocated } from "react-geolocated";
 import { useRouter } from "next/router";
 import MapModal from "../Map/MapModal";
 import Banners from "./Banners";
-import { NoSsr, useMediaQuery, useTheme } from "@mui/material";
+import { NoSsr, useTheme,alpha,
+	Box,
+	Grid,
+	styled,
+	useMediaQuery,
+	 } from "@mui/material";
 import DiscountBanner from "./DiscountBanner";
 import CookiesConsent from "../CookiesConsent";
 import useGetGuest from "../../api-manage/hooks/react-query/guest/useGetGuest";
 import CustomContainer from "../container";
 import CardCategories from "../home/category-card";
 import PromotionalBanner from "../home/PromotionalBanner";
+import {
+  CustomBoxFullWidth,
+} from "../../styled-components/CustomStyles.style";
+import ComponentThree from "./ComponentThree";
+import Stores from "../home/stores";
+import SpecialFoodOffers from "../home/special-food-offers";
+import VisitAgain from "../home/visit-again";
+
 
 const LandingPage = ({ configData, landingPageData }) => {
   const Testimonials = dynamic(() => import("./Testimonials"), {
@@ -85,6 +98,14 @@ const LandingPage = ({ configData, landingPageData }) => {
         </CustomContainer>
       </Grid>
       </Grid>
+      <CustomContainer>
+      <VisitAgain configData={configData} />
+
+      </CustomContainer>
+      <OfferBanner
+              configDate={configData}
+              landingPageData={landingPageData}
+        />
       {landingPageData?.promotion_banners?.length > 0 && (
           <Banners landingPageData={landingPageData} isSmall={isSmall} />
         )}
@@ -93,11 +114,19 @@ const LandingPage = ({ configData, landingPageData }) => {
           configData={configData}
           handleOrderNow={handleOrderNow}
         /> */}
-         
-        <ComponentTwo
+          <ComponentThree
           configData={configData}
           landingPageData={landingPageData}
         />
+         {landingPageData?.fixed_promotional_banner && (
+          <CustomBoxFullWidth>
+            <DiscountBanner
+            bannerImage={`${landingPageData?.base_urls?.promotional_banner_url}/${landingPageData?.fixed_promotional_banner}`}
+            isSmall={isSmall}
+          />
+          </CustomBoxFullWidth>
+          
+        )}
         {(landingPageData?.earning_title ||
           landingPageData?.earning_sub_title ||
           landingPageData?.earning_seller_title ||
@@ -106,12 +135,23 @@ const LandingPage = ({ configData, landingPageData }) => {
           landingPageData?.earning_dm_sub_title) && (
           <Registration data={landingPageData} isSmall={isSmall} />
         )}
-        {landingPageData?.fixed_promotional_banner && (
-          <DiscountBanner
-            bannerImage={`${landingPageData?.base_urls?.promotional_banner_url}/${landingPageData?.fixed_promotional_banner}`}
-            isSmall={isSmall}
-          />
-        )}
+      
+   
+
+         <Grid item xs={12}>
+        <CustomContainer>
+          <SpecialFoodOffers />
+        </CustomContainer>
+      </Grid>
+       
+          <ComponentTwo
+          configData={configData}
+          landingPageData={landingPageData}
+        />
+            <CustomContainer>
+
+<Stores />
+</CustomContainer>
         {/* {(landingPageData?.business_title ||
           landingPageData?.business_sub_title ||
           landingPageData?.business_image) && (

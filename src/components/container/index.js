@@ -5,7 +5,7 @@ import {styled} from "@mui/material/styles";
 const ContainerWrapper = styled(Container)(({theme}) => ({
     [theme.breakpoints.up('lg')]: {
         // Add your styles for the 'lg' breakpoint here
-        maxWidth: '1300px', // Example value, you can replace it with your desired maxWidth
+        maxWidth: '1400px', // Example value, you can replace it with your desired maxWidth
     },
 }));
 const CustomContainer = (props) => {
