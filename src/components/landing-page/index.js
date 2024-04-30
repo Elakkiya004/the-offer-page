@@ -22,7 +22,7 @@ import CookiesConsent from "../CookiesConsent";
 import useGetGuest from "../../api-manage/hooks/react-query/guest/useGetGuest";
 import CustomContainer from "../container";
 import CardCategories from "../home/category-card";
-import PromotionalBanner from "../home/PromotionalBanner";
+
 import {
   CustomBoxFullWidth,
 } from "../../styled-components/CustomStyles.style";
