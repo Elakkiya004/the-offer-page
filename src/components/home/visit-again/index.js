@@ -35,7 +35,8 @@ const VisitAgain = (props) => {
                     heading: "Visit Again!",
                     subHeading:
                         "Get your recent purchase from the shop you recently visited",
-                    bgColor: alpha(theme.palette.primary.main, 0.2),
+                    // bgColor: alpha(theme.palette.primary.main, 0.2),
+                    bgColor: 'white',
                 };
             case ModuleTypes.PHARMACY:
                 return {
@@ -43,7 +44,8 @@ const VisitAgain = (props) => {
                     heading: "Visit Again!",
                     subHeading:
                         "Get your recent medicine from the store you recently visited",
-                    bgColor: alpha(theme.palette.primary.main, 0.2),
+                        bgColor: 'white',
+                    // bgColor: alpha(theme.palette.primary.main, 0.2),
                 };
             case ModuleTypes.ECOMMERCE:
                 return {
@@ -51,7 +53,8 @@ const VisitAgain = (props) => {
                     heading: "Visit Again!",
                     subHeading:
                         "Get your recent purchase from the shop you recently visited",
-                    bgColor: alpha(theme.palette.primary.main, 0.2),
+                    // bgColor: alpha(theme.palette.primary.main, 0.2),
+                    bgColor: 'white',
                 };
             case ModuleTypes.FOOD:
                 return {
@@ -59,7 +62,8 @@ const VisitAgain = (props) => {
                     heading: "Wanna Try  Again!",
                     subHeading:
                         "Get your recent food from the restaurant you recently visited",
-                    bgColor: alpha(theme.palette.primary.main, 0.2),
+                    // bgColor: alpha(theme.palette.primary.main, 0.2),
+                    bgColor: 'white',
                 };
         }
     };

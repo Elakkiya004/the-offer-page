@@ -1,3 +1,4 @@
+
 import React from "react";
 import Slider from "react-slick";
 import { Grid, alpha } from "@mui/material";
@@ -9,28 +10,15 @@ import {
 import CustomImageContainer from "../CustomImageContainer";
 import CustomContainer from "../container";
 
-const OfferBanner = ({ landingPageData, isSmall }) => {
+const OfferBanner1 = ({ landingPageData, isSmall }) => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 3000,
     pauseOnHover: true,
   };
 
-  const splitBannersIntoTwo = () => {
-    const banners = landingPageData?.promotion_banners;
-    console.log(banners)
-    const middleIndex = Math.ceil(banners.length / 2);
-    const firstSliderBanners = banners.slice(0, middleIndex);
-    const secondSliderBanners = banners.slice(middleIndex);
-    return [firstSliderBanners, secondSliderBanners];
-  };
-
-  const renderSlider = (banners) => {
+  // Function to render each slider
+  const renderSlider = (banners, height) => {
     return (
       <SliderCustom>
         <Slider {...settings}>
@@ -41,7 +29,7 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
                 border: (theme) =>
                   `0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
                 position: "relative",
-                height: "175px",
+                height: `${height}px`, // Set the height dynamically
                 width: "100%",
                 borderRadius: "5px",
                 overflow: "hidden",
@@ -57,7 +45,7 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
                 alt="banners"
                 height="100%"
                 width="100%"
-                obejctfit="contain"
+                objectFit="contain"
                 borderRadius="5px"
               />
             </Box>
@@ -67,19 +55,33 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
     );
   };
 
+  const banners = landingPageData?.promotion_banners;
+
   return (
     <CustomContainer>
-      <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "40px" }}>
-        <Grid container spacing={2}>
-          {splitBannersIntoTwo().map((banners, index) => (
-            <Grid key={index} item xs={12} sm={6} md={6}>
-              {renderSlider(banners)}
-            </Grid>
-          ))}
-        </Grid>
-      </CustomBoxFullWidth>
+          <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "40px" }}>
+              <Grid container spacing={2}>
+                  {/* Render slider with height 470px */}
+                  <Grid item xs={12} sm={6} md={6}>
+                      {renderSlider(banners, 470)}
+                  </Grid>
+                  {/* Render slider with height 220px */}
+                  <Grid item xs={12} sm={6} md={6}>
+                      {renderSlider(banners, 220)}
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={6}>
+
+                  </Grid>
+                  <Grid item xs={6} sm={3} md={3} sx={{ marginTop: "-240px" }}>
+                      {renderSlider(banners, 200)}
+                  </Grid>
+                  <Grid item xs={6} sm={3} md={3} sx={{ marginTop: "-240px" }}>
+                      {renderSlider(banners, 200)}
+                  </Grid>
+              </Grid>
+          </CustomBoxFullWidth>
     </CustomContainer>
   );
 };
 
-export default OfferBanner;
+export default OfferBanner1;

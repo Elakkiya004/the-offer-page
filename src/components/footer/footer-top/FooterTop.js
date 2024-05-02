@@ -25,7 +25,7 @@ const FooterTop = (props) => {
 		<>
 			<StyledFooterTop>
 				<CustomContainer>
-					<Grid
+					{/* <Grid
 						container
 						alignItems="flex-end"
 						justifyContent="center"
@@ -88,7 +88,7 @@ const FooterTop = (props) => {
 								</Box>
 							</Grid>
 						</Grid>
-					</Grid>
+					</Grid> */}
 				</CustomContainer>
 			</StyledFooterTop>
 		</>
