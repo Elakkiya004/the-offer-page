@@ -10,6 +10,7 @@ import FooterMiddle from "./footer-middle/FooterMiddle";
 import { useRouter } from "next/router";
 import CustomContainer from "../container";
 import { useTheme } from "@emotion/react";
+import NewsLetter from "../newsletter";
 
 const FooterComponent = (props) => {
   const { configData, landingPageData } = props;
@@ -26,7 +27,9 @@ const FooterComponent = (props) => {
         },
       }}
     >
-      <FooterTop landingPageData={landingPageData} />
+      {/* newletter */}
+      {/* <FooterTop landingPageData={landingPageData} /> */}
+      <NewsLetter/><hr></hr>
       <StyledFooterBackground
         nobottommargin={isLandingPage}
       >

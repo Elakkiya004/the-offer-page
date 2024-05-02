@@ -37,8 +37,8 @@ const Root = (props) => {
         configData={configData}
       />
       {data && (
-        <LandingLayout configData={configData} landingPageData={data}>
-          <LandingPage configData={configData} landingPageData={data} />
+        <LandingLayout configData={configData} landingPageData={data} >
+          <LandingPage configData={configData} landingPageData={data}  />
         </LandingLayout>
       )}
     </>

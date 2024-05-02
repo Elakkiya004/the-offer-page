@@ -41,7 +41,7 @@ const primary = {
   customType3: "#29CE00",
   overLay: "#000000",
   lite: "rgba(3, 157, 85, 0.1)",
-  icon: "#039D55",
+  icon: "#f40e01",
 };
 const moduleTheme = {
   pharmacy: "#039D55",
