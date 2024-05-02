@@ -18,7 +18,8 @@ export const ComponentThreeContainer = styled(Box)(
 		marginTop: ".6rem",
 		paddingTop: paddingTop ? paddingTop : "1.5rem",
 		paddingBottom: paddingBottom ? paddingBottom : "1rem",
-		background: alpha(theme.palette.primary.main, 0.3),
+		// background: alpha(theme.palette.primary.main, 0.3),
+		background: 'white'
 	})
 );
 

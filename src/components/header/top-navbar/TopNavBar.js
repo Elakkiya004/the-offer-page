@@ -10,7 +10,7 @@ import CallToAdmin from "../../CallToAdmin";
 import CustomContainer from "../../container";
 import LogoSide from "../../logo/LogoSide";
 import DrawerMenu from "./drawer-menu/DrawerMenu";
-import SocialLinks from "../../footer/footer-middle/SocialLinks";
+import SocialLinks from "./SocialLinks";
 
 const TopNavBar = (props) => {
 	const {landingPageData } = props;

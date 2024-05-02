@@ -93,9 +93,11 @@ const FooterMiddle = (props) => {
             <Box
               sx={{
                 backgroundColor:
-                  getCurrentModuleType() === ModuleTypes?.FOOD
-                    ? alpha(theme.palette.moduleTheme.food, 0.051)
-                    : alpha(theme.palette.primary.main, 0.051),
+                  // getCurrentModuleType() === ModuleTypes?.FOOD
+                  //   ? alpha(theme.palette.moduleTheme.food, 0.051)
+                  //   : alpha(theme.palette.primary.main, 0.051),
+                  getCurrentModuleType() === 'white',
+
                 borderRadius: "23px",
                 padding: "30px",
                 position: "relative",
@@ -173,9 +175,10 @@ const FooterMiddle = (props) => {
             sx={{
               width: "100%",
               backgroundColor:
-                getCurrentModuleType() === ModuleTypes?.FOOD
-                  ? alpha(theme.palette.moduleTheme.food, 0.05)
-                  : alpha(theme.palette.primary.main, 0.05),
+                // getCurrentModuleType() === ModuleTypes?.FOOD
+                //   ? alpha(theme.palette.moduleTheme.food, 0.05)
+                //   : alpha(theme.palette.primary.main, 0.05),
+                getCurrentModuleType() === 'white',
               borderRadius: "23px",
               padding: "30px",
             }}

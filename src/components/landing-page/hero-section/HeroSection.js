@@ -38,7 +38,8 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow }) => {
 			<CustomBoxFullWidth
 				sx={{
 					backgroundColor: (theme) =>
-						alpha(theme.palette.primary.main, 0.1),
+						// alpha(theme.palette.primary.main, 0.1),
+						'white',
 					marginTop: { xs: "4rem", sm: "5rem", md: "7rem" },
 					borderRadius: "20px",
 					position: "relative",
@@ -92,13 +93,14 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow }) => {
 									borderTopRightRadius: "16px",
 									position: "relative",
 									zIndex: "99",
-									border: (theme) =>
-										`1px solid ${alpha(
-											theme.palette.primary.main,
-											0.2
-										)}`,
-									backgroundColor: (theme) =>
-										theme.palette.neutral[100],
+									// border: (theme) =>
+									// 	`1px solid ${alpha(
+									// 		theme.palette.primary.main,
+									// 		0.2
+									// 	)}`,
+									// backgroundColor: (theme) =>
+									// 	theme.palette.neutral[100],
+									backgroundColor: 'white',
 									marginInline: "auto",
 								}}
 							>
