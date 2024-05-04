@@ -87,6 +87,8 @@ const Banners = ({ landingPageData, isSmall }) => {
 		);
 	};
 	const sliderManage = () => {
+		const filteredBanners = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 6');
+
 		return (
 			<SliderCustom
 				sx={{
@@ -98,7 +100,7 @@ const Banners = ({ landingPageData, isSmall }) => {
 				}}
 			>
 				<Slider {...settings}>
-					{landingPageData?.promotion_banners?.map((item, index) => {
+					{filteredBanners.map((item, index) => {
 						return (
 							<Box
 								key={index}

@@ -108,6 +108,8 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
             </CustomContainer>
           </Grid>
         </Grid>
+
+        {/* two banners */}
         <OfferBanner
           configDate={configData}
           landingPageData={landingPageData}
@@ -117,6 +119,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
 
         </CustomContainer>
 
+        {/* three banners */}
         {landingPageData?.promotion_banners?.length > 0 && (
           <Banners landingPageData={landingPageData} isSmall={isSmall} />
         )}

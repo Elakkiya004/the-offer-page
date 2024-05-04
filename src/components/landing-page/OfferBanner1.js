@@ -55,7 +55,11 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
     );
   };
 
-  const banners = landingPageData?.promotion_banners;
+  const banners = landingPageData?.promotion_banners
+  const banners1 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 1');
+  const banners2 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 2');
+  const banners3 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 3');
+  const banners4 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 4');
 
   return (
     <CustomContainer>
@@ -63,20 +67,20 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
               <Grid container spacing={2}>
                   {/* Render slider with height 470px */}
                   <Grid item xs={12} sm={6} md={6}>
-                      {renderSlider(banners, 470)}
+                      {renderSlider(banners1, 470)}
                   </Grid>
                   {/* Render slider with height 220px */}
                   <Grid item xs={12} sm={6} md={6}>
-                      {renderSlider(banners, 220)}
+                      {renderSlider(banners2, 220)}
                   </Grid>
                   <Grid item xs={12} sm={6} md={6}>
 
                   </Grid>
                   <Grid item xs={6} sm={3} md={3} sx={{ marginTop: "-240px" }}>
-                      {renderSlider(banners, 200)}
+                      {renderSlider(banners3, 200)}
                   </Grid>
                   <Grid item xs={6} sm={3} md={3} sx={{ marginTop: "-240px" }}>
-                      {renderSlider(banners, 200)}
+                      {renderSlider(banners4, 200)}
                   </Grid>
               </Grid>
           </CustomBoxFullWidth>
