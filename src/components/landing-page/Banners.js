@@ -10,6 +10,9 @@ import CustomImageContainer from "../CustomImageContainer";
 import CustomContainer from "../container";
 
 const Banners = ({ landingPageData, isSmall }) => {
+	const banners = landingPageData?.promotion_banners;
+	const category6Banners = banners.filter(item => item.category === 'Category 6');
+
 	const infiniteManage = () => {
 		if (isSmall) {
 			if (landingPageData?.promotion_banners?.length === 1) {
@@ -25,6 +28,7 @@ const Banners = ({ landingPageData, isSmall }) => {
 			}
 		}
 	};
+
 	const slidesToShowManage = () => {
 		if (isSmall) {
 			return 1;
@@ -38,6 +42,7 @@ const Banners = ({ landingPageData, isSmall }) => {
 			}
 		}
 	};
+
 	const twoItemManage = () => {
 		return (
 			<CustomBoxFullWidth>
@@ -86,7 +91,8 @@ const Banners = ({ landingPageData, isSmall }) => {
 			</CustomBoxFullWidth>
 		);
 	};
-	const sliderManage = () => {
+
+	const sliderManage = (category6Banners) => {
 		return (
 			<SliderCustom
 				sx={{
@@ -135,6 +141,7 @@ const Banners = ({ landingPageData, isSmall }) => {
 			</SliderCustom>
 		);
 	};
+
 	const settings = {
 		dots: false,
 		infinite: infiniteManage(),
@@ -169,7 +176,8 @@ const Banners = ({ landingPageData, isSmall }) => {
 			},
 		],
 	};
-	const singleImageManage = () => {
+
+	const singleImageManage = (category6Banners) => {
 		return (
 			<CustomBoxFullWidth
 				sx={{
@@ -203,27 +211,29 @@ const Banners = ({ landingPageData, isSmall }) => {
 			</CustomBoxFullWidth>
 		);
 	};
+
 	const handleContent = () => {
 		if (isSmall) {
 			if (landingPageData?.promotion_banners?.length === 1) {
-				return <>{singleImageManage()}</>;
+				return <>{singleImageManage(category6Banners)}</>;
 			} else {
-				return <>{sliderManage()}</>;
+				return <>{sliderManage(category6Banners)}</>;
 			}
 		} else {
 			if (landingPageData?.promotion_banners?.length === 1) {
 				return <>{singleImageManage()}</>;
 			} else if (landingPageData?.promotion_banners?.length === 2) {
-				return <>{twoItemManage()}</>;
+				return <>{twoItemManage(category6Banners)}</>;
 			} else {
-				return <>{sliderManage()}</>;
+				return <>{sliderManage(category6Banners)}</>;
 			}
 		}
 	};
+
 	return (
 		<CustomContainer>
 			<CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "40px" }}>
-				{handleContent()}
+				{handleContent(category6Banners)}
 			</CustomBoxFullWidth>
 		</CustomContainer>
 	);

@@ -39,6 +39,7 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import { getModule } from "../../../helper-functions/getLanguage";
 import { handleProductValueWithOutDiscount } from "../../../utils/CustomFunctions";
 
+
 const Cart = ({ isLoading }) => {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const { cartList } = useSelector((state) => state.cart);

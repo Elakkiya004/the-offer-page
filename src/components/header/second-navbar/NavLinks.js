@@ -20,9 +20,9 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
       direction="row"
       alignItems="center"
       justifyContent="center"
-      spacing={3}
+      spacing={1.3}
      
-      sx={{ paddingRight: "20px" }}
+      sx={{ paddingLeft: "20px" }}
     >
       {zoneid && (
         <>
@@ -67,6 +67,14 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
               </NavLinkStyle>
             </Link>
           )}
+          <Link href="/list-your-business">
+                <NavLinkStyle
+                  underline="none"
+                  sx={{ cursor: "pointer"}}
+                >
+                  {t("List Your Business")}
+                </NavLinkStyle>
+              </Link>
         </>
       )}
     </Stack>

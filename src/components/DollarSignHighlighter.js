@@ -10,6 +10,7 @@ const DollarSignHighlighter = ({ theme, text }) => {
         text.split(/\s+/).map((part, index) => {
           const isMatch = matches && matches.includes(part);
           const normalizedPart = part.replaceAll("$", " ");
+          
           return (
             <span
               key={index}

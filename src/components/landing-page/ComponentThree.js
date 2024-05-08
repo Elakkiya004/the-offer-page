@@ -55,13 +55,13 @@ const ComponentThree = ({ configData, landingPageData }) => {
                         <Typography variant="h3" sx={{
 							// fontSize: "20px",
                             fontweight:'200',
-						}}>Get started now</Typography>
+						}}>List Your Own Business</Typography>
       <Typography variant="body1" sx={{
 							fontSize: "20px",
 							display: "flex",
 							flexDirection: "column",
                             paddingY: '20px',
-						}}>14-days free trail. No credit card required. Instant set up.</Typography>
+						}}>Setup your free store and get unlimited businesses.</Typography>
 								
 							</Grid>
 							<Grid

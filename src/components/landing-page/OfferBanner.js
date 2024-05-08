@@ -21,16 +21,7 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
     pauseOnHover: true,
   };
 
-  const splitBannersIntoTwo = () => {
-    const banners = landingPageData?.promotion_banners;
-    console.log(banners)
-    const middleIndex = Math.ceil(banners.length / 2);
-    const firstSliderBanners = banners.slice(0, middleIndex);
-    const secondSliderBanners = banners.slice(middleIndex);
-    return [firstSliderBanners, secondSliderBanners];
-  };
-
-  const renderSlider = (banners) => {
+  const renderSlider = (banners, height) => {
     return (
       <SliderCustom>
         <Slider {...settings}>
@@ -41,7 +32,7 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
                 border: (theme) =>
                   `0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
                 position: "relative",
-                height: "175px",
+                height: `${height}px`,
                 width: "100%",
                 borderRadius: "5px",
                 overflow: "hidden",
@@ -67,15 +58,19 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
     );
   };
 
+  const banners = landingPageData?.promotion_banners;
+  const category5Banners = banners.filter(item => item.category === 'Category 5');
+
   return (
     <CustomContainer>
-      <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "40px" }}>
+      <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "-40px" }}>
         <Grid container spacing={2}>
-          {splitBannersIntoTwo().map((banners, index) => (
-            <Grid key={index} item xs={12} sm={6} md={6}>
-              {renderSlider(banners)}
+            <Grid item xs={12} sm={6} md={6}>
+              {renderSlider(category5Banners, 200)}
             </Grid>
-          ))}
+            <Grid item xs={12} sm={6} md={6}>
+              {renderSlider(category5Banners, 200)}
+            </Grid>
         </Grid>
       </CustomBoxFullWidth>
     </CustomContainer>

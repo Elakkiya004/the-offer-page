@@ -7,6 +7,8 @@ import { onErrorResponse } from "../../../api-manage/api-error-response/ErrorRes
 import { usePostNewsletterEmail } from "../../../api-manage/hooks/react-query/newsletter/usePostNewsletterEmail";
 import { getCurrentModuleType } from "../../../helper-functions/getCurrentModuleType";
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+
 const styles = theme => ({
     multilineColor:{
         color:'red'
@@ -74,19 +76,23 @@ const InfoInput = () => {
           }}
           type="email"
           name="email"
-          placeholder="Email Address"
+          placeholder="Mobile Number"
          
         />
       </Grid>
       <Grid item>
-        <Button variant="contained" sx={
-            {
-                height:'48px',
-                px:'50px'
-            }
-        } >
-          Try it free
-        </Button>
+      <Button
+    variant="contained"
+    sx={{
+      height: '48px',
+      px: '50px'
+    }}
+    component="a"
+    href="mailto:store@theofferpage.in"
+    startIcon={<MailOutlineIcon />} 
+  >
+    Try it free
+  </Button>
       </Grid>
     </Grid>
   );
