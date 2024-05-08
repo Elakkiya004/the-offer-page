@@ -102,7 +102,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           />
-          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "10px" } }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "-80px" } }}>
             <CustomContainer>
               <CardCategories configData={configData} />
             </CustomContainer>
@@ -128,11 +128,14 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
           configData={configData}
           handleOrderNow={handleOrderNow}
         /> */}
+        <Grid item xs={12} md={12} sx={{ marginTop: "-50px" }}>
         <ComponentThree
           configData={configData}
           landingPageData={landingPageData}
         />
-        <h1>new arrival</h1>
+        </Grid>
+        <Grid item xs={12} md={12} sx={{ marginTop: "-15px" }}>
+        <h1 style={{marginLeft: "85px"}}>New Arrivals</h1>
         {landingPageData?.fixed_promotional_banner && (
           <CustomBoxFullWidth>
             <DiscountBanner
@@ -141,6 +144,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
             />
           </CustomBoxFullWidth>
         )}
+        </Grid>
         {(landingPageData?.earning_title ||
           landingPageData?.earning_sub_title ||
           landingPageData?.earning_seller_title ||
@@ -152,7 +156,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
 
        <PopularStore/>
 
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{ marginTop: "20px" }}>
           <CustomContainer>
             <SpecialFoodOffers />
           </CustomContainer>

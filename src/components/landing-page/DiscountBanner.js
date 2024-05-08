@@ -34,6 +34,7 @@ const DiscountBanner = ({ bannerImage, isSmall }) => {
 						width: "100%",
 						height: "250px",
 						borderRadius: "5px",
+						marginTop: "-10px"
 					}}
 				>
 					<CustomImageContainer

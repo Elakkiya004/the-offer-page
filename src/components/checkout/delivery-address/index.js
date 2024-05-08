@@ -31,6 +31,7 @@ import { setOpenAddressModal } from "../../../redux/slices/addAddress";
 import CheckOutSelectedAddress from "../item-checkout/CheckOutSelectedAddress";
 import CheckoutSelectedAddressGuest from "../item-checkout/CheckoutSelectedAddressGuest";
 
+
 const getZoneWiseAddresses = (addresses, restaurantId) => {
   const newArray = [];
   addresses?.forEach(
@@ -123,7 +124,7 @@ const DeliveryAddress = ({
   };
   return (
     <>
-      <Stack
+      {/* <Stack
         direction="row"
         justifyContent="space-between"
         pt={{ xs: "18px", md: "0px" }}
@@ -149,10 +150,10 @@ const DeliveryAddress = ({
             setEditAddress={setEditAddress}
           />
         )}
-      </Stack>
+      </Stack> */}
       {/*{isLoading && <Skeleton width="100%" height={150} />}*/}
       {/*{isRefetching && <Skeleton width="100%" height={150} />}*/}
-      {renderOnNavbar === "true" ? (
+      {/* {renderOnNavbar === "true" ? (
         <>
           <AddressSelectionList
             data={data}
@@ -204,7 +205,7 @@ const DeliveryAddress = ({
             </>
           )}
         </>
-      )}
+      )} */}
       {renderOnNavbar !== "true" && token && orderType!=="take_away" && (
         <AdditionalAddresses
           t={t}

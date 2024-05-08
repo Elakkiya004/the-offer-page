@@ -8,7 +8,7 @@ import {
 } from "../../../styled-components/CustomStyles.style";
 import { DeliveryCaption, DeliveryTitle } from "../CheckOut.style";
 import DeliveryAddress from "../delivery-address";
-import { Stack } from "@mui/system";
+import { Stack, textAlign } from "@mui/system";
 import {
   CustomButtonPrimary,
   DeliveryOptionButton,
@@ -51,6 +51,7 @@ const DeliveryDetails = (props) => {
   const theme = useTheme();
   const isSmall = useMediaQuery("(max-width:490px)");
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [showText, setShowText] = useState(false);
 
   const handleClick = (event) => {
     setOrderType("schedule_order");
@@ -83,6 +84,10 @@ const DeliveryDetails = (props) => {
           sx={{ flexWrap: { xs: "wrap", sm: "wrap", md: "nowrap" } }}
         >
           <DeliveryOptionButton
+
+            onMouseEnter={() => setShowText(true)}
+            onMouseLeave={() => setShowText(false)}
+
             fullwidth="true"
             orderType={orderType === "delivery"}
             onClick={() => handleOrderType("delivery")}
@@ -112,7 +117,14 @@ const DeliveryDetails = (props) => {
             >
               {t("Home Delivery")}
             </Typography>
+
           </DeliveryOptionButton>
+          {showText && <h3 className="text"
+           style={{position:"absolute", marginTop: "70px", border: "2px solid #ee8888", width:"780px", height: "50px", borderRadius: "5px"
+            ,textAlign: "center", background: "#ee8888", color: "white"
+           }}
+          >
+           <kspan style={{marginTop: "10px",position:"absolute", marginLeft: "-100px"}} >Home Delivery Coming Soon</kspan></h3>}
           {!forprescription &&
             <DeliveryOptionButton
               fullwidth="true"

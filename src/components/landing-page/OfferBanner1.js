@@ -1,4 +1,3 @@
-
 import React from "react";
 import Slider from "react-slick";
 import { Grid, alpha } from "@mui/material";
@@ -61,9 +60,15 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
   const banners3 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 3');
   const banners4 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 4');
 
+  const category1Banners = banners.filter(item => item.category === 'Category 1');
+  const category2Banners = banners.filter(item => item.category === 'Category 2');
+  const category3Banners = banners.filter(item => item.category === 'Category 3');
+  const category4Banners = banners.filter(item => item.category === 'Category 4');
+
+
   return (
     <CustomContainer>
-          <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "40px" }}>
+          <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "10px" }}>
               <Grid container spacing={2}>
                   {/* Render slider with height 470px */}
                   <Grid item xs={12} sm={6} md={6}>
