@@ -20,7 +20,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
       direction="row"
       alignItems="center"
       justifyContent="center"
-      spacing={1.3}
+      spacing={1}
      
       sx={{ paddingLeft: "20px" }}
     >
@@ -67,10 +67,10 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
               </NavLinkStyle>
             </Link>
           )}
-          <Link href="/list-your-business">
+          <Link href="https://www.offer.theofferpage.in/store/apply">
                 <NavLinkStyle
                   underline="none"
-                  sx={{ cursor: "pointer"}}
+                  sx={{ cursor: "pointer", fontWeight: "bold"}}
                 >
                   {t("List Your Business")}
                 </NavLinkStyle>
