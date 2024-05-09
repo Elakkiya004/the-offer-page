@@ -91,7 +91,7 @@ const WishListCard = ({ item }) => {
         },
       });
     }
-  }, [item]);
+  }, [item,wishlistItemExistHandler]);
   const handleSuccess = (res) => {
     if (res) {
       let product = {};

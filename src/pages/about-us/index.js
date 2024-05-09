@@ -14,7 +14,7 @@ const Index = ({ configData }) => {
   const { data, refetch, isFetching } = useGetPolicyPage("/about-us");
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
   return (
     <>
       <CssBaseline />

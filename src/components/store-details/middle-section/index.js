@@ -303,7 +303,7 @@ const MiddleSection = (props) => {
     if (state.searchKey === "" || !state.searchKey) {
       refetch();
     }
-  }, [state.categoryId, offset, state.type, id]);
+  }, [state.categoryId, offset, state.type, id,refetch]);
 
   useEffect(() => {
     if (state.searchKey) {

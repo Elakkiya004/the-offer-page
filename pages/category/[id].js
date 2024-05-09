@@ -52,7 +52,7 @@ const Index = ({ configData }) => {
   useEffect(() => {
     refetch();
     storeRefetch();
-  }, [category_id, type, offset]);
+  }, [category_id, type, offset,refetch,storeRefetch]);
 
   return (
     <>

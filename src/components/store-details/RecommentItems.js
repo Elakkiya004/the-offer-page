@@ -26,7 +26,7 @@ const RecommendItems = ({ store_id }) => {
   });
   useEffect(() => {
     refetch();
-  }, [store_id]);
+  }, [store_id,refetch]);
   const Recommended = t("Recommended");
   return (
     <>

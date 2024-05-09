@@ -19,7 +19,7 @@ const Index = ({ configData }) => {
   );
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <>
