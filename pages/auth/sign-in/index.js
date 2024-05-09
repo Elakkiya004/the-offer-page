@@ -16,7 +16,7 @@ const Index = ({configData, landingPageData}) => {
             setToken(token)
             router.push('/home')
         }
-    }, [])
+    }, [router])
     return (
         <>
             <CssBaseline/>

@@ -22,7 +22,7 @@ const Home = ({configData, landingPageData}) => {
             }
         } else {
         }
-    }, [configData]);
+    }, [configData,dispatch]);
     return (
         <>
             <CssBaseline/>

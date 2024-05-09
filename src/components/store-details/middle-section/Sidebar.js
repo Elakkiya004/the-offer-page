@@ -177,7 +177,7 @@ const Sidebar = (props) => {
   );
   useEffect(() => {
     refetch();
-  }, [storeId]);
+  }, [storeId,refetch]);
   // useEffect(() => {
   //   handleFilter();
   // }, [minMax]);

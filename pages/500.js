@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 // import FiveHundred from "../src/components/errors-svg/FiveHundred";
-
+import Image from 'next/image';
 export default function Custom500() {
 	const { t } = useTranslation();
 	const theme = useTheme();
@@ -33,7 +33,7 @@ export default function Custom500() {
 				spacing={4}
 			>
 				<Stack width="100%" spacing={2} padding="1rem" alignItems="center">
-					<img src={FiveHundred.src} alt="500" height="150px" />
+					<Image src={FiveHundred.src} alt="500" height="150px" />
 					<Typography
 						align="center"
 						variant="h3"

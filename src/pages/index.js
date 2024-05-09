@@ -23,10 +23,10 @@ const Root = (props) => {
       }
     } else {
     }
-  }, [configData]);
+  }, [configData,dispatch]);
   useEffect(() => {
     dispatch(setConfigData(configData));
-  }, [configData]);
+  }, [configData,dispatch]);
 
   return (
     <>

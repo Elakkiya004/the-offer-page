@@ -17,7 +17,7 @@ const Index = ({ configData }) => {
   const { data, refetch, isFetching } = useGetPolicyPage("/privacy-policy");
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <>

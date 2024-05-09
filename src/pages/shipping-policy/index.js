@@ -12,7 +12,7 @@ const Index = ({configData, landingPageData}) => {
     const {data, refetch, isFetching} = useGetPolicyPage("/shipping-policy");
     useEffect(() => {
         refetch();
-    }, []);
+    }, [refetch]);
     return (
         <>
             <CssBaseline/>

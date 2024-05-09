@@ -15,7 +15,7 @@ const Index = ({configData, landingPageData}) => {
         useGetBasicCampaignsDetails({id});
     useEffect(() => {
         refetch();
-    }, [id]);
+    }, [id,refetch]);
 
 
     return (

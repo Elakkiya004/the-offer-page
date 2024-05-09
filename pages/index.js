@@ -25,7 +25,7 @@ const Root = (props) => {
       }
     } else {
     }
-  }, [configData]);
+  }, [configData,dispatch,refetch]);
 
   return (
     <>
