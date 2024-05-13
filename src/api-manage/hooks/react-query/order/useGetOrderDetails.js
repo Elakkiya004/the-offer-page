@@ -11,6 +11,7 @@ const getData = async (order_id, guestId) => {
   const { data } = await MainApi.get(
     `${order_details_api}?order_id=${order_id}&guest_id=${guestId}`
   );
+  console.log(data)
   return data;
 };
 
