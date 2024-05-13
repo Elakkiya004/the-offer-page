@@ -18,7 +18,7 @@ const Index = ({ configData, campaignsDetails }) => {
     useGetBasicCampaignsDetails({ id });
   useEffect(() => {
     refetch();
-  }, [id]);
+  }, [id,refetch]);
 
   return (
     <>

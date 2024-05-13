@@ -12,7 +12,7 @@ const Index = ({configData, landingPageData}) => {
     const {data, refetch, isFetching} = useGetPolicyPage("/cancelation");
     useEffect(() => {
         refetch();
-    }, []);
+    }, [refetch]);
     return (
         <>
             <CssBaseline/>

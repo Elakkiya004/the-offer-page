@@ -11,7 +11,7 @@ const Index = ({ configData, productDetailsData, productType }) => {
   const [productDetails, setProductDetails] = useState([]);
   useEffect(() => {
     handleProductDetails();
-  }, [productDetailsData, cartList]);
+  }, [productDetailsData, cartList,dispatch,handleProductDetails]);
 
   const handleProductDetails = () => {
     if (productDetailsData) {

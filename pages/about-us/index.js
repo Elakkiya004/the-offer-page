@@ -13,7 +13,7 @@ const Index = ({ configData, landingPageData }) => {
   const { data, refetch, isFetching } = useGetPolicyPage("/about-us");
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
   return (
     <>
       <CssBaseline />

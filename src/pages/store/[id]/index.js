@@ -31,7 +31,7 @@ const Index = ({ configData, storeDetails }) => {
       }
     } else {
     }
-  }, [configData]);
+  }, [configData,dispatch]);
 
   return (
     <>

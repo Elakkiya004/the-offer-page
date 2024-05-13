@@ -170,7 +170,7 @@ const TrackOrder = ({ configData, trackOrderData }) => {
   };
   useEffect(() => {
     handleStepper();
-  }, [actStep, trackOrderData]);
+  }, [actStep, trackOrderData,handleStepper]);
   return (
     <CustomStackFullWidth
       mt={{ xs: "20px", md: "70px" }}

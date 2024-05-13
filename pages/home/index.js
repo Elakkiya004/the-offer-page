@@ -22,7 +22,7 @@ const Home = ({ configData, landingPageData }) => {
       }
     } else {
     }
-  }, [configData]);
+  }, [configData,dispatch]);
   let language_direction = undefined;
   if (typeof window !== "undefined") {
     language_direction = localStorage.getItem("language-setting");

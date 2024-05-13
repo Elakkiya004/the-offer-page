@@ -53,7 +53,7 @@ const Index = ({ configData, landingPageData }) => {
   useEffect(() => {
     refetch();
     storeRefetch();
-  }, [category_id]);
+  }, [category_id,refetch,storeRefetch]);
 
   return (
     <>
