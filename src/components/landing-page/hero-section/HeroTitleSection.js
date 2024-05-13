@@ -25,7 +25,7 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
   const currentLanguage = getLanguage();
   const getSearchOrModulesBySelectedModules = () => {
     if (getCurrentModuleType()) {
-      return <ModuleSelectionRaw />;
+      // return <ModuleSelectionRaw />;
     } else {
       return (
         <CustomStackFullWidth mt="45px">

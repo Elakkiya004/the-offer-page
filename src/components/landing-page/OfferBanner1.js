@@ -79,14 +79,14 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
                       {renderSlider(banners2, 220)}
                   </Grid>
                   <Grid item xs={12} sm={6} md={6}>
-
+                     
                   </Grid>
-                  <Grid item xs={6} sm={3} md={3} sx={{ marginTop: "-240px" }}>
-                      {renderSlider(banners3, 200)}
-                  </Grid>
-                  <Grid item xs={6} sm={3} md={3} sx={{ marginTop: "-240px" }}>
-                      {renderSlider(banners4, 200)}
-                  </Grid>
+                 <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
+  {renderSlider(banners3, 200)}
+</Grid>
+<Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
+  {renderSlider(banners4, 200)}
+</Grid>
               </Grid>
           </CustomBoxFullWidth>
     </CustomContainer>

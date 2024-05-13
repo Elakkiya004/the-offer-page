@@ -1,16 +1,18 @@
 import React from "react";
 import Slider from "react-slick";
-import { Grid, alpha, NoSsr } from "@mui/material";
+import { Grid, alpha, NoSsr, useMediaQuery, theme } from "@mui/material";
 import { Box } from "@mui/system";
 import {
     CustomBoxFullWidth,
     SliderCustom,
+    CustomStackFullWidth
 } from "../../styled-components/CustomStyles.style";
 import CustomImageContainer from "../CustomImageContainer";
 import CustomContainer from "../container";
 import HeroSection from "./hero-section/HeroSection";
-
+import HeroLocationForm from "./hero-section/HeroLocationForm";
 import HeroTitleSection from "./hero-section/HeroTitleSection";
+
 
 
 const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) => {
@@ -84,9 +86,9 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
 					>
 						<NoSsr>
 							<HeroTitleSection
-								configData={configData}
-								landingPageData={landingPageData}
-								handleOrderNow={handleOrderNow}
+								//configData={configData}
+								//landingPageData={landingPageData}
+								//handleOrderNow={handleOrderNow}
 							/>
 						</NoSsr>
 					</Grid>
