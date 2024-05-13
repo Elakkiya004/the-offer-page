@@ -38,6 +38,8 @@ import { getGuestId } from "../../../helper-functions/getToken";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import { getModule } from "../../../helper-functions/getLanguage";
 import { handleProductValueWithOutDiscount } from "../../../utils/CustomFunctions";
+import Search from "./Search";
+
 
 
 const Cart = ({ isLoading }) => {
@@ -261,6 +263,7 @@ const SecondNavBar = ({ configData }) => {
           justifyContent="flex-end"
           spacing={2.5}
         >
+          <Search zoneid="zoneid" token={token} />
           {!token && moduleType !== "parcel" && location && (
             <IconButton onClick={handleTrackOrder}>
               <LocalShippingOutlinedIcon fontSize="22px" />

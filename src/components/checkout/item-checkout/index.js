@@ -76,6 +76,9 @@ import {
 import CustomImageContainer from "../../CustomImageContainer";
 import thunderstorm from "../assets/thunderstorm.svg";
 
+import ItemSelect from "../../ItemSelect";
+
+
 const ItemCheckout = (props) => {
   const { configData, router, page, cartList, campaignItemList, totalAmount } =
     props;
@@ -99,6 +102,9 @@ const ItemCheckout = (props) => {
   const [isImageSelected, setIsImageSelected] = useState([]);
   const [cutlery, setCutlery] = useState(0);
   const [unavailable_item_note, setUnavailable_item_note] = useState(null);
+
+  const[delivery, setDelivery] = useState(null);
+
   const [delivery_instruction, setDelivery_instruction] = useState(null);
   const [usePartialPayment, setUsePartialPayment] = useState(false);
   const [switchToWallet, setSwitchToWallet] = useState(false);
@@ -223,7 +229,7 @@ const ItemCheckout = (props) => {
       onError: onSingleErrorResponse,
     }
   );
-  useEffect(() => {}, [customerData]);
+  useEffect(() => { }, [customerData]);
 
   useEffect(() => {
     const currentLatLng = JSON.parse(localStorage.getItem("currentLatLng"));
@@ -299,25 +305,25 @@ const ItemCheckout = (props) => {
         add_on_ids:
           cart?.selectedAddons?.length > 0
             ? cart?.selectedAddons?.map((add) => {
-                return add.id;
-              })
+              return add.id;
+            })
             : [],
         add_on_qtys:
           cart?.selectedAddons?.length > 0
             ? cart?.selectedAddons?.map((add) => {
-                totalQty += add.quantity;
-                return totalQty;
-              })
+              totalQty += add.quantity;
+              return totalQty;
+            })
             : [],
         add_ons:
           cart?.selectedAddons?.length > 0
             ? cart?.selectedAddons?.map((add) => {
-                return {
-                  id: add.id,
-                  name: add.name,
-                  price: add.price,
-                };
-              })
+              return {
+                id: add.id,
+                name: add.name,
+                price: add.price,
+              };
+            })
             : [],
         item_id: cart?.id,
         item_campaign_id: cart?.available_date_starts ? cart?.id : null,
@@ -333,17 +339,17 @@ const ItemCheckout = (props) => {
           cart?.module_type === "food"
             ? cart?.food_variations?.length > 0
               ? cart?.food_variations?.map((variation) => {
-                  return {
-                    name: variation.name,
-                    values: {
-                      label: handleValuesFromCartItems(variation.values),
-                    },
-                  };
-                })
+                return {
+                  name: variation.name,
+                  values: {
+                    label: handleValuesFromCartItems(variation.values),
+                  },
+                };
+              })
               : []
             : cart?.selectedOption?.length > 0
-            ? cart?.selectedOption
-            : [],
+              ? cart?.selectedOption
+              : [],
       };
     });
   };
@@ -352,9 +358,9 @@ const ItemCheckout = (props) => {
     const guestId = getToken() ? "" : guest_id;
     const isDigital =
       paymentMethod !== "cash_on_delivery" &&
-      paymentMethod !== "wallet" &&
-      paymentMethod !== "offline_payment" &&
-      paymentMethod !== ""
+        paymentMethod !== "wallet" &&
+        paymentMethod !== "offline_payment" &&
+        paymentMethod !== ""
         ? "digital_payment"
         : paymentMethod;
 
@@ -480,11 +486,9 @@ const ItemCheckout = (props) => {
                 const callBackUrl = token
                   ? `${window.location.origin}/profile?page=${page}`
                   : `${window.location.origin}/order?order_id=${response?.data?.order_id}&total=${response?.data?.total_ammount}`;
-                const url = `${newBaseUrl}/payment-mobile?order_id=${
-                  response?.data?.order_id
-                }&customer_id=${
-                  customerData?.data?.id ?? guest_id
-                }&callback=${callBackUrl},`;
+                const url = `${newBaseUrl}/payment-mobile?order_id=${response?.data?.order_id
+                  }&customer_id=${customerData?.data?.id ?? guest_id
+                  }&callback=${callBackUrl},`;
                 localStorage.setItem("totalAmount", totalAmount);
                 dispatch(setClearCart());
                 Router.push(url);
@@ -531,11 +535,9 @@ const ItemCheckout = (props) => {
               const callBackUrl = token
                 ? `${window.location.origin}/profile?page=${page}`
                 : `${window.location.origin}/order`;
-              const url = `${baseUrl}/payment-mobile?order_id=${
-                response?.data?.order_id
-              }&customer_id=${
-                customerData?.data?.id ?? guest_id
-              }&payment_platform=${payment_platform}&callback=${callBackUrl}&payment_method=${paymentMethod}`;
+              const url = `${baseUrl}/payment-mobile?order_id=${response?.data?.order_id
+                }&customer_id=${customerData?.data?.id ?? guest_id
+                }&payment_platform=${payment_platform}&callback=${callBackUrl}&payment_method=${paymentMethod}`;
               localStorage.setItem("totalAmount", totalAmount);
               dispatch(setClearCart());
               Router.push(url, undefined, { shallow: true });
@@ -638,7 +640,7 @@ const ItemCheckout = (props) => {
     }
   };
 
-  const couponRemove = () => {};
+  const couponRemove = () => { };
   useEffect(() => {
     if (orderSuccess) {
       handleOrderSuccess();
@@ -779,6 +781,9 @@ const ItemCheckout = (props) => {
   const handleDeliveryInstructionNote = (value) => {
     setDelivery_instruction(value);
   };
+  const handleDeliveryNote = (value) => {
+    setDelivery(value)
+  }
   useEffect(() => {
     if (paymentMethod !== "wallet") {
       setSwitchToWallet(false);
@@ -979,16 +984,23 @@ const ItemCheckout = (props) => {
                   {getCurrentModuleType() === "food" && storeData?.cutlery && (
                     <Cutlery isChecked={cutlery} handleChange={handleCutlery} />
                   )}
-                  <ItemSelectWithChip
+
+                  <ItemSelect
+                    title="Delivery Instruction"
+                    data={delivery}
+                    handleChange={handleDeliveryNote}
+                  />
+
+                  {/* <ItemSelectWithChip
                     title="If Any Product is not available"
                     data={productUnavailableData}
                     handleChange={handleItemUnavailableNote}
-                  />
-                  <ItemSelectWithChip
+                  /> */}
+                  {/* <ItemSelectWithChip
                     title="Add More Delivery Instruction"
                     data={deliveryInstructions}
                     handleChange={handleDeliveryInstructionNote}
-                  />
+                  /> */}
                   {distanceData && storeData ? (
                     <OrderCalculation
                       usePartialPayment={usePartialPayment}
@@ -1040,7 +1052,7 @@ const ItemCheckout = (props) => {
           {openModal && (
             <CustomModal
               openModal={openModal}
-              //handleClose={() => setOpenModal(false)}
+            //handleClose={() => setOpenModal(false)}
             >
               <PartialPaymentModal
                 payableAmount={payableAmount}
@@ -1057,7 +1069,7 @@ const ItemCheckout = (props) => {
           {openPartialModel && (
             <CustomModal
               openModal={openPartialModel}
-              //handleClose={() => setOpenPartialModel(false)}
+            //handleClose={() => setOpenPartialModel(false)}
             >
               <PartialPaymentModal
                 payableAmount={payableAmount}

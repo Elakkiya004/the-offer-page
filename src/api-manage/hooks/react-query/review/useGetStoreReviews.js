@@ -9,6 +9,7 @@ import MainApi from "../../../MainApi";
 
 const getData = async (id) => {
   const { data } = await MainApi.get(`${store_review_api}?store_id=${id}`);
+  console.log(data)
   return data;
 };
 

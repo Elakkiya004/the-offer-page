@@ -116,15 +116,13 @@ const DeliveryDetails = (props) => {
               }
             >
               {t("Home Delivery")}
+             
             </Typography>
-
+            {showText && 
+            
+           <span style={{marginLeft: '-15px', fontSize: "14px"}} >Coming Soon</span>}
           </DeliveryOptionButton>
-          {showText && <h3 className="text"
-           style={{position:"absolute", marginTop: "70px", border: "2px solid #ee8888", width:"780px", height: "50px", borderRadius: "5px"
-            ,textAlign: "center", background: "#ee8888", color: "white"
-           }}
-          >
-           <kspan style={{marginTop: "10px",position:"absolute", marginLeft: "-100px"}} >Home Delivery Coming Soon</kspan></h3>}
+         
           {!forprescription &&
             <DeliveryOptionButton
               fullwidth="true"
