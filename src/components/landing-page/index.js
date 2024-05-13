@@ -33,6 +33,7 @@ import Stores from "../home/stores";
 import SpecialFoodOffers from "../home/special-food-offers";
 import VisitAgain from "../home/visit-again";
 import PopularStore from "./PopularStore";
+import CityComponent from "./CityComponent";
 
 
 const LandingPage = ({ configData, landingPageData, hello }) => {
@@ -181,6 +182,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
         {/* {landingPageData?.testimonial_list?.length > 0 && (
           <Testimonials landingPageData={landingPageData} isSmall={isSmall} />
         )} */}
+        <CityComponent/>
         {open && (
           <MapModal
             open={open}
