@@ -34,6 +34,8 @@ import SpecialFoodOffers from "../home/special-food-offers";
 import VisitAgain from "../home/visit-again";
 import PopularStore from "./PopularStore";
 import CityComponent from "./CityComponent";
+import HeroSection1 from "./HeroSection1";
+import Card from "./Card";
 
 
 const LandingPage = ({ configData, landingPageData, hello }) => {
@@ -92,7 +94,12 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
     <>
       <PushNotificationLayout>
         <Grid container spacing={1}>
-          <HeroSection
+          {/* <HeroSection
+            configData={configData}
+            landingPageData={landingPageData}
+            handleOrderNow={handleOrderNow}
+          /> */}
+          <HeroSection1
             configData={configData}
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
@@ -109,6 +116,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
             </CustomContainer>
           </Grid>
         </Grid>
+        <Card/>
 
         {/* two banners */}
         <OfferBanner
