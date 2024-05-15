@@ -40,7 +40,7 @@ import OfflineOrderDetailsModal from "./offline-order/OfflineOrderDetailsModal";
 import { useDispatch, useSelector } from "react-redux";
 import { clearOfflinePaymentInfo, setOrderDetailsModal } from "../../../redux/slices/offlinePaymentData";
 import CloseIcon from "@mui/icons-material/Close";
-import {getGuestId, getToken} from "../../../helper-functions/getToken";
+import { getGuestId, getToken } from "../../../helper-functions/getToken";
 import QRCode from "react-qr-code";
 
 const TopDetails = (props) => {
@@ -60,7 +60,7 @@ const TopDetails = (props) => {
 	} = props;
 	const { t } = useTranslation();
 	const theme = useTheme();
-	
+
 	// const [showQRCode, setShowQRCode] = useState(true);
 
 	const { orderDetailsModal } = useSelector((state) => state.offlinePayment);
@@ -139,7 +139,7 @@ const TopDetails = (props) => {
 				toast.success(response.message);
 			};
 			const formData = {
-				guest_id:getGuestId(),
+				guest_id: getGuestId(),
 				order_id: id,
 				reason: cancelReason,
 				_method: "put",
@@ -150,7 +150,7 @@ const TopDetails = (props) => {
 			});
 		}
 	};
-	
+
 	const today = moment(new Date());
 	const differenceInMinutes = () => {
 		const deliveryTime = trackData?.store?.delivery_time;
@@ -365,7 +365,7 @@ const TopDetails = (props) => {
 								{/*{t("Give a review")}*/}
 							</Button>
 						</Link>
-						{configData?.refund_active_status   && getToken() && (
+						{configData?.refund_active_status && getToken() && (
 							<OrderStatusButton
 								background={theme.palette.error.light}
 								onClick={() => setOpenModal(true)}
@@ -400,21 +400,22 @@ const TopDetails = (props) => {
 					) : (
 						trackData?.order_status === "pending" && (
 							<Grid spacing={2} justify="flex-end">
-<Grid >
-                             <QRCode value={trackData.qr_data} />
-							 </Grid>
-							 <Grid>
-							<OrderStatusButton
-								background={theme.palette.error.deepLight}
-								onClick={() => setCancelOpenModal(true)}
-							// color={theme.palette.whiteContainer}
-							>
-								{t("Cancel Order")}
-							</OrderStatusButton>
+								<Grid>
+									<QRCode value={trackData.qr_data} style={{ height: "150px"}} />
+								</Grid>
+								<Grid>
+									<OrderStatusButton
+										background={theme.palette.error.deepLight}
+										onClick={() => setCancelOpenModal(true)}
+										style={{marginTop: "40px"}}
+									// color={theme.palette.whiteContainer}
+									>
+										{t("Cancel Order")}
+									</OrderStatusButton>
+								</Grid>
 							</Grid>
-							</Grid>
-							
-							
+
+
 						)
 					)}
 				</>

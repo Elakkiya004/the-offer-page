@@ -25,6 +25,7 @@ import active from "./assets/active_image.png";
 import past from "./assets/past_image.png";
 import { Stack } from "@mui/system";
 
+
 const CustomShimmerCard = ({ isXs }) => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
