@@ -9,26 +9,64 @@ const data = {
     {
       "name": "Chennai",
       "areas": [
-        "Chennai North",
-        "Chennai South",
-        "Chennai Central"
+        "Adambakkam",
+        "Adyar",
+        "Alandur",
+        "Alapakkam",
+        "Alwarpet",
+        "Alwarthirunagar",
+        "Ambattur",
+        "Aminjikarai",
+        "Anna Nagar",
+        "Annanur",
+        "Arumbakkam",
+        "Ashok Nagar",
+        "Avadi",
+        "Ayanavaram",
+        "Beemannapettai",
+        "Besant Nagar"
       ]
     },
     {
       "name": "Tirunelveli",
       "areas": [
-        "Tirunelveli East",
-        "Tirunelveli West",
-        "Tirunelveli South"
+        "Ambasamudram",
+        "Cheranmadevi",
+        "Eruvadi",
+        "Gangaikondan",
+        "Idaiyangudi",
+        "Kadayanallur",
+        "Manimutharu",
+        "Melacheval",
+        "Nallankulam",
+        "Nanguneri",
+        "Palayamkottai",
+        "Pattamadai",
+        "Sankaranayinarkoil",
+        "Thirukkurungudi",
+        "Uvari",
+        "Vadakkankulam"
       ]
     },
     {
       "name": "Salem",
       "areas": [
-        "Salem North",
-        "Salem South",
-        "Salem East",
-        "Salem West"
+        "Arasiramani",
+        "Attayampatti",
+        "Belur",
+        "Dalavaipatti",
+        "Edaganasalai",
+        "Gangavalli",
+        "Jalakandapuram",
+        "Kadayampatti",
+        "Masinaickenpatti",
+        "Nangavalli",
+        "Omalur",
+        "P. N. Patti",
+        "Poolampatti",
+        "Sangagiri",
+        "Thammampatti",
+        "Yercaud"
       ]
     }
   ]
@@ -48,14 +86,18 @@ const CityComponent = ({ cityName = 'Salem' }) => {
     return <div>City not found</div>;
   }
 
-  const areas = city.areas.slice(0, 9); // Limit to 9 areas for the 3x3 grid
+  const areas = city.areas.slice(0); // Limit to 9 areas for the 3x3 grid
 
   return (
     <ComponentThreeContainer paddingTop="2rem" paddingBottom="2rem">
       <CustomContainer>
         <Grid container spacing={2}>
+          <Grid item xs={12} align="center">
+            <Typography variant="h4">{cityName}</Typography><hr />
+          </Grid>
           {areas.map((area, index) => (
-            <Grid item key={index} xs={4} sm={4} md={4} align="center">
+
+            <Grid item key={index} xs={4} sm={3} md={3} align="center">
               <Typography variant="body1">{area}</Typography>
             </Grid>
           ))}
