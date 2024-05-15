@@ -41,6 +41,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearOfflinePaymentInfo, setOrderDetailsModal } from "../../../redux/slices/offlinePaymentData";
 import CloseIcon from "@mui/icons-material/Close";
 import {getGuestId, getToken} from "../../../helper-functions/getToken";
+import QRCode from "react-qr-code";
 
 const TopDetails = (props) => {
 	const {
@@ -59,6 +60,8 @@ const TopDetails = (props) => {
 	} = props;
 	const { t } = useTranslation();
 	const theme = useTheme();
+	
+	// const [showQRCode, setShowQRCode] = useState(true);
 
 	const { orderDetailsModal } = useSelector((state) => state.offlinePayment);
 	const isSmall = useMediaQuery(theme.breakpoints.down("md"));
@@ -147,7 +150,7 @@ const TopDetails = (props) => {
 			});
 		}
 	};
-
+	
 	const today = moment(new Date());
 	const differenceInMinutes = () => {
 		const deliveryTime = trackData?.store?.delivery_time;
@@ -396,6 +399,11 @@ const TopDetails = (props) => {
 						/>
 					) : (
 						trackData?.order_status === "pending" && (
+							<Grid spacing={2} justify="flex-end">
+<Grid >
+                             <QRCode value={trackData.qr_data} />
+							 </Grid>
+							 <Grid>
 							<OrderStatusButton
 								background={theme.palette.error.deepLight}
 								onClick={() => setCancelOpenModal(true)}
@@ -403,6 +411,10 @@ const TopDetails = (props) => {
 							>
 								{t("Cancel Order")}
 							</OrderStatusButton>
+							</Grid>
+							</Grid>
+							
+							
 						)
 					)}
 				</>

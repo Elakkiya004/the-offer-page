@@ -20,7 +20,6 @@ import PharmacyStaticBanners from "./pharmacy/pharmacy-banners/PharmacyStaticBan
 const menus = ["All", "Beauty", "Bread & Juice", "Drinks", "Milks"];
 const Grocery = (props) => {
   const { configData } = props;
-  console.log(props)
   const { data, refetch, isLoading } = useGetOtherBanners();
   useEffect(() => {
     refetch();

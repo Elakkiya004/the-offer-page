@@ -152,6 +152,7 @@ const MyOrders = (props) => {
     }
   }, [isFetching]);
   const handleInnerContent = () => {
+  console.log(data)
     if (data) {
       if (data?.orders?.length === 0) {
         return (

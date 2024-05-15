@@ -137,7 +137,6 @@ const HeroLocationForm = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (zoneData) {
-        console.log(zoneData)
         // dispatch(setZoneData(zoneData?.data?.zone_data));
         localStorage.setItem("zoneid", zoneData?.zone_id);
       }
@@ -162,7 +161,6 @@ const HeroLocationForm = () => {
 
   useEffect(() => {
     if (placeDescription) {
-      console.log(placeDescription)
       setCurrentLocation(placeDescription);
     }
   }, [placeDescription]);

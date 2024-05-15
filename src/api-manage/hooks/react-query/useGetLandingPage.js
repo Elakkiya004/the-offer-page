@@ -9,7 +9,6 @@ const getData = async () => {
 const logData = async () => {
     try {
         const result = await getData();
-        console.log(result);
     } catch (error) {
         console.error('Error:', error);
     }

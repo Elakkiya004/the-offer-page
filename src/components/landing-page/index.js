@@ -39,7 +39,6 @@ import Card from "./Card";
 
 
 const LandingPage = ({ configData, landingPageData, hello }) => {
-  console.log(hello)
   const Testimonials = dynamic(() => import("./Testimonials"), {
     ssr: false,
   });

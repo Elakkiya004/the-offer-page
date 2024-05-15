@@ -50,6 +50,7 @@ const OrderStatusTypography = styled(Typography)(({ theme, color }) => ({
 }));
 
 const Order = (props) => {
+  console.log(props)
   const theme = useTheme();
   const { order, t, configData, dispatch, index } = props;
 
