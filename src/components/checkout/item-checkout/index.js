@@ -985,22 +985,22 @@ const ItemCheckout = (props) => {
                     <Cutlery isChecked={cutlery} handleChange={handleCutlery} />
                   )}
 
-                  <ItemSelect
+                  {/* <ItemSelect
                     title="Delivery Instruction"
                     data={delivery}
                     handleChange={handleDeliveryNote}
-                  />
+                  /> */}
 
                   {/* <ItemSelectWithChip
                     title="If Any Product is not available"
                     data={productUnavailableData}
                     handleChange={handleItemUnavailableNote}
                   /> */}
-                  {/* <ItemSelectWithChip
-                    title="Add More Delivery Instruction"
+                  <ItemSelectWithChip
+                    title="Delivery Instruction"
                     data={deliveryInstructions}
                     handleChange={handleDeliveryInstructionNote}
-                  /> */}
+                  />
                   {distanceData && storeData ? (
                     <OrderCalculation
                       usePartialPayment={usePartialPayment}

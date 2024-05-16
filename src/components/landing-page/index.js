@@ -143,7 +143,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
         />
         </Grid>
         <Grid item xs={12} md={12} sx={{ marginTop: "-15px" }}>
-        <h1 style={{marginLeft: "85px"}}>New Arrivals</h1>
+        <h1 style={{marginLeft: isSmall ? "20px" : "80px"}}>New Arrivals</h1>
         {landingPageData?.fixed_promotional_banner && (
           <CustomBoxFullWidth>
             <DiscountBanner

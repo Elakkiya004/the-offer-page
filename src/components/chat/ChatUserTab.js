@@ -5,21 +5,21 @@ import { t } from "i18next";
 import React, { useEffect } from "react";
 
 export const data = [
-	{
-		id: 1,
-		userType: "Seller",
-		value: "vendor",
-	},
+	// {
+	// 	id: 1,
+	// 	userType: "Seller",
+	// 	value: "vendor",
+	// },
 	// {
 	// 	id: 2,
 	// 	userType: "Delivery Man",
 	// 	value: "delivery_man",
 	// },
-	// {
-	// 	id: 3,
-	// 	userType: "Admin",
-	// 	value: "admin",
-	// },
+	{
+		id: 3,
+		userType: "Admin",
+		value: "admin",
+	},
 ];
 
 const ChatUserTab = ({ setUserType, userType, setChannelId, handleReset }) => {

@@ -243,9 +243,9 @@ const HeroLocationForm = () => {
   return (
     <>
       <CustomStackFullWidth
-        backgroundColor={alpha(theme.palette.primary.main, 0.5)}
-        padding={{ xs: ".7rem", md: "1.2rem" }}
-        borderRadius="5px"
+        // backgroundColor={alpha(theme.palette.primary.main, 0.5)}
+        // padding={{ xs: "rem", md: "1rem" }}
+        // borderRadius="5px"
       >
         <CustomStackFullWidth
           direction="row"
@@ -265,6 +265,7 @@ const HeroLocationForm = () => {
                 handleCloseLocation={handleCloseLocation}
                 frommap="false"
                 fromparcel="false"
+                
               />
             </Grid>
             <Grid item xs={3.9} sm={2.9}>
@@ -272,7 +273,7 @@ const HeroLocationForm = () => {
                 <Box
                   onClick={handlePickLocation}
                   sx={{
-                    backgroundColor: (theme) => theme.palette.neutral[100],
+                   // backgroundColor: alpha(theme.palette.primary.main, 0.5),
                     width: "100%",
                     height: "55px",
                     alignItems: "center",
@@ -309,7 +310,7 @@ const HeroLocationForm = () => {
                       onClick={handleAgreeLocation}
                       sx={{ fontSize: { xs: "14px", sm: "18px" } }}
                     />
-                    <Typography
+                    <Typography 
                       variant={isXSmall ? "body3" : "body1"}
                       onClick={handleAgreeLocation}
                       sx={{

@@ -24,6 +24,7 @@ import { getStoresOrRestaurants } from "../../helper-functions/getStoresOrRestau
 import active from "./assets/active_image.png";
 import past from "./assets/past_image.png";
 import { Stack } from "@mui/system";
+import QrHide from "./QrHide"
 
 
 const CustomShimmerCard = ({ isXs }) => {
@@ -221,6 +222,7 @@ const MyOrders = (props) => {
           />
         )}
       </CustomStackFullWidth>
+      <QrHide/>
     </CustomStackFullWidth>
   );
 };

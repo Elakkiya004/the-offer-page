@@ -42,6 +42,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 width: "100%",
                                 borderRadius: "5px",
                                 overflow: "hidden",
+                                marginTop:{ xs: "50px", sm: "89px" },
                                 "&:hover": {
                                     img: {
                                         transform: "scale(1.1)",
@@ -52,10 +53,14 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                             <CustomImageContainer
                                 src={`${landingPageData?.base_urls?.promotional_banner_url}/${item.img}`}
                                 alt="banners"
-                                height="100%"
+                                height={{
+                                    xs: "200px",
+                                    sm: "500px"
+                                }}
                                 width="100%"
                                 objectFit="contain"
                                 borderRadius="5px"
+                                marginTop="100px"
                             />
 					
                         </Box>
@@ -77,21 +82,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                 <Grid container spacing={2}>
                     {/* Render slider with height 470px */}
                     <Grid item xs={12} sm={12} md={12}>
-                        {renderSlider(banners0, 470)}
-                        <Grid
-						item
-						xs={8}
-						md={7}
-						sx={{ padding: { xs: "1rem", sm: "3rem" }, position:"absolute", marginTop: "-400px"}}
-					>
-						<NoSsr>
-							<HeroTitleSection
-								//configData={configData}
-								//landingPageData={landingPageData}
-								//handleOrderNow={handleOrderNow}
-							/>
-						</NoSsr>
-					</Grid>
+                        {renderSlider(banners0, {xs: "100px", sm: "100px"})}
                     </Grid>
                 </Grid>
             </CustomBoxFullWidth>

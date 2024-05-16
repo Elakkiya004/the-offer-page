@@ -206,7 +206,7 @@ const DeliveryAddress = ({
           )}
         </>
       )} */}
-      {renderOnNavbar !== "true" && token && orderType!=="take_away" && (
+      {/* {renderOnNavbar !== "true" && token && orderType!=="take_away" && (
         <AdditionalAddresses
           t={t}
           additionalInformationDispatch={dispatch}
@@ -214,7 +214,7 @@ const DeliveryAddress = ({
           saveAddress={saveAddress}
           address={address}
         />
-      )}
+      )} */}
 
       <CustomModal
         openModal={openSaveAddress}

@@ -28,7 +28,7 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
       // return <ModuleSelectionRaw />;
     } else {
       return (
-        <CustomStackFullWidth mt="45px">
+        <CustomStackFullWidth mt="-50px">
           <HeroLocationForm />
         </CustomStackFullWidth>
       );
@@ -92,14 +92,14 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
               right: -65,
             }}
           >
-            <CustomImageContainer
+            {/* <CustomImageContainer
               src={down_arrow.src}
               alt={t("Background")}
               height="100%"
               width="100%"
               borderRadius="20px"
               objectFit="cover"
-            />
+            /> */}
           </Box>
         )}
       </CustomStackFullWidth>

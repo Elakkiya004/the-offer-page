@@ -9,6 +9,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Grid
 } from "@mui/material";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import {
@@ -39,7 +40,8 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import { getModule } from "../../../helper-functions/getLanguage";
 import { handleProductValueWithOutDiscount } from "../../../utils/CustomFunctions";
 import Search from "./Search";
-
+import HeroTitleSection from "../../landing-page/hero-section/HeroTitleSection";
+import { height } from "@mui/system";
 
 
 const Cart = ({ isLoading }) => {
@@ -251,6 +253,19 @@ const SecondNavBar = ({ configData }) => {
             objectFit="contain"
           />
         )}
+        <Grid
+						item
+						xs={8}
+						md={7}
+            height="-10px"
+						sx={{ padding: { xs: "1rem", sm: "1rem" }, position:"absolute", marginLeft:"150px" }}
+					>
+							<HeroTitleSection
+								//configData={configData}
+								//landingPageData={landingPageData}
+								//handleOrderNow={handleOrderNow}
+							/>
+					</Grid>
         {!isSmall && location && (
           <NavLinks t={t} zoneid="zoneid" moduleType={moduleType} />
         )}
