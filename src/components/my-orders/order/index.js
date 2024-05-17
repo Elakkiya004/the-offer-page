@@ -25,6 +25,7 @@ import TrackParcelOrderDrawer from "../../home/module-wise-components/parcel/Tra
 import trackOrderIcon1 from "../assets/Maskroup.svg";
 import trackOrderIcon from "../assets/trackOrderIcon.png";
 import { DateTypography, TrackOrderButton } from "../myorders.style";
+import QrHide from "../QrHide";
 export const CustomPaper = styled(CustomPaperBigCard)(({ theme }) => ({
   padding: "10px",
   backgroundColor: alpha(theme.palette.neutral[300], 0.4),
@@ -50,7 +51,6 @@ const OrderStatusTypography = styled(Typography)(({ theme, color }) => ({
 }));
 
 const Order = (props) => {
-  console.log(props)
   const theme = useTheme();
   const { order, t, configData, dispatch, index } = props;
 
@@ -61,7 +61,6 @@ const Order = (props) => {
       ? configData?.base_urls?.parcel_category_image_url
       : configData?.base_urls?.store_image_url;
   const router = useRouter();
-
   const handleClick = (e) => {
     if (order?.delivery_man) {
       dispatch(setDeliveryManInfoByDispatch(order?.delivery_man));
@@ -179,28 +178,26 @@ const Order = (props) => {
         order?.order_status !== "refund_request_canceled" &&
         order?.order_status !== "refunded" && (
           <Stack
-            flexWrap="wrap"
-            paddingRight={{ xs: "0px", md: "20px" }}
-            alignItems="center"
+          direction="row"
+          flexWrap="wrap"
+          paddingRight={{ xs: "0px", md: "20px" }}
+          alignItems="center"
+          spacing={2} // Adjust spacing as needed
+        >
+          {/* Track Order Button with QrHide */}
+           
+        
+            <QrHide order={order} />
+    
+          {/* Track Order Button */}
+          <TrackOrderButton
+            variant="outlined"
+            size="small"
+            onClick={(e) => handleClickTrackOrder(e)}
           >
-            <TrackOrderButton
-              variant="outlined"
-              size="small"
-              onClick={(e) => handleClickTrackOrder(e)}
-              endIcon={
-                <CustomImageContainer
-                  src={isXSmall ? trackOrderIcon1.src : trackOrderIcon.src}
-                  width="20px"
-                  height="20px"
-                  smWidth="15px"
-                  smHeight="15px"
-                  alt="icon"
-                />
-              }
-            >
-              {t("Track Order")}
-            </TrackOrderButton>
-          </Stack>
+            Track Order
+          </TrackOrderButton>
+        </Stack>
         )}
     </>
   );

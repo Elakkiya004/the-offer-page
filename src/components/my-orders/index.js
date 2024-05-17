@@ -25,9 +25,11 @@ import active from "./assets/active_image.png";
 import past from "./assets/past_image.png";
 import { Stack } from "@mui/system";
 import QrHide from "./QrHide"
+import { transform } from "lodash";
 
 
-const CustomShimmerCard = ({ isXs }) => {
+const CustomShimmerCard = ({ isXs,trackData }) => {
+  console.log(trackData)
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
   return (
@@ -222,7 +224,7 @@ const MyOrders = (props) => {
           />
         )}
       </CustomStackFullWidth>
-      <QrHide/>
+      {/* <QrHide trackData={trackData}/> */}
     </CustomStackFullWidth>
   );
 };
