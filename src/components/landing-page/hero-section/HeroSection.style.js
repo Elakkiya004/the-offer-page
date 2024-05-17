@@ -11,13 +11,15 @@ export const SearchLocationTextField = styled(TextField)(
   ({ theme, language_direction, frommap, fromparcel, margin_top }) => ({
     width: "100%",
     backgroundColor: theme.palette.neutral[100],
-    height: "100%",
-    borderTopLeftRadius: "4px",
-    borderBottomLeftRadius: "4px",
+    height: "52px",
+    borderTopLeftRadius: "40px",
+    borderBottomLeftRadius: "40px",
     border: "none",
     "& .MuiOutlinedInput-notchedOutline": {
       border: "none",
     },
+    backgroundColor: alpha(theme.palette.primary.main, 0.5),
+    color:"whiteContainer.main",
     "& .MuiOutlinedInput-root": {
       fontSize: fromparcel === "true" && "12px",
       padding: fromparcel === "true" && "5px",

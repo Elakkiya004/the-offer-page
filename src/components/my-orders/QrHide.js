@@ -8,12 +8,14 @@ const QrHide = ({ order }) => {
  
     return (
         <>
-        <Button onClick={() => setShow(prevState => !prevState)}>
-            {show ? 'Hide' : 'Show'}
+        <Button style={{position: "absolute", marginLeft: "-200px", border: "1px solid red", height: "35px"}} onClick={() => setShow(prevState => !prevState)} >
+            {show ? 'Hide QR' : 'view QR'}
         </Button>
 
         {show && order && order.qr_data ? (
-            <QRCode value={order.qr_data} size={200} /> 
+            <QRCode value={order.qr_data} size={100}
+                style={{position: "absolute", marginLeft: "-210px"}}
+            /> 
         ) : null}
     </>
     );

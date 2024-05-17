@@ -74,8 +74,8 @@ const InfoInput = () => {
                 borderRadius:'10px'
             }
           }}
-          type="email"
-          name="email"
+          type="phone number"
+          name="phone number"
           placeholder="Mobile Number"
          
         />

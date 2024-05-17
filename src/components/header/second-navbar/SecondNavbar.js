@@ -258,7 +258,7 @@ const SecondNavBar = ({ configData }) => {
 						xs={8}
 						md={7}
             height="-10px"
-						sx={{ padding: { xs: "1rem", sm: "1rem" }, position:"absolute", marginLeft:"150px" }}
+						sx={{ padding: { xs: "1rem", sm: "1rem" }, position:"absolute", marginLeft:"150px", marginTop: "10px" }}
 					>
 							<HeroTitleSection
 								//configData={configData}

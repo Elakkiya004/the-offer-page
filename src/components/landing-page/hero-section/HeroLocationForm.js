@@ -273,12 +273,14 @@ const HeroLocationForm = () => {
                 <Box
                   onClick={handlePickLocation}
                   sx={{
-                   // backgroundColor: alpha(theme.palette.primary.main, 0.5),
-                    width: "100%",
-                    height: "55px",
+                   backgroundColor: alpha(theme.palette.primary.main, 0.5),
+                    width: "120%",
+                    height: "51px",
                     alignItems: "center",
                     justifyContent: "center",
                     display: "flex",
+                    marginLeft: "-0.9px",
+                    marginTop: "0.9px",
                     padding: {
                       xs: "0rem",
                       sm: lanDirection === "rtl" ? "0rem" : "12px",
@@ -287,7 +289,7 @@ const HeroLocationForm = () => {
                     cursor: "pointer",
                     boxShadow: pickLocation && "1px 0 5px 0 rgba(0, 0, 0, 0.5)",
                     borderRadius: {
-                      xs: pickLocation ? "5px 5px 0 0" : "0px",
+                      xs: pickLocation ? "40px 40px 0 0" : "0px",
                       sm: "0px",
                     },
                   }}
@@ -296,7 +298,7 @@ const HeroLocationForm = () => {
                     alignItems="center"
                     justifyContent="space-between"
                     direction="row"
-                    spacing={0.4}
+                    spacing={0.8}
                     sx={{
                       marginInlineEnd: "5px",
                       width: "170px",
@@ -308,11 +310,14 @@ const HeroLocationForm = () => {
                   >
                     <GpsFixedIcon
                       onClick={handleAgreeLocation}
-                      sx={{ fontSize: { xs: "14px", sm: "18px" } }}
+                      sx={{ fontSize: { xs: "14px", sm: "18px" },  color:"whiteContainer.main" }}
+                     
                     />
                     <Typography 
                       variant={isXSmall ? "body3" : "body1"}
                       onClick={handleAgreeLocation}
+                      color="whiteContainer.main"
+                      fontWeight="600"
                       sx={{
                         cursor: "pointer",
                         "&:hover": {
@@ -330,7 +335,7 @@ const HeroLocationForm = () => {
                     ) : (
                       <KeyboardArrowDownIcon
                         id={`${divId}-Locate-me`}
-                        sx={{ fontSize: { xs: "14px", sm: "18px" } }}
+                        sx={{ fontSize: { xs: "14px", sm: "18px" }, color:"whiteContainer.main" }}
                       />
                     )}
                   </CustomStackFullWidth>
@@ -351,6 +356,7 @@ const HeroLocationForm = () => {
                       cursor: "pointer",
                       boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)",
                       borderRadius: "0px 0px 5px 5px",
+                      color: "primary.main",
                       "&:hover": {
                         color: "primary.main",
                       },
@@ -382,21 +388,24 @@ const HeroLocationForm = () => {
             <Grid item xs={2.1} sm={2.1}>
               <StyledButton
                 sx={{
-                  height: "100%",
+                  height: "51px",
+                  position: "absolute",
                   width: "100%",
-                  borderRadius: "0px 8px 8px 0px",
+                  borderRadius: "0px 40px 40px 0px",
+                  color:"whiteContainer.main",
+                  marginLeft: "13px",
+                  marginTop: "0.9px",
                 }}
                 onClick={() => setLocationEnable()}
                 radiuschange={isXSmall ? "false" : "true"}
                 disabled={!location?.lat || isLoadingGeoCode}
               >
-                {/*<Typography*/}
-                {/*  variant={isXSmall ? "body3" : "body1"}*/}
-                {/*  color="whiteContainer.main"*/}
-                {/*  fontWeight="bold"*/}
-                {/*>*/}
+                <Typography
+                 color="whiteContainer.main"
+                fontWeight="bold"
+                >
                 {t("Explore")}
-                {/*</Typography>*/}
+                </Typography>
               </StyledButton>
             </Grid>
           </Grid>
