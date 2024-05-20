@@ -14,6 +14,9 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
     dots: false,
     infinite: true,
     pauseOnHover: true,
+    autoplay: true,
+		speed: 2000,
+		autoplaySpeed: 3000,
   };
 
   // Function to render each slider

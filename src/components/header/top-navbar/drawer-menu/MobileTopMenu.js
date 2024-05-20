@@ -22,6 +22,8 @@ import { setPopularStores } from "../../../../redux/slices/storedData";
 import { Stack } from "@mui/system";
 import ThemeSwitches from "../ThemeSwitches";
 import CustomLanguage from "../language/CustomLanguage";
+import Link from "next/link";
+
 
 const MobileTopMenu = ({
   handleRoute,
@@ -168,6 +170,11 @@ const MobileTopMenu = ({
                   language={language}
                   noText
                 />
+              </ListItemButton>
+              <ListItemButton>
+              <Link href="https://www.offer.theofferpage.in/store/apply">
+                <ListItemText>{t("List Your Business")}</ListItemText>
+                </Link>
               </ListItemButton>
               {/*{token && (*/}
               {/*  <>*/}

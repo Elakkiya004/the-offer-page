@@ -41,7 +41,8 @@ import { getModule } from "../../../helper-functions/getLanguage";
 import { handleProductValueWithOutDiscount } from "../../../utils/CustomFunctions";
 import Search from "./Search";
 import HeroTitleSection from "../../landing-page/hero-section/HeroTitleSection";
-import { height } from "@mui/system";
+import { height, positions } from "@mui/system";
+import HeroLocationForm from "../../landing-page/hero-section/HeroLocationForm";
 
 
 const Cart = ({ isLoading }) => {
@@ -130,7 +131,7 @@ const getOtherModuleVariation = (itemVariations, selectedVariation) => {
 
   return selectedItem;
 };
-const SecondNavBar = ({ configData }) => {
+const SecondNavBar = ({ configData, landingPageData, handleOrderNow}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -230,6 +231,8 @@ const SecondNavBar = ({ configData }) => {
       token={token}
       setToggled={setToggled}
       location={location}
+      landingPageData={landingPageData}
+      handleOrderNow={handleOrderNow}
     />
   );
   const getDesktopScreenComponents = () => (
@@ -253,19 +256,6 @@ const SecondNavBar = ({ configData }) => {
             objectFit="contain"
           />
         )}
-        <Grid
-						item
-						xs={8}
-						md={7}
-            height="-10px"
-						sx={{ padding: { xs: "1rem", sm: "1rem" }, position:"absolute", marginLeft:"150px", marginTop: "10px" }}
-					>
-							<HeroTitleSection
-								//configData={configData}
-								//landingPageData={landingPageData}
-								//handleOrderNow={handleOrderNow}
-							/>
-					</Grid>
         {!isSmall && location && (
           <NavLinks t={t} zoneid="zoneid" moduleType={moduleType} />
         )}
@@ -354,9 +344,28 @@ const SecondNavBar = ({ configData }) => {
       <NoSsr>
         <CustomContainer>
           <Toolbar disableGutters={true}>
+            
             {isSmall
               ? getMobileScreenComponents()
               : getDesktopScreenComponents()}
+              <Grid
+              item
+              xs={8}
+              md={7}
+              height="-10px"
+              sx={{
+                padding: { xs: "1rem", sm: "1rem" },
+                position: "absolute",
+                marginLeft: { xs: "100px", sm: "150px" },
+                marginTop: "35px"
+              }}
+            >
+              <HeroTitleSection
+								configData={configData}
+								landingPageData={landingPageData}
+								handleOrderNow={handleOrderNow}
+							/>  
+            </Grid>
             <AccountPopover
               anchorEl={anchorRef.current}
               onClose={() => setOpenPopover(false)}

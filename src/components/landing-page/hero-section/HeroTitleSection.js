@@ -103,7 +103,7 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
           </Box>
         )}
       </CustomStackFullWidth>
-      {!isXSmall && getSearchOrModulesBySelectedModules()}
+      {getSearchOrModulesBySelectedModules()}
     </CustomStackFullWidth>
   );
 };

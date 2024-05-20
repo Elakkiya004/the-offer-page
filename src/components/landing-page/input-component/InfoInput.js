@@ -8,6 +8,8 @@ import { usePostNewsletterEmail } from "../../../api-manage/hooks/react-query/ne
 import { getCurrentModuleType } from "../../../helper-functions/getCurrentModuleType";
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import axios from "axios";
+
 
 const styles = theme => ({
     multilineColor:{
@@ -19,6 +21,31 @@ const InfoInput = () => {
   const { t } = useTranslation();
   const { mutate, isLoading } = usePostNewsletterEmail();
   const theme = useTheme();
+
+  const [companyName, setCompanyName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const handleTryItFree = async () => {
+    try {
+      // Send a POST request to your backend API to handle email sending
+        const response = await axios.post("/api/store@theofferpage.in", {
+        companyName,
+        phoneNumber,
+        recipientEmail: "store@theofferpage.in"
+      });
+      if (response.status === 200) {
+        toast.success("Email sent successfully!");
+        // Reset input fields after successful submission
+        setCompanyName("");
+        setPhoneNumber("");
+      } else {
+        toast.error("Failed to send email.");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast.error("Failed to send email.");
+    }
+  };
 
   const handleSuccess = () => {
     toast.success(t("Subscribed Successfully"), {
@@ -48,6 +75,8 @@ const InfoInput = () => {
     <Grid container spacing={2} alignItems="center">
       <Grid item>
         <TextField
+         value={companyName}
+         onChange={(e) => setCompanyName(e.target.value)}
           sx={{
             color: "black",
             height: "48px",
@@ -65,6 +94,8 @@ const InfoInput = () => {
       </Grid>
       <Grid item>
         <TextField
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
           sx={{
             color: "black",
             height: "48px",
@@ -82,17 +113,16 @@ const InfoInput = () => {
       </Grid>
       <Grid item>
       <Button
-    variant="contained"
-    sx={{
-      height: '48px',
-      px: '50px'
-    }}
-    component="a"
-    href="mailto:store@theofferpage.in"
-    startIcon={<MailOutlineIcon />} 
-  >
-    Try it free
-  </Button>
+          variant="contained"
+          sx={{
+            height: "48px",
+            px: "50px",
+          }}
+          onClick={handleTryItFree}
+          startIcon={<MailOutlineIcon />}
+        >
+          Try it free
+        </Button>
       </Grid>
     </Grid>
   );
