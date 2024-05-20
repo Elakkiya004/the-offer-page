@@ -1,4 +1,5 @@
-import { Avatar, Grid } from "@mui/material";
+import { Avatar, Grid,  useTheme,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,8 +14,9 @@ import CustomImageContainer from "../../CustomImageContainer";
 import AddressReselect from "../top-navbar/address-reselect/AddressReselect";
 import DrawerMenu from "../top-navbar/drawer-menu/DrawerMenu";
 import MobileModuleSelection from "./mobile-module-select";
-
-const ModuleWiseNav = (props) => {
+import HeroTitleSection from "../../landing-page/hero-section/HeroTitleSection";
+import HeroLocationForm from "../../landing-page/hero-section/HeroLocationForm";
+const ModuleWiseNav = (props, landingPageData, handleOrderNow ) => {
   const { router, configData, token, setToggled, location } = props;
   const { modules } = useSelector((state) => state.configData);
   const { data, refetch } = useGetModule();
@@ -23,6 +25,7 @@ const ModuleWiseNav = (props) => {
   const favIcon = `${configData?.base_urls?.business_logo_url}/${configData?.fav_icon}`;
   const lanDirection = getLanguage();
   const dispatch = useDispatch();
+  
   useEffect(() => {
     if (modules?.length === 0) {
       refetch();
