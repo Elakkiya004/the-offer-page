@@ -19,10 +19,10 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
     <Stack
       direction="row"
       alignItems="center"
-      justifyContent="center"
-      spacing={1}
+      justifyContent=""
+      spacing={0.4}
      
-      sx={{ paddingLeft: "20px" }}
+      sx={{ marginLeft: "-20px" }}
     >
       {zoneid && (
         <>
