@@ -28,6 +28,9 @@ import OfflinePaymentImage from "../../assets/offlinePayments.svg";
 import CustomTextFieldWithFormik from "../../../form-fields/CustomTextFieldWithFormik";
 import { getAmountWithSign } from "../../../../helper-functions/CardHelpers";
 import { useRouter } from "next/router";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const OfflineForm = ({
 	offlinePaymentOptions,
@@ -36,6 +39,13 @@ const OfflineForm = ({
 	offlinePaymentLoading,
 	usePartialPayment,
 }) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const borderColor = theme.palette.neutral[400];

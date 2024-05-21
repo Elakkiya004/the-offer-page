@@ -1,6 +1,9 @@
 import { Modal, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
+import React, {useEffect} from "react";
 import { CustomModalWrapper } from "../../styled-components/CustomStyles.style";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const CustomModal = ({
@@ -9,6 +12,13 @@ const CustomModal = ({
 	children,
 	disableAutoFocus,
 }) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up("sm"));
 

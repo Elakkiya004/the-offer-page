@@ -8,6 +8,9 @@ import { Stack } from "@mui/material";
 import MiddleSection from "./MiddleSection";
 import ItemSection from "./ItemSection";
 import {useTheme} from "@emotion/react";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CampaignsDetails = ({
   campaignsDetails,
@@ -15,6 +18,13 @@ const CampaignsDetails = ({
   isRefetching,
   isLoading,
 }) => {
+  
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
   const theme=useTheme()
   const camImage = `${configData?.base_urls?.campaign_image_url}/${campaignsDetails?.image}`;
   return (

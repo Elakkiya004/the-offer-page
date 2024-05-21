@@ -7,8 +7,18 @@ import {
 import CustomImageContainer from "../CustomImageContainer";
 import { useTranslation } from "react-i18next";
 import { Stack } from "@mui/system";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomEmptyResult = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { image, label, width, height } = props;
   const { t } = useTranslation();
   return (

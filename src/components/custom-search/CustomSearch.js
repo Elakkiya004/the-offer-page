@@ -8,6 +8,9 @@ import { CloseIconWrapper } from "../../styled-components/CustomStyles.style";
 import { Search, StyledInputBase } from "./CustomSearch.style";
 import { getCurrentModuleType } from "../../helper-functions/getCurrentModuleType";
 import { ModuleTypes } from "../../helper-functions/moduleTypes";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomSearch = ({
   handleSearchResult,
@@ -18,6 +21,13 @@ const CustomSearch = ({
   setSearchValue,
   type2,
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const [value, setValue] = useState("");
   let language_direction = undefined;

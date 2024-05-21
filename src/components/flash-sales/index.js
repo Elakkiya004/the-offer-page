@@ -19,6 +19,9 @@ import BgImageSvg from "./assets/flashSaleBGShape.svg"
 import { useInView } from "react-intersection-observer";
 import { removeDuplicates } from "../../utils/CustomFunctions";
 import { useRouter } from "next/router";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const BgBox = styled(Box)(({ theme, src }) => ({
 	backgroundImage: `url(${src})`,
@@ -37,6 +40,13 @@ const CustomCounterBox = styled(CustomStackFullWidth)(({ theme }) => ({
 }));
 
 const FlashSales = () => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { t } = useTranslation();
 	const router = useRouter();
 	const { id } = router.query;

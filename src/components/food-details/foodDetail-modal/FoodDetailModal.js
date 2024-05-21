@@ -53,6 +53,9 @@ import { handleValuesFromCartItems } from "../../product-details/product-details
 import useCartItemUpdate from "../../../api-manage/hooks/react-query/add-cart/useCartItemUpdate";
 import { getGuestId } from "../../../helper-functions/getToken";
 import { getCurrentModuleType } from "../../../helper-functions/getCurrentModuleType";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const FoodDetailModal = ({
   product,
@@ -65,6 +68,13 @@ const FoodDetailModal = ({
   removeFromWishlistHandler,
   isWishlisted,
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const { t } = useTranslation();
   const dispatch = useDispatch();

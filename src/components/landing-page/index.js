@@ -36,9 +36,19 @@ import PopularStore from "./PopularStore";
 import CityComponent from "./CityComponent";
 import HeroSection1 from "./HeroSection1";
 import Card from "./Card";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const LandingPage = ({ configData, landingPageData, hello }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const Testimonials = dynamic(() => import("./Testimonials"), {
     ssr: false,
   });
@@ -115,7 +125,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
             </CustomContainer>
           </Grid>
         </Grid>
-        <Card/>
+        <Card />
 
         {/* two banners */}
         <OfferBanner
@@ -137,21 +147,21 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
           handleOrderNow={handleOrderNow}
         /> */}
         <Grid item xs={12} md={12} sx={{ marginTop: "-50px" }}>
-        <ComponentThree
-          configData={configData}
-          landingPageData={landingPageData}
-        />
+          <ComponentThree
+            configData={configData}
+            landingPageData={landingPageData}
+          />
         </Grid>
         <Grid item xs={12} md={12} sx={{ marginTop: "-15px" }}>
-        <h1 style={{marginLeft: isSmall ? "20px" : "80px"}}>New Arrivals</h1>
-        {landingPageData?.fixed_promotional_banner && (
-          <CustomBoxFullWidth>
-            <DiscountBanner
-              bannerImage={`${landingPageData?.base_urls?.promotional_banner_url}/${landingPageData?.fixed_promotional_banner}`}
-              isSmall={isSmall}
-            />
-          </CustomBoxFullWidth>
-        )}
+          <h1 style={{ marginLeft: isSmall ? "20px" : "80px" }}>New Arrivals</h1>
+          {landingPageData?.fixed_promotional_banner && (
+            <CustomBoxFullWidth>
+              <DiscountBanner
+                bannerImage={`${landingPageData?.base_urls?.promotional_banner_url}/${landingPageData?.fixed_promotional_banner}`}
+                isSmall={isSmall}
+              />
+            </CustomBoxFullWidth>
+          )}
         </Grid>
         {(landingPageData?.earning_title ||
           landingPageData?.earning_sub_title ||
@@ -162,7 +172,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
             <Registration data={landingPageData} isSmall={isSmall} />
           )}
 
-       <PopularStore/>
+        <PopularStore />
 
         <Grid item xs={12} sx={{ marginTop: "20px" }}>
           <CustomContainer>
@@ -189,7 +199,7 @@ const LandingPage = ({ configData, landingPageData, hello }) => {
         {/* {landingPageData?.testimonial_list?.length > 0 && (
           <Testimonials landingPageData={landingPageData} isSmall={isSmall} />
         )} */}
-        <CityComponent/>
+        <CityComponent />
         {open && (
           <MapModal
             open={open}

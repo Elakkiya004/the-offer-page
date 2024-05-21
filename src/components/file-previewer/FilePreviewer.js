@@ -14,8 +14,18 @@ import docIcon from "./assets/docx.png";
 import txtIcon from "./assets/txt-file.png";
 import folderIcon from "./assets/folder.png";
 import CustomImageContainer from "../CustomImageContainer";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const FilePreviewer = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     file,
     anchor,

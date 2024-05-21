@@ -55,8 +55,19 @@ import {getGuestId} from "../../../helper-functions/getToken";
 import {handleProductValueWithOutDiscount} from "../../../utils/CustomFunctions";
 import {getModule} from "../../../helper-functions/getLanguage";
 import {getSelectedVariations} from "../../header/second-navbar/SecondNavbar";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const SignIn = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
+  
   const router = useRouter();
   const previousRouteName = router.query.from;
   const guestId=getGuestId()

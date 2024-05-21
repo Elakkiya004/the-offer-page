@@ -7,6 +7,10 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 import {
   CustomTypographyAlign,
@@ -21,6 +25,13 @@ import {
 import { CustomPaperForCustomDialogDelete } from "./CustomDialogDelete.style";
 
 const CustomDialogDelete = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { open, onClick, onClose, onSuccess } = props;
 
   const { t } = useTranslation();

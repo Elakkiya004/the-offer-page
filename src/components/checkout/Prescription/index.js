@@ -31,8 +31,19 @@ import AddPaymentMethod from "../item-checkout/AddPaymentMethod";
 import useGetMostTrips from "../../../api-manage/hooks/react-query/useGetMostTrips";
 import { useTheme } from "@emotion/react";
 import {getGuestId, getToken} from "../../../helper-functions/getToken";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const PrescriptionCheckout = ({ storeId }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const theme = useTheme();
   const matches = useMediaQuery("(max-width:1180px)");

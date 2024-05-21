@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useTranslation } from "react-i18next";
 import Dialog from "@mui/material/Dialog";
 import { Stack } from "@mui/material";
@@ -10,8 +10,20 @@ import {
   CustomButtonSuccess,
 } from "../../../styled-components/CustomButtons.style";
 import { WrapperForCustomDialogConfirm } from "./CustomDialogConfirm.style";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CustomDialogConfirmStyle = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
+
   const { open, onClick, onClose, onSuccess, dialogTexts, isLoading } = props;
 
   const { t } = useTranslation();

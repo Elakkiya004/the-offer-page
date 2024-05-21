@@ -1,6 +1,6 @@
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import { Box, alpha } from "@mui/system";
-import React from "react";
+import React, {useEffect} from "react";
 import { useTranslation } from "react-i18next";
 import ractangle from "../../../../public/static/footer/Rectangle.svg";
 import magnifying from "../../../../public/static/footer/magnifying.svg";
@@ -13,8 +13,19 @@ import AppLinks from "./AppLinks";
 import RouteLinks from "./RouteLinks";
 import SocialLinks from "./SocialLinks";
 import SomeInfo from "./SomeInfo";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const FooterMiddle = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData, landingPageData } = props;
   const { t } = useTranslation();
   let zoneid = undefined;

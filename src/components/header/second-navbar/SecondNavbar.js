@@ -43,6 +43,9 @@ import Search from "./Search";
 import HeroTitleSection from "../../landing-page/hero-section/HeroTitleSection";
 import { height, positions } from "@mui/system";
 import HeroLocationForm from "../../landing-page/hero-section/HeroLocationForm";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const Cart = ({ isLoading }) => {
@@ -132,6 +135,13 @@ const getOtherModuleVariation = (itemVariations, selectedVariation) => {
   return selectedItem;
 };
 const SecondNavBar = ({ configData, landingPageData, handleOrderNow}) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const dispatch = useDispatch();
   const router = useRouter();

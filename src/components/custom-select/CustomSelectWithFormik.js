@@ -4,9 +4,19 @@ import { CustomBoxFullWidth } from '../../styled-components/CustomStyles.style'
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import FormHelperText from '@mui/material/FormHelperText'
 import { useTranslation } from 'react-i18next'
-import {useTheme} from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomSelectWithFormik = (props) => {
+
+    ReactGA.initialize(TRACKING_ID);
+
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+    }, []);
+
     const {
         inputLabel,
         selectFieldData,
@@ -18,7 +28,7 @@ const CustomSelectWithFormik = (props) => {
         value,
     } = props
     const [age, setAge] = React.useState(value)
-    const theme=useTheme()
+    const theme = useTheme()
     const { t } = useTranslation()
     const handleChange = (event) => {
         passSelectedValue(event.target.value)

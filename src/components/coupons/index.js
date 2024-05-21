@@ -8,8 +8,19 @@ import Coupon from "./Coupon";
 import CustomShimmerCard from "./Shimmer";
 import { t } from "i18next";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const Coupons = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
   const { data, refetch, isLoading } = useGetCoupons();

@@ -4,6 +4,9 @@ import { styled } from "@mui/material/styles";
 import { Box, Stack } from "@mui/system";
 import { Typography } from "@mui/material";
 import moment from "moment";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const Container = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
@@ -60,6 +63,12 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
 };
 
 const CustomCountdown = ({ endDate }) => {
+  
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
 
   const endTimeDate = moment(endDate);
 

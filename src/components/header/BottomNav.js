@@ -17,6 +17,9 @@ import { getCartListModuleWise } from "../../helper-functions/getCartListModuleW
 import WishListCardView from "../wishlist";
 import {getToken} from "../../helper-functions/getToken";
 import {toast} from "react-hot-toast";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const styles = {
   maxWidth: 2000,
@@ -27,6 +30,13 @@ const styles = {
 };
 
 const BottomNav = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { wishLists } = useSelector((state) => state.wishList);
   const { cartList } = useSelector((state) => state.cart);
   const { selectedModule } = useSelector((state) => state.utilsData);

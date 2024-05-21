@@ -33,8 +33,19 @@ import { ProductsApi } from "../../hooks/react-query/config/productsApi";
 import { addWishList, removeWishListFood } from "../../redux/slices/wishList";
 import { useWishListDelete } from "../../hooks/react-query/config/wish-list/useWishListDelete";
 import { RTL } from "../RTL/RTL";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const FoodCard = ({ product, productImageUrl }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+  
   const theme = useTheme();
   const dispatch = useDispatch();
   const isXSmall = useMediaQuery(theme.breakpoints.down("sm"));
