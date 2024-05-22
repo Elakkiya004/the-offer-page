@@ -29,6 +29,10 @@ import { zoneWiseModule } from "../../../module-select/ModuleSelect";
 
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorIcon from "@mui/icons-material/Error";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const CustomPaper = styled(Paper)(({ theme }) => ({
 	//minWidth: "500px",
@@ -91,6 +95,13 @@ export const ModuleSelection = ({
 	disableAutoFocus,
 	setOpenModuleSelection,
 }) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const router = useRouter();
 	const [openModal, setOpenModal] = useState(location);
 	const { configData } = useSelector((state) => state.configData);

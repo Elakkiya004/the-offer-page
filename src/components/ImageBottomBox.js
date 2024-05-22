@@ -1,9 +1,20 @@
 import { Typography } from "@mui/material";
 import { t } from "i18next";
-import React from "react";
+import React, { useEffect } from "react";
 import { CustomStackFullWidth } from "../styled-components/CustomStyles.style";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ImageBottomBox = (props) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { delivery_time, free_delivery } = props;
 	return (
 		<CustomStackFullWidth

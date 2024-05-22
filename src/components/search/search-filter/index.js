@@ -23,6 +23,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetCategories } from "../../../api-manage/hooks/react-query/all-category/all-categorys";
 import { setCategories } from "../../../redux/slices/storedData";
 import { VIEW_ALL_TEXT } from "../../../utils/staticTexts";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CustomPaperBox = styled(Box)(({ theme }) => ({
   backgroundColor: "paper.default",
@@ -104,6 +108,13 @@ const Dummy = [
   },
 ];
 const SearchFilter = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     open,
     onClose,

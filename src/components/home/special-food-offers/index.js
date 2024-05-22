@@ -20,8 +20,18 @@ import { NextFood, PrevFood } from "../best-reviewed-items/SliderSettings";
 import { getLanguage } from "../../../helper-functions/getLanguage"
 import { RTL } from "../../rtl";
 import SpecialOfferCardShimmer from "../../Shimmer/SpecialOfferCardSimmer";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const SpecialFoodOffers = ({ title }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const params = {
     offset: 1,

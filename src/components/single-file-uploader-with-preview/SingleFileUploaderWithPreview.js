@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SingleFileUploader from "../single-file-uploader/SingleFileUploader";
 //import CategorySetupFilesUploaderWithText from "../../pages/admin/service-categories/category-setup/CategorySetupFilesUploaderWithText";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const SingleFileUploaderWithPreview = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     onEdit,
     headerLabel,

@@ -26,8 +26,18 @@ import {
 import { NextFood, PrevFood } from "../best-reviewed-items/SliderSettings";
 import { useGetFlashSales } from "../../../api-manage/hooks/react-query/useGetFlashSales";
 import {getLanguage} from "../../../helper-functions/getLanguage";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const PopularItemsNearby = ({ title, subTitle }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { popularItemsNearby } = useSelector((state) => state.storedData);
   const { t } = useTranslation();
   const limit = 2;

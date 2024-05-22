@@ -1,13 +1,24 @@
 import { Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   getAmountWithSign,
   getDiscountedAmount,
 } from "../helper-functions/CardHelpers";
 import { getCurrentModuleType } from "../helper-functions/getCurrentModuleType";
 import { ModuleTypes } from "../helper-functions/moduleTypes";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const AmountWithDiscountedAmount = ({ item, noPrimaryColor }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   // const item = {
   //   price: 100,
   //   discount: 20,

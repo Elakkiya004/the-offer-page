@@ -12,6 +12,10 @@ import CustomContainer from "../../container";
 import { CustomStackFullWidth } from "../../../styled-components/CustomStyles.style";
 import LargerScreen from "./LargerScreen";
 import SmallerScreen from "./SmallerScreen";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const Wrapper = styled(Box)(({ theme }) => ({
   background: `linear-gradient(112.54deg, rgba(255, 255, 255, 0.2) 0%, rgba(153, 245, 202, 0.2) 33.19%, ${alpha(
@@ -29,6 +33,13 @@ export const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const AppDownloadSection = ({ configData, landingPageData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
   const primaryColor = theme.palette.primary.dark;

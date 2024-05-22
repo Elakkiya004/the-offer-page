@@ -6,8 +6,19 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { Box } from "@mui/system";
 import {LoadingButton} from "@mui/lab";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CardsGrid = ({ data, totalSize, handleMore, isFetching }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   return (
     <Box>

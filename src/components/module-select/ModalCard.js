@@ -8,8 +8,19 @@ import {
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import CustomImageContainer from "../CustomImageContainer";
 import warning from "./warningIcon.svg";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ModalCard = (props) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { handleCloseModal, handleModalSuccess } = props;
 	const { t } = useTranslation();
 	return (

@@ -1,6 +1,12 @@
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { styled } from "@mui/material";
 import CustomImageContainer from "../CustomImageContainer";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
+
 
 export const Logo = styled("div")(({ theme, height, width }) => ({
   width: width,
@@ -16,6 +22,13 @@ export const Logo = styled("div")(({ theme, height, width }) => ({
   },
 }));
 const CustomLogo = ({ logoImg, atlText, height, width, objectFit }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   let location = undefined;
   if (typeof window !== "undefined") {

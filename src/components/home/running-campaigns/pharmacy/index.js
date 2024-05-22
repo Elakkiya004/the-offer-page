@@ -5,6 +5,9 @@ import Slider from "react-slick";
 import { SliderCustom } from "../../../../styled-components/CustomStyles.style";
 import CustomImageContainer from "../../../CustomImageContainer";
 import { settings } from "./sliderSettings";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const ImageWrapper = styled(Box)(({ theme }) => ({
 	height: "160px",
@@ -13,6 +16,13 @@ const ImageWrapper = styled(Box)(({ theme }) => ({
 	},
 }));
 const Pharmacy = (props) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { runningCampaigns, handleClick, configData, isFetching } = props;
 	return (
 		<SliderCustom>

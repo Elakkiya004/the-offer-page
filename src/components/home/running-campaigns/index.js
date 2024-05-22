@@ -14,8 +14,18 @@ import { HomeComponentsWrapper } from "../HomePageComponents";
 import SliderShimmer from "../SliderShimmer";
 import Grocery from "./Grocery";
 import Pharmacy from "./pharmacy";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const RunningCampaigns = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData } = useSelector((state) => state.configData);
   const [openModal, setOpenModal] = useState(false);
   const [campaignsData, setCampaignsData] = useState({});

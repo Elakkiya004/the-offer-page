@@ -1,11 +1,22 @@
 import { useTheme } from "@emotion/react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { TopBarButton } from "./header/NavBar.style";
 import ClickToCall from "./header/top-navbar/ClickToCall";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CallToAdmin = (props) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { configData } = props;
 	const theme = useTheme();
 	return (

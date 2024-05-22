@@ -15,8 +15,19 @@ import H1 from "../../typographies/H1";
 import { settings } from "./settings";
 import ProductCard from "../../cards/ProductCard";
 import useGetCommonConditionStore from "../../../api-manage/hooks/react-query/common-conditions/useGetCommonConditionStore";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const PopularInTheStore = ({ id, storeShare }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const offset = 1;
   const limit = 10;

@@ -20,8 +20,19 @@ import { useGetCategories } from "../../api-manage/hooks/react-query/all-categor
 import { usePostSelectedCategory } from "../../api-manage/hooks/react-query/all-category/usePostSelectedCategory";
 import { CustomTypography } from "../landing-page/hero-section/HeroSection.style";
 import H1 from "../typographies/H1";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const InterestOptions = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const [selectedId, setSelectedId] = useState([]);
   const [categoryList, setCategoryList] = useState([]);

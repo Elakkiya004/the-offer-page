@@ -26,6 +26,10 @@ import trackOrderIcon1 from "../assets/Maskroup.svg";
 import trackOrderIcon from "../assets/trackOrderIcon.png";
 import { DateTypography, TrackOrderButton } from "../myorders.style";
 import QrHide from "../QrHide";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 export const CustomPaper = styled(CustomPaperBigCard)(({ theme }) => ({
   padding: "10px",
   backgroundColor: alpha(theme.palette.neutral[300], 0.4),
@@ -51,6 +55,13 @@ const OrderStatusTypography = styled(Typography)(({ theme, color }) => ({
 }));
 
 const Order = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const { order, t, configData, dispatch, index } = props;
 

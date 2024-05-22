@@ -6,12 +6,23 @@ import { useSelector } from "react-redux";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ProductCard from "../cards/ProductCard";
 import CustomPagination from "../custom-pagination";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 export default function ProductList({
   product_list,
   page_limit = 10,
   offset,
   setOffset,
 }) {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const matches = useMediaQuery("(max-width:1180px)");
   return (
     <>

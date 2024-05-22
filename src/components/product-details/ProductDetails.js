@@ -11,8 +11,19 @@ import DetailsAndReviews from "./details-and-reviews/DetailsAndReviews";
 import LoveItem from "../home/love-item";
 import DiscountedProductRedirectBanner from "../home/DiscountedProductRedirectBanner";
 import SinglePoster from "../home/module-wise-components/ecommerce/SinglePoster";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ProductDetails = ({ productDetailsData, configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const storeImageBaseUrl = configData?.base_urls?.store_image_url;
   return (
     <CustomStackFullWidth

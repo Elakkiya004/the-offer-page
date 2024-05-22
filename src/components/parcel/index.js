@@ -5,8 +5,19 @@ import ParcelCategory from "./parcel-category/ParcelCategory";
 import TopBanner from "../home/top-banner";
 import SearchWithTitle from "../home/SearchWithTitle";
 import CustomContainer from "../container";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const PercelComponents = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   useEffect(() => {
     window.scrollTo({ top, behavior: "smooth" });
   }, []);

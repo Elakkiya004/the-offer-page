@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ZoneGuard = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { children } = props;
   const router = useRouter();
   const [checked, setChecked] = useState(false);

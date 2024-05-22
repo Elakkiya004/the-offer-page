@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/system";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import {
   CustomBoxFullWidth,
   CustomStackFullWidth,
@@ -30,6 +30,9 @@ import NewlyJoined from "./NewlyJoined";
 import PopularStores from "./PopularStores";
 import TopRatedStores from "./TopRatedStores";
 import { t } from "i18next";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const menus = ["All", "Newly Joined", "Popular", "Top Rated"];
 const filterLabels = [
@@ -38,6 +41,13 @@ const filterLabels = [
   { label: "Take Away", value: "take_away" },
 ];
 const Filter = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { selectedFilterValue, setSelectedFilterValue } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

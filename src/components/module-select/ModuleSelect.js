@@ -4,6 +4,10 @@ import React from "react";
 import { setSelectedModule } from "../../redux/slices/utils";
 import CustomImageContainer from "../CustomImageContainer";
 import { setFeaturedCategories } from "../../redux/slices/storedData";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const Container = styled(Stack)(({ theme }) => ({
   position: "fixed",
@@ -62,6 +66,13 @@ const ModuleSelect = ({
   configData,
   dispatch,
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const handleModuleSelect = (item) => {
     dispatch(setSelectedModule(item));
     moduleSelectHandler(item);

@@ -13,10 +13,20 @@ import PharmacyStaticBanners from "./pharmacy-banners/PharmacyStaticBanners";
 import CommonConditions from "./common-conditions";
 import RedirectBanner from "./pharmacy-banners/RedirectBanner";
 import useGetOtherBanners from "../../../../api-manage/hooks/react-query/useGetOtherBanners";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const menus = ["All", "New", "Baby Care", "Womans Care", "Mens"];
 
 const Pharmacy = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { data, refetch, isLoading } = useGetOtherBanners();
   useEffect(() => {
     refetch();

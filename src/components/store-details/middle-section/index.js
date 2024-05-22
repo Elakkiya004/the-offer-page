@@ -34,6 +34,10 @@ import { useInView } from "react-intersection-observer";
 import { removeDuplicates } from "../../../utils/CustomFunctions";
 import DotSpin from "../../DotSpin";
 import SearchIcon from "@mui/icons-material/Search";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const handleShimmerProducts = () => {
   return (
@@ -132,6 +136,13 @@ export const getLowToHigh = (data) => {
   }
 };
 const MiddleSection = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { storeDetails, ownCategories, isSmall, storeShare } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 

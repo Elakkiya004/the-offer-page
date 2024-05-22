@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {useSelector} from "react-redux";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const AuthGuard = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { children, from } = props;
   const router = useRouter();
   const [checked, setChecked] = useState(false);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   CustomColouredTypography,
@@ -12,6 +12,10 @@ import ReferAFriend from "./svg/ReferAFriend";
 import CodePreview from "./CodePreview";
 import { t } from "i18next";
 import { Stack } from "@mui/system";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 const RefEarning = ({ configData }) => {
   return (
     <>
@@ -22,6 +26,13 @@ const RefEarning = ({ configData }) => {
   );
 };
 const ReferralCode = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData } = props;
   const referral = t("referral");
   const get = t("Get");

@@ -1,7 +1,7 @@
-import React, {memo, useEffect, useState} from "react";
-import {Autocomplete, Backdrop, Button, IconButton, Modal, Skeleton, Typography} from "@mui/material";
-import {CustomBoxWrapper, LocationView, PrimaryButton, WrapperCurrentLocationPick} from "./map.style";
-import {SearchLocationTextField} from "../landing-page/hero-section/HeroSection.style";
+import React, { memo, useEffect, useState } from "react";
+import { Autocomplete, Backdrop, Button, IconButton, Modal, Skeleton, Typography } from "@mui/material";
+import { CustomBoxWrapper, LocationView, PrimaryButton, WrapperCurrentLocationPick } from "./map.style";
+import { SearchLocationTextField } from "../landing-page/hero-section/HeroSection.style";
 import UseCurrentLocation from "./UseCurrentLocation";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -10,36 +10,47 @@ import {
     CustomTypographyGray,
 } from "../../styled-components/CustomStyles.style";
 import RoomIcon from "@mui/icons-material/Room";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import useGetAutocompletePlace from "../../api-manage/hooks/react-query/google-api/usePlaceAutoComplete";
 import useGetGeoCode from "../../api-manage/hooks/react-query/google-api/useGetGeoCode";
 import useGetZoneId from "../../api-manage/hooks/react-query/google-api/useGetZone";
 import useGetPlaceDetails from "../../api-manage/hooks/react-query/google-api/useGetPlaceDetails";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import GoogleMapComponent from "./GoogleMapComponent";
 import toast from "react-hot-toast";
 
-import {useRouter} from "next/router";
-import {ModuleSelection} from "../landing-page/hero-section/module-selection";
-import {useGeolocated} from "react-geolocated";
-import {module_select_success} from "../../utils/toasterMessages";
-import {FacebookCircularProgress} from "../loading-spinners/FacebookLoading";
-import {setWishList} from "../../redux/slices/wishList";
-import {useWishListGet} from "../../api-manage/hooks/react-query/wish-list/useWishListGet";
-import {getToken} from "../../helper-functions/getToken";
+import { useRouter } from "next/router";
+import { ModuleSelection } from "../landing-page/hero-section/module-selection";
+import { useGeolocated } from "react-geolocated";
+import { module_select_success } from "../../utils/toasterMessages";
+import { FacebookCircularProgress } from "../loading-spinners/FacebookLoading";
+import { setWishList } from "../../redux/slices/wishList";
+import { useWishListGet } from "../../api-manage/hooks/react-query/wish-list/useWishListGet";
+import { getToken } from "../../helper-functions/getToken";
 import ModalExtendShrink from "./ModalExtendShrink";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const MapModal = ({
-                      open,
-                      handleClose,
-                      locationLoading,
-                      toparcel,
-                      handleLocation,
-                      disableAutoFocus,fromReceiver
-                  }) => {
+    open,
+    handleClose,
+    locationLoading,
+    toparcel,
+    handleLocation,
+    disableAutoFocus, fromReceiver
+}) => {
+
+    ReactGA.initialize(TRACKING_ID);
+
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+    }, []);
+
     const router = useRouter();
-    const {configData} = useSelector((state) => state.configData);
-    const {t} = useTranslation();
+    const { configData } = useSelector((state) => state.configData);
+    const { t } = useTranslation();
     const [searchKey, setSearchKey] = useState("");
     const [enabled, setEnabled] = useState(false);
     const [geoLocationEnable, setGeoLocationEnable] = useState(true);
@@ -61,12 +72,12 @@ const MapModal = ({
         description: null,
     });
     const [openModuleSelection, setOpenModuleSelection] = useState(false);
-    const {data: places, isLoading: placesIsLoading} = useGetAutocompletePlace(
+    const { data: places, isLoading: placesIsLoading } = useGetAutocompletePlace(
         searchKey,
         enabled
     );
     const dispatch = useDispatch();
-    const {coords, isGeolocationAvailable, isGeolocationEnabled, getPosition} =
+    const { coords, isGeolocationAvailable, isGeolocationEnabled, getPosition } =
         useGeolocated({
             positionOptions: {
                 enableHighAccuracy: false,
@@ -79,7 +90,7 @@ const MapModal = ({
             setPredictions(places?.predictions);
         }
     }, [places]);
-    const {data: geoCodeResults, refetch: refetchCurrentLocation} =
+    const { data: geoCodeResults, refetch: refetchCurrentLocation } =
         useGetGeoCode(location, geoLocationEnable);
     useEffect(() => {
         if (geoCodeResults) {
@@ -102,7 +113,7 @@ const MapModal = ({
 
             if (zoneData) {
                 setZoneId(zoneData?.zone_id);
-                if(fromReceiver !== "1"){
+                if (fromReceiver !== "1") {
                     localStorage.setItem("zoneid", zoneData?.zone_id);
                 }
                 // dispatch(setZoneData(zoneData?.data?.zone_data));
@@ -116,7 +127,7 @@ const MapModal = ({
         setLoadingAuto(false);
     };
 
-    const {isLoading: isLoading2, data: placeDetails} = useGetPlaceDetails(
+    const { isLoading: isLoading2, data: placeDetails } = useGetPlaceDetails(
         placeId,
         placeDetailsEnabled,
         successHandler
@@ -159,7 +170,7 @@ const MapModal = ({
     const onSuccessHandler = (response) => {
         dispatch(setWishList(response));
     };
-    const {refetch: wishlistRefetch, isLoading: isLoadingWishlist} =
+    const { refetch: wishlistRefetch, isLoading: isLoadingWishlist } =
         useWishListGet(onSuccessHandler);
 
     const handlePickLocationOnClick = () => {
@@ -168,17 +179,17 @@ const MapModal = ({
             if (getToken()) {
                 wishlistRefetch();
             }
-            if(fromReceiver !== "1"){
+            if (fromReceiver !== "1") {
                 localStorage.setItem("zoneid", zoneId);
             }
 
-            if(fromReceiver!== "1"){
+            if (fromReceiver !== "1") {
                 localStorage.setItem(
                     "location",
                     geoCodeResults?.results[0]?.formatted_address
                 );
                 localStorage.setItem("currentLatLng", JSON.stringify(location));
-            }else {
+            } else {
 
                 toast.success(t("New location has been set."));
             }
@@ -200,7 +211,7 @@ const MapModal = ({
     const handleCloseModuleModal = (item) => {
         if (item) {
             toast.success(t(module_select_success));
-            router.push("/", undefined, {shallow: true});
+            router.push("/", undefined, { shallow: true });
         }
         setOpenModuleSelection(false);
         handleClose?.();
@@ -212,7 +223,7 @@ const MapModal = ({
                 open={open}
                 onClose={handleClose}
                 closeAfterTransition
-                slots={{backdrop: Backdrop}}
+                slots={{ backdrop: Backdrop }}
                 slotProps={{
                     backdrop: {
                         timeout: 500,
@@ -223,16 +234,16 @@ const MapModal = ({
                     expand={isModalExpand ? "true" : "false"}
                     sx={{
                         display: openModuleSelection ? "none" : "inherit",
-                        padding: {xs: "1rem", md: "2rem"},
+                        padding: { xs: "1rem", md: "2rem" },
                         borderRadius: isModalExpand ? "0px" : "20px",
                         position: "relative",
                     }}
                 >
                     <IconButton
                         onClick={() => handleClose()}
-                        sx={{position: "absolute", top: 5, right: 8}}
+                        sx={{ position: "absolute", top: 5, right: 8 }}
                     >
-                        <CloseIcon/>
+                        <CloseIcon />
                     </IconButton>
                     <CustomStackFullWidth spacing={2}>
                         <Typography variant="h6">
@@ -240,7 +251,7 @@ const MapModal = ({
                         </Typography>
                         <CustomStackFullWidth>
                             {loadingAuto ? (
-                                <Skeleton width="100%" height="40px" variant="rectangular"/>
+                                <Skeleton width="100%" height="40px" variant="rectangular" />
                             ) : (
                                 <Autocomplete
                                     fullWidth
@@ -304,14 +315,14 @@ const MapModal = ({
                             <LocationView>
                                 {geoCodeResults?.results?.length > 0 ? (
                                     <>
-                                        <RoomIcon fontSize="small" color="primary"/>
+                                        <RoomIcon fontSize="small" color="primary" />
                                         <Typography>
                                             {geoCodeResults?.results[0]?.formatted_address}
                                         </Typography>
                                     </>
                                 ) : (
                                     <>
-                                        <Skeleton variant="rounded" width={300} height={20}/>
+                                        <Skeleton variant="rounded" width={300} height={20} />
                                     </>
                                 )}
                             </LocationView>
@@ -335,7 +346,7 @@ const MapModal = ({
                                     alignItems="center"
                                     justifyContent="center"
                                 >
-                                    <FacebookCircularProgress/>
+                                    <FacebookCircularProgress />
                                     <CustomTypographyGray nodefaultfont="true">
                                         {t("Please wait sometimes")}
                                     </CustomTypographyGray>

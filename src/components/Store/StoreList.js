@@ -11,8 +11,19 @@ import { Skeleton } from "@mui/material";
 import Shimmer from "../home/stores-with-filter/Shimmer";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import StoreCard from "../cards/StoreCard";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const StoreList = ({ storeType, type, setType, data }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { selectedModule } = useSelector((state) => state.utilsData);
   const matchesXs = useMediaQuery("(max-width:470px)");
   const { configData } = useSelector((state) => state.configData);

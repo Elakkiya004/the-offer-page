@@ -21,6 +21,9 @@ import { HomeComponentsWrapper } from "../HomePageComponents";
 import FeaturedItemCard from "./card";
 import { moduleWiseNext, moduleWisePrev } from "./sliderSettings";
 import { getLanguage } from "../../../helper-functions/getLanguage";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 export const ButtonLeft = styled(CustomButtonPrimary)(
 	({ theme, language_direction }) => ({
@@ -44,6 +47,13 @@ export const ButtonRight = styled(CustomButtonPrimary)(({ theme }) => ({
 }));
 
 const CardCategories = ({ configData }) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { featuredCategories } = useSelector((state) => state.storedData);
 	const slider = useRef(null);
 	const { data, refetch, isFetched, isFetching, isLoading, isRefetching } =

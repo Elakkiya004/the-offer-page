@@ -42,6 +42,10 @@ import { Check } from "@mui/icons-material";
 import CustomImageContainer from "../CustomImageContainer";
 import { Stack } from "@mui/system";
 import moment from "moment";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 const CustomStepperLabels = styled(Stepper)(({ theme }) => ({
   "& .MuiStepLabel-label.MuiStepLabel-alternativeLabel": {
     marginTop: "-80px",
@@ -121,6 +125,13 @@ function QontoStepIcon(props) {
   );
 }
 const TrackOrder = ({ configData, trackOrderData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const [actStep, setActStep] = useState(1);
   const theme = useTheme();

@@ -19,6 +19,9 @@ import CustomCountdown from "../../../countdown";
 import CustomLinearProgressbar from "../../../linear-progressbar";
 import useGetFlashSales from "../../../../api-manage/hooks/react-query/useGetFlashSales";
 import { useRouter } from "next/router";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomCounterBox = styled(CustomStackFullWidth)(({ theme }) => ({
   transform: "translateY(-115px)",
@@ -52,6 +55,12 @@ const StyledCustomSlider = styled(SliderCustom)(({ theme, isSmall }) => ({
   },
 }));
 const ItemsCampaign = ({ flashSales }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
 
   const theme = useTheme();
   const router = useRouter()

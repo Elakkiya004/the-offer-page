@@ -5,8 +5,19 @@ import useGetTrackOrderData from "../../../api-manage/hooks/react-query/order/us
 import OtherOrder from "./other-order";
 import { getGuestId } from "../../../helper-functions/getToken";
 import {useSelector} from "react-redux";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const OrderDetails = ({ configData, id }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const guestId = getGuestId();
   const { guestUserInfo } = useSelector((state) => state.guestUserInfo);

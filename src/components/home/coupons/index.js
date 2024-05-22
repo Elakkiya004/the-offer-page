@@ -10,6 +10,9 @@ import couponsBG from "../assets/coupons_bg.png";
 import useGetCoupons from "../../../api-manage/hooks/react-query/useGetCoupons";
 import toast from "react-hot-toast";
 import { getAmountWithSign } from "../../../helper-functions/CardHelpers";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomBox = styled(Box)(({ theme }) => ({
   background: alpha(theme.palette.primary.main, 0.3),
@@ -30,6 +33,13 @@ const settings = {
 };
 
 const CouponBox = ({ item }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const [copy, setCopy] = useState(null);
   const handleCopy = (coupon_code) => {

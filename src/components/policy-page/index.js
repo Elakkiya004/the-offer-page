@@ -6,6 +6,10 @@ import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style
 import { Skeleton } from "@mui/material";
 import { isObjectEmpty } from "../../utils/CustomFunctions";
 import CustomContainer from "../container";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 export const PolicyShimmer = () => (
   <CustomStackFullWidth>
     <Skeleton variant="text" width="100%" height="20px" />
@@ -14,6 +18,13 @@ export const PolicyShimmer = () => (
   </CustomStackFullWidth>
 );
 const PolicyPage = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { title, data, isFetching } = props;
   return (
     <CustomContainer>

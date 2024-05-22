@@ -5,6 +5,10 @@ import { ButtonGroup, Tabs } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { makeStyles } from "@mui/styles";
 import { StoreDetailsNavButton } from "../styled-components/CustomStyles.style";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const useStyles = makeStyles((theme) => ({
   affected: {
@@ -17,6 +21,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const GroupButtons = ({ setType, type }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [language_direction, setlanguage_direction] = useState("ltr");
   useEffect(() => {
     if (localStorage.getItem("direction")) {

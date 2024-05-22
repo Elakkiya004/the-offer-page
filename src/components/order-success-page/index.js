@@ -6,8 +6,19 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import CheckoutFailed from "../checkout/CheckoutFailed";
 import jwt from "base-64";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const OrderSuccessPage = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const { status, totalAmount, order_id, token, flag } = router.query;
   const { t } = useTranslation();

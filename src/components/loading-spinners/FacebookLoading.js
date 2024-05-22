@@ -1,7 +1,18 @@
 import { Box } from "@mui/system";
 import { CircularProgress, circularProgressClasses } from "@mui/material";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export function FacebookCircularProgress(props) {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   return (
     <Box sx={{ position: "relative" }}>
       <CircularProgress

@@ -15,8 +15,19 @@ import { setParcelData } from "../../../redux/slices/parcelDeliveryInfo";
 import toast from "react-hot-toast";
 import { t } from "i18next";
 import GuestCheckoutModal from "../../cards/GuestCheckoutModal";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const PercelDelivery = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const dispatch = useDispatch();
   const { parcelCategories } = useSelector((state) => state.parcelCategories);

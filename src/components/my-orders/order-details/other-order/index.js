@@ -27,8 +27,19 @@ import RefundModal from "./RefundModal";
 import StoreDetails from "./StoreDetails";
 import {useSelector} from "react-redux";
 import {getGuestId} from "../../../../helper-functions/getToken";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const OtherOrder = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData, data, refetch, id, dataIsLoading } = props;
   const [openModal, setOpenModal] = useState(false);
   const [currentTab, setCurrentTab] = useState(orderDetailsMenuData[0]?.name);

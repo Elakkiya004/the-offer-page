@@ -27,6 +27,10 @@ import EmptySearchResults from "../../../../EmptySearchResults";
 import { Next, Prev } from "../../../popular-items-nearby/SliderSettings";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const StyledCustomSlider = styled(SliderCustom)(({ theme, active }) => ({
   color: active === "true" ? theme.palette.primary.main : "inherit",
@@ -54,6 +58,13 @@ const StyledCustomSlider = styled(SliderCustom)(({ theme, active }) => ({
 }));
 
 const CommonConditions = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { title } = props;
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));

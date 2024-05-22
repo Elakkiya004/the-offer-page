@@ -18,11 +18,22 @@ import CustomContainer from "../../container";
 import iconicBg from "../assets/hero_background.png";
 import HeroLocationForm from "./HeroLocationForm";
 import HeroTitleSection from "./HeroTitleSection";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const DynamicModuleSelection = dynamic(() =>
 	import("./module-selection/ModuleSelectionRaw")
 );
 const HeroSection = ({ configData, landingPageData, handleOrderNow }) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const theme = useTheme();
 	const isXSmall = useMediaQuery(theme.breakpoints.down("sm"));
 	const { t } = useTranslation();

@@ -5,12 +5,23 @@ import { useTheme } from "@emotion/react";
 import MenuBar from "../profile/MenuBar";
 import SideDrawer from "../profile/SideDrawer";
 import { styled } from "@mui/material/styles";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CustomBodyContent = styled("div")(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing.unit * 3,
 }));
 const UserLayout = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { component, configData, t } = props;
   const router = useRouter();
   const theme = useTheme();
