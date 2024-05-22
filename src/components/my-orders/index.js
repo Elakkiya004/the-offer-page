@@ -26,6 +26,10 @@ import past from "./assets/past_image.png";
 import { Stack } from "@mui/system";
 import QrHide from "./QrHide"
 import { transform } from "lodash";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 
 const CustomShimmerCard = ({ isXs,trackData }) => {
@@ -108,6 +112,13 @@ const CustomShimmerCard = ({ isXs,trackData }) => {
 };
 
 const MyOrders = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const tabsData = [
     {
       title: "ongoing",

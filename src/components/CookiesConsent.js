@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Typography } from "@mui/material";
 import { Stack, styled } from "@mui/system";
 import CustomContainer from "./container";
 import { CustomStackFullWidth } from "../styled-components/CustomStyles.style";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const Wrapper = styled("div")(({ theme }) => ({
   position: "fixed",
@@ -20,6 +24,13 @@ const Wrapper = styled("div")(({ theme }) => ({
 }));
 
 const CookiesConsent = ({ text }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [showConsent, setShowConsent] = useState(true);
   const { t } = useTranslation();
 

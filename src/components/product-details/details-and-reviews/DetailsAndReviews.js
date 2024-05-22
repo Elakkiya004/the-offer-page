@@ -11,6 +11,10 @@ import Details from "./Details";
 
 import useGetProductReviews from "../../../api-manage/hooks/react-query/product-details/useProductReviews";
 import ProductReviews from "../ProductReviews";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const Wrapper = styled(Paper)(({ theme }) => ({
   padding: "16px",
@@ -58,6 +62,13 @@ const CustomHeader = ({ info }) => {
   );
 };
 const DetailsAndReviews = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { description, reviews, configData, productId } = props;
   const { t } = useTranslation();
   const [tabs, setTabs] = useState(0);

@@ -13,8 +13,6 @@ import HeroSection from "./hero-section/HeroSection";
 import HeroLocationForm from "./hero-section/HeroLocationForm";
 import HeroTitleSection from "./hero-section/HeroTitleSection";
 
-
-
 const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) => {
     const settings = {
         dots: false,
@@ -54,8 +52,8 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 src={`${landingPageData?.base_urls?.promotional_banner_url}/${item.img}`}
                                 alt="banners"
                                 height={{
-                                    xs: "200px",
-                                    sm: "500px"
+                                    xs: "250px",
+                                    sm: "540px"
                                 }}
                                 width="100%"
                                 objectFit="contain"

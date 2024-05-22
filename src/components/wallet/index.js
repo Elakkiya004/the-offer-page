@@ -23,6 +23,10 @@ import HowToUse from "./HowToUse";
 import TransactionHistoryMobile from "./TransactionHistoryMobile";
 import WalletBoxComponent from "./WalletBoxComponent";
 import WalletFundBonus from "./WalletFundBonus";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const WallatBox = styled(Box)(({ theme, nobackground }) => ({
   display: "flex",
@@ -40,6 +44,13 @@ export const WallatBox = styled(Box)(({ theme, nobackground }) => ({
 }));
 
 const Wallet = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData } = props;
 
   const theme = useTheme();

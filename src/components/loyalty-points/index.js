@@ -24,8 +24,19 @@ import TransactionHistoryMobile from "../wallet/TransactionHistoryMobile";
 import WalletBoxComponent from "../wallet/WalletBoxComponent";
 import trophy from "./assets/loyaltyimg.png";
 import LoyaltyModal from "./loyalty-modal";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const LoyaltyPoints = (props) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { configData } = props;
 	const [offset, setOffset] = useState(1);
 	const [openModal, setOpenModal] = useState(false);

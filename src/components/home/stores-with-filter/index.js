@@ -5,8 +5,19 @@ import CardsGrid from "./cards-grid";
 import Shimmer from "./Shimmer";
 import useGetPopularStore from "../../../api-manage/hooks/react-query/store/useGetPopularStore";
 import {HomeComponentsWrapper} from "../HomePageComponents";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const StoresWithFilter = () => {
+
+    ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
     const [storesType, setStoresType] = useState("all");
     const [type, setType] = useState("all");
     const [offset, setOffset] = useState(1);

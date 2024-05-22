@@ -21,6 +21,10 @@ import Parcel from "./module-wise-components/parcel/Index";
 import useGetGuest from "../../api-manage/hooks/react-query/guest/useGetGuest";
 import useGetAllCartList from "../../api-manage/hooks/react-query/add-cart/useGetAllCartList";
 import { setCartList } from "../../redux/slices/cart";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const HomeComponentsWrapper = styled(Stack)(({ theme }) => ({
   width: "100%",
@@ -28,6 +32,13 @@ export const HomeComponentsWrapper = styled(Stack)(({ theme }) => ({
 }));
 
 const HomePageComponents = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [wishListsData, setWishListsData] = useState();
   const { modules } = useSelector((state) => state.storedData);
   const matches = useMediaQuery("(max-width:1180px)");

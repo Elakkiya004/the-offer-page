@@ -11,8 +11,19 @@ import useGetModule from "../../api-manage/hooks/react-query/useGetModule";
 import { useRouter } from "next/router";
 import { setSelectedModule } from "../../redux/slices/utils";
 import { useDispatch } from "react-redux";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const MainLayout = ({ children, configData, landingPageData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [rerenderUi, setRerenderUi] = useState(false);
   const { data, refetch } = useGetModule();
   const theme = useTheme();

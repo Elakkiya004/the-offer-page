@@ -15,8 +15,19 @@ import { setWalletAmount } from "../../redux/slices/cart";
 import { setUser } from "../../redux/slices/profileInfo";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const Profile = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     configData,
     setEditProfile,

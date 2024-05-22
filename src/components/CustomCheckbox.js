@@ -4,8 +4,19 @@ import { Checkbox, FormControlLabel, Typography } from "@mui/material";
 import { StyleCheckBox } from "./group-buttons/OutlinedGroupButtons";
 import { useTheme } from "@emotion/react";
 import {getModule} from "../helper-functions/getLanguage";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CustomCheckbox = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { item, checkHandler, isChecked, selectedId } = props;
   const [checked, setChecked] = React.useState(false);
   const theme = useTheme();

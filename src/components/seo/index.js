@@ -1,9 +1,21 @@
+import React, { useEffect } from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import DynamicFavicon from "../favicon/DynamicFavicon";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const SEO = ({ title, description, keywords, image, businessName,configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const { asPath } = router;
 

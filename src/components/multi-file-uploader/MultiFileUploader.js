@@ -6,8 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { CustomTypographyForMultiImagePreviewer } from "./MultiFileUploader.style";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const MultiFileUploader = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const {
     width,

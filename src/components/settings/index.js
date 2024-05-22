@@ -6,6 +6,10 @@ import { Stack } from "@mui/system";
 import CustomLanguage from "../header/top-navbar/language/CustomLanguage";
 import { useSelector } from "react-redux";
 import { t } from "i18next";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CustomPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "10px",
@@ -19,6 +23,13 @@ const CustomPaper = styled(Paper)(({ theme }) => ({
 }));
 
 const CustomSettings = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData } = props;
   const { countryCode, language } = useSelector((state) => state.configData);
   return (

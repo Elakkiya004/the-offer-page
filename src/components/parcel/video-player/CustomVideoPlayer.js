@@ -2,8 +2,18 @@ import React, { useState, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { IconButton } from '@mui/material';
 import { CustomStackFullWidthVideo, PauseButton, PlayButton, PlayButtonWrapper, PlayButtonWrapperInside } from './CustomVideoPlayerStyles.style';
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomVideoPlayer = ({ videoUrl }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [playing, setPlaying] = useState(false);
   const [showIcon, setShowIcon] = useState(true)
   const [showControls, setShowControls] = useState(false);

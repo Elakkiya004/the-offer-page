@@ -7,8 +7,19 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import AddressReselect from "../header/top-navbar/address-reselect/AddressReselect";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const DeliveryPlace = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const router = useRouter();
   const theme = useTheme();

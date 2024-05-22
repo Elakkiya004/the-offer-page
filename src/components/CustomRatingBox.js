@@ -2,13 +2,24 @@ import { useTheme } from "@emotion/react";
 import StarIcon from "@mui/icons-material/Star";
 import { Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import { getCurrentModuleType } from "../helper-functions/getCurrentModuleType";
 import { ModuleTypes } from "../helper-functions/moduleTypes";
 import { IsSmallScreen } from "../utils/CommonValues";
 import { useSelector } from "react-redux";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CustomRatingBox = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { rating } = props;
   const { configData } = useSelector((state) => state.configData);
   const getRating = () => {

@@ -6,8 +6,18 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Card } from "./featured-categories/card";
 import { ButtonLeft, ButtonRight } from "./featured-categories";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const SliderShimmer = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   return (
     <CustomStackFullWidth spacing={3}>
       <CustomStackFullWidth

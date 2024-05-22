@@ -5,8 +5,19 @@ import { toast } from "react-hot-toast";
 import { Stack, Typography, useTheme } from "@mui/material";
 import { useRouter } from "next/router";
 import { useStoreFcm } from "../api-manage/hooks/react-query/push-notifications/usePushNotification";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const PushNotificationLayout = ({ children, refetch, pathName }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const router = useRouter();
   const [notification, setNotification] = useState(null);

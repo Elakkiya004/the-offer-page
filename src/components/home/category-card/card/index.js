@@ -1,6 +1,6 @@
 import { alpha, Skeleton, Stack, styled, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CustomImageContainer from "../../../CustomImageContainer";
 
 import { btoa } from "next/dist/compiled/@edge-runtime/primitives/encoding";
@@ -8,6 +8,9 @@ import Link from "next/link";
 import { getModuleId } from "../../../../helper-functions/getModuleId";
 import { CustomBoxFullWidth } from "../../../../styled-components/CustomStyles.style";
 import { textWithEllipsis } from "../../../../styled-components/TextWithEllipsis";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 export const Card = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -28,6 +31,13 @@ export const Card = styled(Box)(({ theme }) => ({
 }));
 
 const LandingPageCard = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { image, title, id, onlyshimmer, slug } = props;
   const [hover, setHover] = useState(false);
   const classes = textWithEllipsis();
@@ -131,7 +141,7 @@ const LandingPageCard = (props) => {
               // maxHeight="20px"
               color={hover && "primary.main"}
             >
-             {title}
+             {/* {title} */}
           
             </Typography>
             <Typography

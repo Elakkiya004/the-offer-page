@@ -20,8 +20,19 @@ import Menus from "./Menus";
 import { NextFood, PrevFood } from "./SliderSettings";
 import { Stack } from "@mui/system";
 import CustomImageContainer from "../../CustomImageContainer";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const BestReviewedItems = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { title, info, bannerIsLoading } = props;
   const url = `${info?.promotional_banner_url}/${info?.best_reviewed_section_banner}`;
   const [menu, setMenu] = useState([]);

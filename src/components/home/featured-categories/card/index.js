@@ -8,6 +8,9 @@ import Link from "next/link";
 import { getModuleId } from "../../../../helper-functions/getModuleId";
 import { CustomBoxFullWidth } from "../../../../styled-components/CustomStyles.style";
 import { textWithEllipsis } from "../../../../styled-components/TextWithEllipsis";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 export const Card = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -28,6 +31,13 @@ export const Card = styled(Box)(({ theme }) => ({
 }));
 
 const FeaturedItemCard = (props) => {
+  
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { image, title, id, onlyshimmer, slug } = props;
   const [hover, setHover] = useState(false);
   const classes = textWithEllipsis();

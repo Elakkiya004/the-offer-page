@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CustomBadgeWrapepr } from "../cards/CustomBadge";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@emotion/react";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const OrganicTag = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { status, top, left } = props;
   const { t } = useTranslation();
   const theme = useTheme();

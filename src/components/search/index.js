@@ -7,6 +7,10 @@ import useGetSearch from "../../api-manage/hooks/react-query/search/useGetSearch
 import { useSelector } from "react-redux";
 import { getFilterChoices } from "./getFilterChoices";
 import SEO from "../seo";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const tabsData = [
   {
@@ -19,6 +23,13 @@ const tabsData = [
   },
 ];
 const ProductSearchPage = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const [currentTab, setCurrentTab] = useState(tabsData[0].value);
   const [searchValue, setSearchValue] = useState("");

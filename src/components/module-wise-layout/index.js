@@ -10,8 +10,19 @@ import { useMediaQuery } from "@mui/material";
 import useGetModule from "../../api-manage/hooks/react-query/useGetModule";
 import { setResetStoredData } from "../../redux/slices/storedData";
 import { setModules } from "../../redux/slices/configData";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ModuleWiseLayout = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [rerender, setRerender] = useState(false);
   const { selectedModule } = useSelector((state) => state.utilsData);
   const { data, refetch } = useGetModule();

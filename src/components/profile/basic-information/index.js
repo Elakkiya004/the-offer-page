@@ -21,6 +21,10 @@ import editIcon from "../asset/editIcon.png";
 import CustomImageContainer from "../../CustomImageContainer";
 import { useTheme } from "@emotion/react";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const SmallDeviceIconButton = styled(IconButton)(({ theme }) => ({
   border: "1px solid",
@@ -29,6 +33,13 @@ export const SmallDeviceIconButton = styled(IconButton)(({ theme }) => ({
   padding: "6px",
 }));
 const BasicInformation = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     data,
     t,

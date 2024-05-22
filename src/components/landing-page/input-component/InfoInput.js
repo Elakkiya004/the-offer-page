@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { Paper, InputBase, Button, IconButton,Grid,TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { onErrorResponse } from "../../../api-manage/api-error-response/ErrorResponses";
@@ -9,7 +9,9 @@ import { getCurrentModuleType } from "../../../helper-functions/getCurrentModule
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import axios from "axios";
+import ReactGA from "react-ga4";
 
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const styles = theme => ({
     multilineColor:{
@@ -17,6 +19,13 @@ const styles = theme => ({
     }
 });
 const InfoInput = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [emailAddress, setEmailAddress] = useState(null);
   const { t } = useTranslation();
   const { mutate, isLoading } = usePostNewsletterEmail();

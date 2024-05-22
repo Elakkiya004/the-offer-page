@@ -7,8 +7,19 @@ import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style
 import DrawerHeader from "../added-cart-view/DrawerHeader";
 import CartIcon from "../added-cart-view/assets/CartIcon";
 import { useTheme } from "@emotion/react";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const WishListCardView = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const closeHandler = () => {
     setSideDrawerOpen(false);

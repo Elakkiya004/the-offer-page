@@ -1,6 +1,11 @@
+import React, { useEffect } from "react";
 import { Stack, styled } from "@mui/system";
 import { useTheme } from "@mui/material";
 import {getModule} from "../helper-functions/getLanguage";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const CustomSpinner = styled(Stack)(({ theme, color }) => ({
   position: "relative",
@@ -43,6 +48,13 @@ export const CustomSpinner = styled(Stack)(({ theme, color }) => ({
   },
 }));
 const DotSpin = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
 
   return (

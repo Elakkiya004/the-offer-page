@@ -5,8 +5,19 @@ import { FoodDetailModalStyle } from "../food-details/foodDetail-modal/foodDetai
 import ProductDetailsSection from "../product-details/product-details-section/ProductDetailsSection";
 import { useSelector } from "react-redux";
 import {Scrollbar} from "../srollbar";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ProductDetailModal = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { open, handleModalClose, product } = props;
   const { configData } = useSelector((state) => state.configData);
   return (

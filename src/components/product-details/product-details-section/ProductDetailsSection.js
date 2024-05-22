@@ -12,6 +12,10 @@ import { getAmountWithSign } from "../../../helper-functions/CardHelpers";
 import { CustomBadgeWrapepr } from "../../cards/CustomBadge";
 import OrganicTag from "../../organic-tag";
 import { Box } from "@mui/system";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const handleDiscountChip = (product, t) => {
   if (product?.store_discount > 0) {
@@ -56,6 +60,13 @@ const ProductDetailsSection = ({
   removeFromWishlistHandler,
   isWishlisted,
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const productImage = productDetailsData?.image;
   const productThumbImage = productDetailsData?.images;

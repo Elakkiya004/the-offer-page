@@ -18,8 +18,19 @@ import { t } from "i18next";
 import { toast } from "react-hot-toast";
 import { useDeleteProfile } from "../../api-manage/hooks/react-query/profile/useDeleteProfile";
 import { useRouter } from "next/router";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const UserInformation = ({ page, configData, orderId }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch();

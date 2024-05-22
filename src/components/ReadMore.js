@@ -1,8 +1,18 @@
 import { Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@emotion/react";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 export const ReadMore = ({ children, limits, color }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const fontLimits = limits ? limits : 70;
   const theme = useTheme();
   const text = children;

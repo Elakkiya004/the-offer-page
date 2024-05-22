@@ -14,6 +14,9 @@ import { BannersWrapper } from "../../../banners";
 import { useSelector } from "react-redux";
 import { getModuleId } from "../../../../../helper-functions/getModuleId";
 import { useRouter } from "next/router";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomTypography = styled(Typography)(({ theme }) => ({
   fontFamily: "Quicksand",
@@ -81,6 +84,13 @@ const DataCard = ({ title, image, buttonText, pink }) => {
   );
 };
 const PharmacyStaticBanners = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const router = useRouter();
   const { configData } = useSelector((state) => state.configData);
   const settings = {

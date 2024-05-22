@@ -11,8 +11,19 @@ import PopularInTheStore from "./popular";
 import { useRouter } from "next/router";
 import useGetStoreBanners from "../../api-manage/hooks/react-query/store/useGetStoreBanners";
 import StoreCustomMessage from "./StoreCustomMessage";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const StoreDetails = ({ storeDetails, configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const imageBaseUrl = configData?.base_urls?.store_cover_photo_url;
   const bannerCover = `${imageBaseUrl}/${storeDetails?.cover_photo}`;
   const ownCategories = storeDetails?.category_ids;

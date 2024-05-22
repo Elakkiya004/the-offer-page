@@ -10,6 +10,10 @@ import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import CustomCheckbox from "../CustomCheckbox";
 import { VIEW_ALL_TEXT } from "../../utils/staticTexts";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const CustomPaperBox = styled(Box)(({ theme }) => ({
   backgroundColor: "paper.default",
@@ -19,6 +23,13 @@ export const CustomPaperBox = styled(Box)(({ theme }) => ({
   color: theme.palette.neutral[900],
 }));
 const MultipleCheckboxWithTitle = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     title,
     data,

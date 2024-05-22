@@ -16,9 +16,19 @@ import PromotionalBanner from "../PromotionalBanner";
 import LoveItem from "../love-item";
 import useGetOtherBanners from "../../../api-manage/hooks/react-query/useGetOtherBanners";
 import PharmacyStaticBanners from "./pharmacy/pharmacy-banners/PharmacyStaticBanners";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const menus = ["All", "Beauty", "Bread & Juice", "Drinks", "Milks"];
 const Grocery = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData } = props;
   const { data, refetch, isLoading } = useGetOtherBanners();
   useEffect(() => {

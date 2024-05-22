@@ -30,6 +30,10 @@ import nodataimage from "../loyalty-points/assets/Search.svg";
 import TransactionShimmer from "./Shimmer";
 import greenCoin from "./img/green-coin.png";
 import yellowCoin from "./img/yellow-coin.png";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const transaction_options = [
   {
@@ -55,6 +59,13 @@ export const transaction_options = [
 ];
 
 const TransactionHistory = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     data,
     isLoading,

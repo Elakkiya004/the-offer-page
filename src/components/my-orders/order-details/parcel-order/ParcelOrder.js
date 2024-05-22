@@ -26,8 +26,19 @@ import OrderDetailsBottom from "../other-order/OrderDetailsBottom";
 import PaymentUpdate from "../other-order/PaymentUpdate";
 import RefundModal from "../other-order/RefundModal";
 import { DetailsShimmer, SummeryShimmer } from "./Shimmers";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ParcelOrder = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { configData, data, trackOrderData, id, refetchTrackOrder, refetch } =
     props;
   const { t } = useTranslation();

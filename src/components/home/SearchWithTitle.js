@@ -7,8 +7,19 @@ import { useTranslation } from "react-i18next";
 import { ModuleTypes } from "../../helper-functions/moduleTypes";
 import { Box } from "@mui/system";
 import TrackParcelFromHomePage from "../parcel/TrackParcelFromHomePage";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const SearchWithTitle = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const moduleType = getCurrentModuleType();
   const { zoneid, token,query } = props;
   const theme = useTheme();

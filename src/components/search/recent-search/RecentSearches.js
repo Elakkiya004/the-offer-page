@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Button, IconButton, Stack, Typography} from "@mui/material";
 import { CustomStackFullWidth } from "../../../styled-components/CustomStyles.style";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const RecentSearches = ({
   list,
@@ -10,6 +14,13 @@ const RecentSearches = ({
   handleSearchHistoryOnClick,
   handleDeleteAble,clearAll
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   return (
     <Stack spacing={1}>
     <Stack direction="row" justifyContent="space-between">

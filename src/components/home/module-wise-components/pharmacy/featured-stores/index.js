@@ -11,8 +11,18 @@ import { HomeComponentsWrapper } from "../../../HomePageComponents";
 import { settings } from "./SliderSettings";
 import { Skeleton } from "@mui/material";
 import SpecialOfferCardShimmer from "../../../../Shimmer/SpecialOfferCardSimmer";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const FeaturedStores = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { title, configData } = props;
   const type = "all";
   const offset = 1;

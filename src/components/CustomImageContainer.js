@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { CustomImageContainerStyled } from "../styled-components/CustomStyles.style";
 import placeholder from "../../public/static/no-image-found.png";
 import { Box } from "@mui/system";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CustomImageContainer = ({
   cursor,
@@ -22,6 +26,13 @@ const CustomImageContainer = ({
   aspectRatio,
   padding
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [imageFile, setState] = useState(null);
   useEffect(() => {
     setState(src);

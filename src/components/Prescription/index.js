@@ -7,8 +7,18 @@ import { t } from "i18next";
 import { useRouter } from "next/router";
 import GuestCheckoutModal from "../cards/GuestCheckoutModal";
 import { getToken } from "../../helper-functions/getToken";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const Prescription = ({ storeId }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const token = getToken();

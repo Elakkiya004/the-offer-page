@@ -17,8 +17,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { loveItemSettings } from "./loveItemSettings";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const LoveItem = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const [menu, setMenu] = useState([]);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   const [filteredData, setFilteredData] = useState([]);

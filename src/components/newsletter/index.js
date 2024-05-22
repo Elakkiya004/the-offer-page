@@ -9,7 +9,7 @@ import {
   } from "@mui/material";
   import { Box, Stack } from "@mui/system";
   import { useRouter } from "next/router";
-  import React from "react";
+  import React, { useEffect } from "react";
   import { useTranslation } from "react-i18next";
   import { CustomButtonPrimary } from "../../styled-components/CustomButtons.style";
   import {
@@ -19,12 +19,18 @@ import {
   import { IsSmallScreen } from "../../utils/CommonValues";
 
   import CustomContainer from "../container";
- 
+  import ReactGA from "react-ga4";
 
- 
-  
+  const TRACKING_ID = "G-FECBMFT6KW";
 
   const NewsLetter = ({ data, isSmall }) => {
+
+    ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
     return (
       <CustomContainer>
         <CustomStackFullWidth

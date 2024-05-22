@@ -3,12 +3,23 @@ import PropTypes from "prop-types";
 import { Rating, styled } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import Body2 from "./typographies/Body2";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 export const StyledRating = styled(Rating)(({ theme, primary_color }) => ({
   "& .MuiRating-iconFilled": {
     color: primary_color === "true" && theme.palette.primary.main,
   },
 }));
 const CustomMultipleRatings = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { rating, PrimaryColor, withCount } = props;
   const handleRating = (rating) => {
     return `(${rating})`;

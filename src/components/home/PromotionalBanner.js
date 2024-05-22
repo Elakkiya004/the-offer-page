@@ -6,6 +6,10 @@ import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style
 import { IsSmallScreen } from "../../utils/CommonValues";
 import CustomImageContainer from "../CustomImageContainer";
 import promotionalBanner from "./assets/promotional_banner.png";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 export const BannerWrapper = styled(Box)(({ theme }) => ({
 	width: "100%",
@@ -35,6 +39,13 @@ export const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const PromotionalBanner = ({ bannerData }) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { t } = useTranslation();
 	const data = {
 		img: promotionalBanner,

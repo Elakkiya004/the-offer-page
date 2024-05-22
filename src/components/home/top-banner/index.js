@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { getCurrentModuleType } from "../../../helper-functions/getCurrentModuleType";
 import { alpha, useMediaQuery, useTheme } from "@mui/material";
 import { CustomBoxFullWidth } from "../../../styled-components/CustomStyles.style";
@@ -10,8 +10,19 @@ import rcommerceSearchBg from "../assets/ecommerce_top_bg.png";
 import foodBanner from "../assets/food.png";
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
 import parcelImage from "../assets/parcelBg.png";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const TopBanner = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const moduleType = getCurrentModuleType();
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));

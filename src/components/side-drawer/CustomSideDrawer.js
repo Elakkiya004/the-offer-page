@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { SideDrawerWrapper } from "./CustomSideDrawer.style";
 import { styled } from "@mui/material/styles";
 import { Drawer } from "@mui/material";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 const CustomDrawerForSidebar = styled(Drawer)(
   ({ theme, height, width, maxWidth }) => ({
     zIndex: theme.zIndex.appBar + 100,
@@ -19,6 +23,13 @@ const CustomDrawerForSidebar = styled(Drawer)(
 );
 
 const CustomSideDrawer = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { open, onClose, children, anchor, width, height, maxWidth } = props;
 
   return (

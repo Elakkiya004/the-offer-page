@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     CustomStackFullWidth,
     SliderCustom,
@@ -16,8 +16,18 @@ import { settings } from "./SliderSettings";
 import { IsSmallScreen } from "../../../utils/CommonValues";
 import CustomContainer from "../../container";
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const VisitAgain = (props) => {
+
+    ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
     const { configData } = props;
     const theme = useTheme();
     const visitedStores = localStorage.getItem("visitedStores")

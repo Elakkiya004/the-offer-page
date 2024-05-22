@@ -11,6 +11,10 @@ import AddNewAddress from "./address/add-new-address";
 import { Skeleton } from "@mui/material";
 import AddNewAddressButton from "./address/add-new-address/AddNewAddressButton";
 import { useSelector } from "react-redux";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 const SaveAddress = ({
   handleSenderLocation,
   configData,
@@ -22,6 +26,13 @@ const SaveAddress = ({
   sender,
   setReceiverOptionalAddress,
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { t } = useTranslation();
   const theme = useTheme();
   const { profileInfo } = useSelector((state) => state.profileInfo);
