@@ -13,8 +13,18 @@ import img3 from "./assets/image 45.png";
 import img2 from "./assets/image 46.png";
 import img1 from "./assets/image 47.png";
 import SupportImgSvg from "./assets/SupportImgSvg";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const HelpAndSupport = (props) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const { configData, t } = props;
 	return (
 		<Box>

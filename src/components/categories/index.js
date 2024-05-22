@@ -9,8 +9,19 @@ import H1 from "../typographies/H1";
 import FeaturedItemCard from "../home/featured-categories/card";
 import Shimmer from "./Shimmer";
 import CustomSearch from "../custom-search/CustomSearch";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const Categories = (props) => {
+  
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
   const { configData, t } = props;
   const matches = useMediaQuery("(max-width:1180px)");
   const [searchKey, setSearchKey] = useState("");

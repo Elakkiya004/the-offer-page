@@ -21,6 +21,9 @@ import {
   not_found_text_item,
   not_found_text_store,
 } from "../../utils/staticTexts";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CategoriesDetails = ({
   data,
@@ -38,6 +41,13 @@ const CategoriesDetails = ({
   isRefetching,
   itemIsLoading,
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
   const { selectedModule } = useSelector((state) => state.utilsData);
   const tabsData = [
     {

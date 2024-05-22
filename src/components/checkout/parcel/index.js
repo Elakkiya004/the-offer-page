@@ -35,8 +35,18 @@ import { useOfflinePayment } from "../../../api-manage/hooks/react-query/offline
 import { DeliveryCaption } from "../CheckOut.style";
 import { getAmountWithSign } from "../../../helper-functions/CardHelpers";
 import CustomDivider from "../../CustomDivider";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const ParcelCheckout = () => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+	useEffect(() => {
+		ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+	}, []);
+
 	const theme = useTheme();
 	const { configData } = useSelector((state) => state.configData);
 	const { parcelInfo } = useSelector((state) => state.parcelInfoData);
@@ -173,9 +183,9 @@ const ParcelCheckout = () => {
 	});
 	const isDigital =
 		paymentMethod !== "cash_on_delivery" &&
-		paymentMethod !== "wallet" &&
-		paymentMethod !== "offline_payment" &&
-		paymentMethod !== null
+			paymentMethod !== "wallet" &&
+			paymentMethod !== "offline_payment" &&
+			paymentMethod !== null
 			? "digital_payment"
 			: paymentMethod;
 	const orderMutationObject = {
@@ -208,9 +218,9 @@ const ParcelCheckout = () => {
 				if (res) {
 					if (paymentMethod !== "cash_on_delivery" && paymentMethod !== "offline_payment" && paymentMethod !== "") {
 						const payment_platform = "web";
-						const page ="my-orders"
+						const page = "my-orders"
 						localStorage.setItem("totalAmount", res?.total_ammount);
-						const callBackUrl = token ? `${window.location.origin}/profile?page=${page}`:`${window.location.origin}/order`;
+						const callBackUrl = token ? `${window.location.origin}/profile?page=${page}` : `${window.location.origin}/order`;
 						//const callBackUrl = `${window.location.origin}/order?order_id=${res?.order_id}&total=${res?.total_ammount}`;
 						const url = `${baseUrl}/payment-mobile?order_id=${res?.order_id}&customer_id=${profileInfo?.id ?? guest_id}&payment_platform=${payment_platform}&callback=${callBackUrl}&payment_method=${paymentMethod}`;
 						router.push(url, undefined, { shallow: true });
@@ -401,7 +411,7 @@ const ParcelCheckout = () => {
 					<CustomPaperBigCard sx={{ width: { xs: "100%", sm: "90%", md: "80%" } }}>
 						<OfflineForm
 							offlinePaymentOptions={offlinePaymentOptions}
-							total_order_amount={(parcelDeliveryFree()) + parseFloat(deliveryTip)+configData?.additional_charge}
+							total_order_amount={(parcelDeliveryFree()) + parseFloat(deliveryTip) + configData?.additional_charge}
 							placeOrder={orderPlace}
 							offlinePaymentLoading={offlinePaymentLoading || isLoading}
 

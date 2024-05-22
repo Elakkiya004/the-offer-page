@@ -8,8 +8,19 @@ import { Grid, Typography } from "@mui/material";
 import CampaignCard from "./CampaignCard";
 import useGetBasicCampaigns from "../../api-manage/hooks/react-query/useGetBasicCampaigns";
 import { Skeleton } from "@mui/material";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const CampaignsPage = () => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
   const { data, refetch, isLoading, isFetching } = useGetBasicCampaigns();
 
   useEffect(() => {

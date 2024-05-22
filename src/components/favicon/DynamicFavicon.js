@@ -1,8 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { useSelector } from "react-redux";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 const DynamicFavicon = ({configData}) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
+
   //const { configData } = useSelector((state) => state.configData);
   const businessLogo = configData?.base_urls?.business_logo_url;
 

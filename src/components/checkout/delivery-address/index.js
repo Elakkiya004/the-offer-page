@@ -30,6 +30,9 @@ import AddNewAddressButton from "../../address/add-new-address/AddNewAddressButt
 import { setOpenAddressModal } from "../../../redux/slices/addAddress";
 import CheckOutSelectedAddress from "../item-checkout/CheckOutSelectedAddress";
 import CheckoutSelectedAddressGuest from "../item-checkout/CheckoutSelectedAddressGuest";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const getZoneWiseAddresses = (addresses, restaurantId) => {
@@ -49,6 +52,13 @@ const DeliveryAddress = ({
   storeZoneId,
   orderType,
 }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const { t } = useTranslation();
   const [allAddress, setAllAddress] = useState();

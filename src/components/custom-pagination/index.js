@@ -2,8 +2,18 @@ import React from "react";
 import { Box } from "@mui/system";
 import { Pagination } from "@mui/lab";
 import PropTypes from "prop-types";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomPagination = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { total_size, page_limit, offset, setOffset } = props;
   return (
     <Box

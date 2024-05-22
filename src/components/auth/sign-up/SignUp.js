@@ -32,8 +32,20 @@ import {getGuestId} from "../../../helper-functions/getToken";
 // import CustomModal from "../../modal";
 // import OtpForm from "./OtpForm";
 // import { useVerifyPhone } from "../../../api-manage/hooks/auth/useVerifyPhone";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const SignUp = () => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
+
 	const router = useRouter();
 	const { configData } = useSelector((state) => state.configData);
 	const [openModuleSelection, setOpenModuleSelection] = useState(false);

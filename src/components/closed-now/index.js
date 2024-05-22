@@ -4,8 +4,19 @@ import { useTranslation } from "react-i18next";
 import { Stack } from "@mui/system";
 import { Typography, useTheme } from "@mui/material";
 import ClosedNowOverlay from "./ClosedNowOverlay";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const ClosedNow = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { active, open, borderRadius } = props;
   const { t } = useTranslation();
   const theme = useTheme();

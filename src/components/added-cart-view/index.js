@@ -24,8 +24,19 @@ import useGetAllCartList from "../../api-manage/hooks/react-query/add-cart/useGe
 import { setCartList } from "../../redux/slices/cart";
 import DotSpin from "../DotSpin";
 import {Stack} from "@mui/system";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CardView = (props) => {
+  
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
+
   const theme = useTheme();
   const { sideDrawerOpen, setSideDrawerOpen, cartList, refetch, isLoading } =
     props;

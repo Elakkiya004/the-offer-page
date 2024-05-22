@@ -27,8 +27,18 @@ import { useGetConversation } from "../../api-manage/hooks/react-query/chat/useG
 import { useStoreMessage } from "../../api-manage/hooks/react-query/chat/useStoreMessage";
 import { useSearchList } from "../../api-manage/hooks/react-query/chat/useSearch";
 import PushNotificationLayout from "../PushNotificationLayout";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const Chatting = ({ configData }) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const theme = useTheme();
   const [page_limit, setPageLimit] = useState(10);
   const [offset, setOffset] = useState(1);

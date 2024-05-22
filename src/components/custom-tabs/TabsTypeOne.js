@@ -4,8 +4,18 @@ import { Tab } from "@mui/material";
 import { CustomTab } from "./tabs.style";
 import { setCurrentTab } from "../../redux/slices/utils";
 import { useDispatch } from "react-redux";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const TabsTypeOne = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { currentTab, tabs, t, width } = props;
   const dispatch = useDispatch();
 

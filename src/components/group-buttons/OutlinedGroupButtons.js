@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import { Stack, styled } from "@mui/system";
 import { buttonsData } from "../store-details/buttonsData";
@@ -12,6 +12,9 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import CustomCheckbox from "../CustomCheckbox";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 // const StyleCheckBox = styled(Checkbox)(({ theme }) => ({
 //   "& .MuiCheckbox-root": {
@@ -35,6 +38,13 @@ export const StyleCheckBox = styled(({ checkedColor, ...other }) => (
   },
 }));
 const VegNonVegCheckBox = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const { data, selected, handleSelection, setCheckState, checkState } = props;
 
   const { t } = useTranslation();

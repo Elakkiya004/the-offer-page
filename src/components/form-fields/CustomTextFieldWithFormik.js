@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import PropTypes from 'prop-types'
 import { CustomTextFieldStyle } from "./CustomTextField.style";
 import { InputAdornment } from "@mui/material";
@@ -6,8 +6,18 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import { CustomTextFieldContainer } from "../../styled-components/CustomStyles.style";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomTextFieldWithFormik = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const {
     label,
     type,

@@ -24,6 +24,10 @@ import Body2 from "../typographies/Body2";
 import H4 from "../typographies/H4";
 import { CustomOverLay } from "./Card.style";
 import QuickView from "./QuickView";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const FavoriteWrapper = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.main,
@@ -69,6 +73,13 @@ const timeAndDeliveryTypeHandler = () => {
   return `25-30 min . Free Delivery`;
 };
 const StoreCard = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
   const { item, imageUrl } = props;
   const [isHover, setIsHover] = useState(false);
   const { wishLists } = useSelector((state) => state.wishList);

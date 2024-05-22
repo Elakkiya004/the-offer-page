@@ -1,5 +1,5 @@
 import { Box, NoSsr, Stack, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
+import React, {useEffect} from "react";
 import { CustomStackForLoaction } from "../NavBar.style";
 import ThemeSwitches from "./ThemeSwitches";
 import AddressReselect from "./address-reselect/AddressReselect";
@@ -11,8 +11,18 @@ import CustomContainer from "../../container";
 import LogoSide from "../../logo/LogoSide";
 import DrawerMenu from "./drawer-menu/DrawerMenu";
 import SocialLinks from "./SocialLinks";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const TopNavBar = (props) => {
+
+	ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
 	const {landingPageData } = props;
 
 	const { configData, countryCode, language } = useSelector(

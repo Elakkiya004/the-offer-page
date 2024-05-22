@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   StyledFooterBackground,
   StyledFooterTopContainer,
@@ -11,8 +11,20 @@ import { useRouter } from "next/router";
 import CustomContainer from "../container";
 import { useTheme } from "@emotion/react";
 import NewsLetter from "../newsletter";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
+
 
 const FooterComponent = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
+
   const { configData, landingPageData } = props;
   const router = useRouter();
   const isLandingPage = router.pathname === "/" ? "true" : "false";

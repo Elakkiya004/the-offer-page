@@ -19,6 +19,9 @@ import { t } from "i18next";
 import { SmallDeviceIconButton } from "../profile/basic-information";
 import { useTheme } from "@emotion/react";
 import { setAllSaveAddress } from "../../redux/slices/storedData";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 export const GrayButton = styled(Button)(({ theme }) => ({
   color: theme.palette.neutral[400],
@@ -28,6 +31,14 @@ export const GrayButton = styled(Button)(({ theme }) => ({
   borderRadius: "5px",
 }));
 const Address = (props) => {
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+  }, []);
+
+
   const {
     configData,
     setAddAddress,
