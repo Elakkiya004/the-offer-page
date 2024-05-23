@@ -27,6 +27,7 @@ import trackOrderIcon from "../assets/trackOrderIcon.png";
 import { DateTypography, TrackOrderButton } from "../myorders.style";
 import QrHide from "../QrHide";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -55,6 +56,19 @@ const OrderStatusTypography = styled(Typography)(({ theme, color }) => ({
 }));
 
 const Order = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

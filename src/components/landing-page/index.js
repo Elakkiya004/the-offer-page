@@ -37,11 +37,23 @@ import CityComponent from "./CityComponent";
 import HeroSection1 from "./HeroSection1";
 import Card from "./Card";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
-
 const LandingPage = ({ configData, landingPageData }) => {
+  
+  const tagManagerArgs = {
+    gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+  };
+  TagManager.initialize(tagManagerArgs);
+
+  useEffect(() => {
+    TagManager.dataLayer({
+        event: 'pageview',
+        path: '/'
+    });
+}, []);
 
   ReactGA.initialize(TRACKING_ID);
 

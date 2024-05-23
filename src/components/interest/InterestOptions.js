@@ -21,11 +21,25 @@ import { usePostSelectedCategory } from "../../api-manage/hooks/react-query/all-
 import { CustomTypography } from "../landing-page/hero-section/HeroSection.style";
 import H1 from "../typographies/H1";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const InterestOptions = ({ configData }) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

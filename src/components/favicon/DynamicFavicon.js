@@ -3,10 +3,24 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import { useSelector } from "react-redux";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
 const DynamicFavicon = ({configData}) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+    useEffect(() => {
+      // Check if we're running in the browser before initializing GTM
+      if (typeof window !== 'undefined') {
+        const tagManagerArgs = {
+          gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+        };
+        TagManager.initialize(tagManagerArgs);
+      }
+    }, []);
 
   ReactGA.initialize(TRACKING_ID);
 

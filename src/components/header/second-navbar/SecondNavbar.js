@@ -44,6 +44,7 @@ import HeroTitleSection from "../../landing-page/hero-section/HeroTitleSection";
 import { height, positions } from "@mui/system";
 import HeroLocationForm from "../../landing-page/hero-section/HeroLocationForm";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -135,6 +136,19 @@ const getOtherModuleVariation = (itemVariations, selectedVariation) => {
   return selectedItem;
 };
 const SecondNavBar = ({ configData, landingPageData, handleOrderNow}) => {
+
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
 
   ReactGA.initialize(TRACKING_ID);
 

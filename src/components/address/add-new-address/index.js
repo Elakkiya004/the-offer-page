@@ -38,8 +38,32 @@ import { CustomButtonPrimary } from "../../../styled-components/CustomButtons.st
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenAddressModal } from "../../../redux/slices/addAddress";
 import { setGuestUserInfo } from "../../../redux/slices/guestUserInfo";
+import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const AddNewAddress = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
+
   const {
     configData,
     refetch,

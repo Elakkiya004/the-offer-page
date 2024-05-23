@@ -12,10 +12,24 @@ import LogoSide from "../../logo/LogoSide";
 import DrawerMenu from "./drawer-menu/DrawerMenu";
 import SocialLinks from "./SocialLinks";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
 const TopNavBar = (props) => {
+
+	const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
 	ReactGA.initialize(TRACKING_ID);
 

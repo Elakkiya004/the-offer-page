@@ -4,6 +4,7 @@ import { SideDrawerWrapper } from "./CustomSideDrawer.style";
 import { styled } from "@mui/material/styles";
 import { Drawer } from "@mui/material";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -23,6 +24,19 @@ const CustomDrawerForSidebar = styled(Drawer)(
 );
 
 const CustomSideDrawer = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

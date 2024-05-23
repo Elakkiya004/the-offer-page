@@ -54,6 +54,7 @@ import useCartItemUpdate from "../../../api-manage/hooks/react-query/add-cart/us
 import { getGuestId } from "../../../helper-functions/getToken";
 import { getCurrentModuleType } from "../../../helper-functions/getCurrentModuleType";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -68,6 +69,18 @@ const FoodDetailModal = ({
   removeFromWishlistHandler,
   isWishlisted,
 }) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
 
   ReactGA.initialize(TRACKING_ID);
 

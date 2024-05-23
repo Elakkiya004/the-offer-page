@@ -7,6 +7,7 @@ import { IsSmallScreen } from "../../utils/CommonValues";
 import CustomImageContainer from "../CustomImageContainer";
 import promotionalBanner from "./assets/promotional_banner.png";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -39,6 +40,19 @@ export const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const PromotionalBanner = ({ bannerData }) => {
+
+	const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
 	ReactGA.initialize(TRACKING_ID);
 

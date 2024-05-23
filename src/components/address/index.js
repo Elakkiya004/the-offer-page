@@ -20,6 +20,8 @@ import { SmallDeviceIconButton } from "../profile/basic-information";
 import { useTheme } from "@emotion/react";
 import { setAllSaveAddress } from "../../redux/slices/storedData";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
+
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -31,6 +33,18 @@ export const GrayButton = styled(Button)(({ theme }) => ({
   borderRadius: "5px",
 }));
 const Address = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
 
   ReactGA.initialize(TRACKING_ID);
 

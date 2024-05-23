@@ -3,6 +3,7 @@ import { CustomImageContainerStyled } from "../styled-components/CustomStyles.st
 import placeholder from "../../public/static/no-image-found.png";
 import { Box } from "@mui/system";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -26,6 +27,19 @@ const CustomImageContainer = ({
   aspectRatio,
   padding
 }) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 
