@@ -24,6 +24,7 @@ import { useGetCategories } from "../../../api-manage/hooks/react-query/all-cate
 import { setCategories } from "../../../redux/slices/storedData";
 import { VIEW_ALL_TEXT } from "../../../utils/staticTexts";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -108,6 +109,19 @@ const Dummy = [
   },
 ];
 const SearchFilter = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

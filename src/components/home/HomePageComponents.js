@@ -22,6 +22,7 @@ import useGetGuest from "../../api-manage/hooks/react-query/guest/useGetGuest";
 import useGetAllCartList from "../../api-manage/hooks/react-query/add-cart/useGetAllCartList";
 import { setCartList } from "../../redux/slices/cart";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -32,6 +33,19 @@ export const HomeComponentsWrapper = styled(Stack)(({ theme }) => ({
 }));
 
 const HomePageComponents = ({ configData }) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

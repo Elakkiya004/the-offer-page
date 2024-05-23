@@ -27,11 +27,25 @@ import PaymentUpdate from "../other-order/PaymentUpdate";
 import RefundModal from "../other-order/RefundModal";
 import { DetailsShimmer, SummeryShimmer } from "./Shimmers";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const ParcelOrder = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

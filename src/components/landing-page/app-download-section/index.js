@@ -13,6 +13,8 @@ import { CustomStackFullWidth } from "../../../styled-components/CustomStyles.st
 import LargerScreen from "./LargerScreen";
 import SmallerScreen from "./SmallerScreen";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
+
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -33,6 +35,19 @@ export const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const AppDownloadSection = ({ configData, landingPageData }) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

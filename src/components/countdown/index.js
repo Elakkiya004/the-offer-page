@@ -5,6 +5,7 @@ import { Box, Stack } from "@mui/system";
 import { Typography } from "@mui/material";
 import moment from "moment";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -63,6 +64,18 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
 };
 
 const CustomCountdown = ({ endDate }) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
   
   ReactGA.initialize(TRACKING_ID);
 

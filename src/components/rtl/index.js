@@ -4,6 +4,7 @@ import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import stylisRTLPlugin from 'stylis-plugin-rtl';
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -14,6 +15,17 @@ const styleCache = () => createCache({
 });
 
 export const RTL = (props) => {
+
+    useEffect(() => {
+        // Check if we're running in the browser before initializing GTM
+        if (typeof window !== 'undefined') {
+          const tagManagerArgs = {
+            gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+          };
+          TagManager.initialize(tagManagerArgs);
+        }
+      }, []);
+
 
     ReactGA.initialize(TRACKING_ID);
 

@@ -5,6 +5,8 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
+
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -14,6 +16,19 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme, height }) => ({
   borderRadius: 5,
 }));
 const CustomLinearProgressbar = ({value,height}) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 

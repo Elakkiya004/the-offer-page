@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CustomImageContainer from "../CustomImageContainer";
 import { Typography } from "@mui/material";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { Box } from "@mui/system";
 import { useRouter } from "next/router";
+import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
+
+const TRACKING_ID = "G-FECBMFT6KW";
 
 const AuthHeader = ({ title, configData }) => {
+
+  const tagManagerArgs = {
+    gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+  };
+  TagManager.initialize(tagManagerArgs);
+
+  useEffect(() => {
+    TagManager.dataLayer({
+        event: 'pageview',
+        path: '/'
+    });
+}, []);
+
+  ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
+  }, []);
+
   const businessLogo = configData?.base_urls?.business_logo_url;
   let zoneid = undefined;
   if (typeof window !== "undefined") {

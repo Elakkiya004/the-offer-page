@@ -4,11 +4,23 @@ import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import DynamicFavicon from "../favicon/DynamicFavicon";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const SEO = ({ title, description, keywords, image, businessName,configData }) => {
+
+
+  useEffect(() => {
+    // Check if we're running in the browser before initializing GTM
+    if (typeof window !== 'undefined') {
+      const tagManagerArgs = {
+        gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+      };
+      TagManager.initialize(tagManagerArgs);
+    }
+  }, []);
 
   ReactGA.initialize(TRACKING_ID);
 

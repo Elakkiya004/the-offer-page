@@ -5,11 +5,24 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Tooltip } from "@mui/material";
 import toast from "react-hot-toast";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
 
 const CustomCopyWithTooltip = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
 
   ReactGA.initialize(TRACKING_ID);
 

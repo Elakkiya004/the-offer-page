@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import CustomCheckbox from "../CustomCheckbox";
 import { VIEW_ALL_TEXT } from "../../utils/staticTexts";
 import ReactGA from "react-ga4";
+import TagManager from 'react-gtm-module';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -23,6 +24,19 @@ export const CustomPaperBox = styled(Box)(({ theme }) => ({
   color: theme.palette.neutral[900],
 }));
 const MultipleCheckboxWithTitle = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+	  TagManager.initialize(tagManagerArgs);
+	
+	  useEffect(() => {
+		TagManager.dataLayer({
+			event: 'pageview',
+			path: '/'
+		});
+	}, []);
+
 
   ReactGA.initialize(TRACKING_ID);
 
