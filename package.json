@@ -50,6 +50,7 @@
     "react-geolocated": "^4.0.3",
     "react-gtm-module": "^2.0.11",
     "react-hot-toast": "^2.4.0",
+    "react-hotjar": "^6.3.1",
     "react-i18next": "^12.1.1",
     "react-image-magnifiers": "^1.4.0",
     "react-image-magnify": "^2.7.4",
