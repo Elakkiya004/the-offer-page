@@ -12,15 +12,16 @@ const DynamicFavicon = ({configData}) => {
   const tagManagerArgs = {
 		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
 	  };
-    useEffect(() => {
-      // Check if we're running in the browser before initializing GTM
-      if (typeof window !== 'undefined') {
-        const tagManagerArgs = {
-          gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-        };
-        TagManager.initialize(tagManagerArgs);
-      }
-    }, []);
+    if (typeof window !== 'undefined') {
+      TagManager.initialize(tagManagerArgs);
+    
+      useEffect(() => {
+        TagManager.dataLayer({
+          event: 'pageview',
+          path: '/'
+        });
+      }, []);
+    }
 
   ReactGA.initialize(TRACKING_ID);
 

@@ -45,15 +45,16 @@ const Banners = (props) => {
   const tagManagerArgs = {
 		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
 	  };
-	  TagManager.initialize(tagManagerArgs);
-	
-	  useEffect(() => {
-		TagManager.dataLayer({
-			event: 'pageview',
-			path: '/'
-		});
-	}, []);
-
+	  if (typeof window !== 'undefined') {
+      TagManager.initialize(tagManagerArgs);
+    
+      useEffect(() => {
+        TagManager.dataLayer({
+          event: 'pageview',
+          path: '/'
+        });
+      }, []);
+    }
 
   ReactGA.initialize(TRACKING_ID);
 

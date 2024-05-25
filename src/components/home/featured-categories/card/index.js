@@ -9,6 +9,7 @@ import { getModuleId } from "../../../../helper-functions/getModuleId";
 import { CustomBoxFullWidth } from "../../../../styled-components/CustomStyles.style";
 import { textWithEllipsis } from "../../../../styled-components/TextWithEllipsis";
 import ReactGA from "react-ga4";
+import TagManager from "react-gtm-module";
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -31,6 +32,21 @@ export const Card = styled(Box)(({ theme }) => ({
 }));
 
 const FeaturedItemCard = (props) => {
+
+  const tagManagerArgs = {
+		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
+	  };
+
+  if (typeof window !== 'undefined') {
+    TagManager.initialize(tagManagerArgs);
+  
+    useEffect(() => {
+      TagManager.dataLayer({
+        event: 'pageview',
+        path: '/'
+      });
+    }, []);
+  }
   
   ReactGA.initialize(TRACKING_ID);
 
