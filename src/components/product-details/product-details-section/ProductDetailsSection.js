@@ -1,6 +1,6 @@
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
 //import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import { CustomStackFullWidth } from "../../../styled-components/CustomStyles.style";
 //import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import ProductInformation from "./ProductInformation";

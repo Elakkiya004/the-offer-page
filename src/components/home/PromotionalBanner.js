@@ -1,6 +1,6 @@
 import { Button, styled, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { IsSmallScreen } from "../../utils/CommonValues";

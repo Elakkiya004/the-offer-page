@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Rating, styled } from "@mui/material";
 import { Box, Stack } from "@mui/system";

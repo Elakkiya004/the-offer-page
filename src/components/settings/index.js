@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { Grid, Paper, styled, Typography } from "@mui/material";
 import ThemeSwitches from "../header/top-navbar/ThemeSwitches";

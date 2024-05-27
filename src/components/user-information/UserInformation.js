@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import {
   CustomStackFullWidth,

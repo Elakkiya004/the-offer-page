@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { alpha, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ManageSearch from "../header/second-navbar/ManageSearch";
@@ -18,7 +18,7 @@ const SearchWithTitle = (props) => {
   const tagManagerArgs = {
 		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
 	  };
-    if (typeof window !== 'undefined') {
+   
       TagManager.initialize(tagManagerArgs);
     
       useEffect(() => {
@@ -27,7 +27,6 @@ const SearchWithTitle = (props) => {
           path: '/'
         });
       }, []);
-    }
 
   ReactGA.initialize(TRACKING_ID);
 

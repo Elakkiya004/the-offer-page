@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, useMediaQuery } from "@mui/material";
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";

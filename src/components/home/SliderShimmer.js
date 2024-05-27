@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { Skeleton } from "@mui/material";
 import { Stack } from "@mui/system";
