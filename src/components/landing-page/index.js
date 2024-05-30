@@ -18,6 +18,7 @@ import {
   Grid,
   styled,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 import DiscountBanner from "./DiscountBanner";
 import CookiesConsent from "../CookiesConsent";
@@ -38,17 +39,20 @@ import HeroSection1 from "./HeroSection1";
 import Card from "./Card";
 import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';
+import PopupModal from './PopupModal';
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
 const LandingPage = ({ configData, landingPageData }) => {
-  
+
+  const [showModal, setShowModal] = useState(false)
+
   const tagManagerArgs = {
     gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
   };
   if (typeof window !== 'undefined') {
     TagManager.initialize(tagManagerArgs);
-  
+
     useEffect(() => {
       TagManager.dataLayer({
         event: 'pageview',
@@ -62,7 +66,7 @@ const LandingPage = ({ configData, landingPageData }) => {
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
   }, []);
-  
+
 
   const Testimonials = dynamic(() => import("./Testimonials"), {
     ssr: false,
@@ -114,20 +118,33 @@ const LandingPage = ({ configData, landingPageData }) => {
   }, []);
   localStorage.setItem("guest_id", guestData?.guest_id);
 
+  useEffect(() => {
+    // Set showModal to true after the page has loaded
+    setShowModal(true);
+  }, []);
+
+
   return (
     <>
-      <PushNotificationLayout>
+      <PushNotificationLayout >
         <Grid container spacing={1}>
           {/* <HeroSection
             configData={configData}
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           /> */}
+
           <HeroSection1
             configData={configData}
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           />
+          {showModal && <PopupModal onClose={() => setShowModal(false)}  sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }} />}
 
           <OfferBanner1
             configData={configData}
@@ -168,7 +185,7 @@ const LandingPage = ({ configData, landingPageData }) => {
           />
         </Grid>
         <Grid item xs={12} md={12} sx={{ marginTop: "-15px" }}>
-          <h1 style={{ marginLeft: isSmall ? "20px" : "80px" }}>New Arrivals</h1>
+          <h1 style={{ marginLeft: isSmall ? "20px" : "280px" }}>New Arrivals</h1>
           {landingPageData?.fixed_promotional_banner && (
             <CustomBoxFullWidth>
               <DiscountBanner
