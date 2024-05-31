@@ -1,6 +1,6 @@
 import { alpha, Skeleton, Stack, styled, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CustomImageContainer from "../../../CustomImageContainer";
 
 import { btoa } from "next/dist/compiled/@edge-runtime/primitives/encoding";

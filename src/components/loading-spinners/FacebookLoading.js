@@ -2,6 +2,7 @@ import { Box } from "@mui/system";
 import { CircularProgress, circularProgressClasses } from "@mui/material";
 import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';
+import React, { useEffect } from "react";
 
 const TRACKING_ID = "G-FECBMFT6KW";
 

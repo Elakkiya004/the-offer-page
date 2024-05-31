@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomImageContainer from "../CustomImageContainer";
 import {
 	HelpGrid,

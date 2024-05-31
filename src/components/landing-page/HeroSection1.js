@@ -41,11 +41,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 borderRadius: "5px",
                                 overflow: "hidden",
                                 marginTop:{ xs: "50px", sm: "89px" },
-                                "&:hover": {
-                                    img: {
-                                        transform: "scale(1.1)",
-                                    },
-                                },
+                                
                             }}
                         >
                             <CustomImageContainer

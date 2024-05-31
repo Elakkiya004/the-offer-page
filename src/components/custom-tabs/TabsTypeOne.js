@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@mui/system";
 import { Tab } from "@mui/material";
 import { CustomTab } from "./tabs.style";

@@ -37,6 +37,7 @@
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "lru-cache": "^10.0.0",
+    "lucide-react": "^0.379.0",
     "moment": "^2.29.4",
     "next": "13.0.6",
     "nprogress": "^0.2.0",

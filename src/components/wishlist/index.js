@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CustomSideDrawer from "../side-drawer/CustomSideDrawer";
 import WishLists from "./WishLists";
 import FavoriteIcon from "@mui/icons-material/Favorite";

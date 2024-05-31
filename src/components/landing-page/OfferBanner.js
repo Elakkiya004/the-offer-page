@@ -113,11 +113,6 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
 									width: "100%",
 									borderRadius: "5px",
 									overflow: "hidden",
-									"&:hover": {
-										img: {
-											transform: "scale(1.1)",
-										},
-									},
 								}}
 							>
 								<CustomImageContainer

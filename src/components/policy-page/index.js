@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import H1 from "../typographies/H1";
