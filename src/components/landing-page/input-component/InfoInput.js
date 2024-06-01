@@ -131,7 +131,7 @@ const InfoInput = () => {
           }}
           type="phone number"
           name="phone number"
-          placeholder="Mobile Number"
+          placeholder="Whatsapp Number"
          
         />
       </Grid>
