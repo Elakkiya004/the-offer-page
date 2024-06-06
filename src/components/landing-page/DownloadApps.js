@@ -6,7 +6,8 @@ import { styled, Typography } from "@mui/material";
 import DollarSignHighlighter from "../DollarSignHighlighter";
 
 const HighLightedText = styled("span")(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.Montserrat.main,
+  fontFamily:"sans-serif",
 }));
 const DownloadApps = ({ theme, isSmall, landingPageData }) => {
   const { t } = useTranslation();

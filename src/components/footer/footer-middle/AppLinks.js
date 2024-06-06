@@ -11,10 +11,11 @@ export const CustomButton = styled(Button)(({ theme, graybackground }) => ({
 	height: "45px",
 	borderRadius: "5px",
 	cursor: "pointer",
-	backgroundColor:
-		graybackground === "true"
-			? theme.palette.footer.appDownloadButtonBgGray
-			: theme.palette.footer.appDownloadButtonBg,
+	fontFamily:"sans-serif", 
+	backgroundColor:"black",
+		// graybackground === "true"
+		// 	? theme.palette.footer.appDownloadButtonBgGray
+		// 	: theme.palette.footer.appDownloadButtonBg,
 	"&:hover": {
 		backgroundColor: theme.palette.footer.appDownloadButtonBgHover,
 	},
@@ -59,6 +60,7 @@ const AppLinks = (props) => {
 				<Stack alignItems="flex-start" justifyContent="center">
 					<Typography
 						sx={{
+							color:"Montserrat",
 							fontSize: { xs: "8px", sm: "11px" },
 							color: "customColor.textGray",
 						}}

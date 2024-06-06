@@ -40,6 +40,7 @@ import Card from "./Card";
 import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';
 import PopupModal from './PopupModal';
+import Banners1 from "./Banners1";
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -139,23 +140,32 @@ const LandingPage = ({ configData, landingPageData }) => {
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           />
-          {showModal && <PopupModal onClose={() => setShowModal(false)}  sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }} />}
+
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "-80px" } }}>
+            <CustomContainer>
+              <CardCategories configData={configData} />
+            </CustomContainer>
+          </Grid>
+
+          <Grid item xs={12} md={12} sx={{ marginTop: "-80px" }}>
+            {landingPageData?.promotion_banners?.length > 0 && (
+              <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
+            )}
+          </Grid>
+
+          {showModal && <PopupModal onClose={() => setShowModal(false)} sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }} />}
 
           <OfferBanner1
             configData={configData}
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           />
-          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "-80px" } }}>
-            <CustomContainer>
-              <CardCategories configData={configData} />
-            </CustomContainer>
-          </Grid>
+
         </Grid>
         <Card />
 

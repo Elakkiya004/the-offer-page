@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import CustomContainer from "../container";
+import { color, fontFamily } from '@mui/system';
 
 const CustomCard = () => {
     const imageUrls = [
@@ -11,29 +12,29 @@ const CustomCard = () => {
     ];
 
     const cardContents = [
-        { name: "Step 1", occupation: "Vist your favourite store" },
-        { name: "Step 2", occupation: "Big vouchers at a discount on magicpin" },
-        { name: "Step 3", occupation: "Reedem the vouchers for savings at the store" },
-        { name: "Step 4", occupation: "Big vouchers at a discount on magicpin" }
+        { name: "Setup Location", occupation: "Sign-in log in using your WhatsApp number or Email" },
+        { name: "Sign up & explore", occupation: "Choose your location to discover top local deals and offers" },
+        { name: "Deals & Discounts", occupation: "Add your customized discounted item to your cart" },
+        { name: "Save your time", occupation: "Show your unique QR code at the store & enjoy the discount on your purchase." }
     ];
 
     return (
-        <CustomContainer>
-            <h1 style={{textAlign: "center"}}>Save Big Using Magic Points</h1><br />
+        <CustomContainer style={{color: "Montserrat", fontFamily: "sans-serif"}}>
+            <h1 style={{textAlign: "center"}}>How to Enjoy the Best Offers in your area</h1><br />
             <Grid container spacing={2}>
                 {imageUrls.map((imageUrl, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index}>
                             <CardMedia
                                 component="img"
-                                height="140"
+                                height="100"
                                 image={imageUrl}
                                 alt={`Image ${index + 1}`}
                             />
                             <CardContent>
-                                <Typography variant="h5" component="div" style={{textAlign: "center"}}>
+                                <Typography variant="h5" component="div" style={{textAlign: "center", fontSize: "20px"}}>
                                     {cardContents[index].name}
                                 </Typography>
-                                <Typography variant="h6" color="text.secondary" style={{textAlign: "center"}}>
+                                <Typography variant="h6" color="text.secondary" style={{textAlign: "center", fontSize: "15px"}}>
                                     {cardContents[index].occupation}
                                 </Typography>
                             </CardContent>

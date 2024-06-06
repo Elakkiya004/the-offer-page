@@ -78,7 +78,7 @@ const ComponentThreeContainer = styled(Box)(({ theme, paddingTop, paddingBottom,
   paddingBottom: paddingBottom ? paddingBottom : "1rem",
 }));
 
-const CityComponent = ({ cityName = 'Salem' }) => {
+const CityComponent = ({ cityName = 'Tirunelveli' }) => {
   // Find the city object based on the cityName prop
   const city = data.cities.find((c) => c.name === cityName);
 
