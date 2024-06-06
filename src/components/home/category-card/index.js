@@ -31,7 +31,7 @@ export const ButtonLeft = styled(CustomButtonPrimary)(
 		minWidth: "20px",
 		width: "10px",
 		height: "30px",
-		borderRadius: "50%",
+		borderRadius: "5%",
 		transform: language_direction === "rtl" && "rotate(180deg)",
 	})
 );
