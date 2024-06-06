@@ -19,7 +19,9 @@ export const ComponentThreeContainer = styled(Box)(
 		paddingTop: paddingTop ? paddingTop : "1.5rem",
 		paddingBottom: paddingBottom ? paddingBottom : "1rem",
 		// background: alpha(theme.palette.primary.main, 0.3),
-		background: 'white'
+		background: 'white',
+		color: "Montserrat",
+		fontFamily: "sans-serif" 
 	})
 );
 
@@ -57,7 +59,7 @@ const ComponentThree = ({ configData, landingPageData }) => {
 								fontweight: '200',
 							}}>List Your Own Business</Typography>
 							<Typography variant="body1" sx={{
-								fontSize: "20px",
+								fontSize: "15px",
 								display: "flex",
 								flexDirection: "column",
 								paddingY: '20px',

@@ -34,7 +34,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                             key={index}
                             sx={{
                                 border: (theme) =>
-                                    `0.828571px solid ${alpha('#808080', 0.15)}`,
+                                    `0.828571px solid ${alpha('#808080')}`,
                                 position: "relative",
                                 height: `${height}px`, // Set the height dynamically
                                 width: "100%",
@@ -49,7 +49,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 alt="banners"
                                 height={{
                                     xs: "250px",
-                                    sm: "540px"
+                                    sm: "400px"
                                 }}
                                 width="100%"
                                 objectFit="contain"
