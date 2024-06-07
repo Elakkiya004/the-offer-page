@@ -11,7 +11,6 @@ import CustomContainer from "../container";
 
 const Banners1 = ({ landingPageData, isSmall }) => {
 	const banners = landingPageData?.promotion_banners;
-	const category6Banners = banners.filter(item => item.category === 'Category 6');
 
 	const infiniteManage = () => {
 		if (isSmall) {
@@ -92,7 +91,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 		);
 	};
 	const sliderManage = () => {
-		const filteredBanners = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 6');
+		const filteredBanners = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 7');
 
 		return (
 			<SliderCustom
@@ -173,7 +172,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 		],
 	};
 
-	const singleImageManage = (category6Banners) => {
+	const singleImageManage = () => {
 		return (
 			<CustomBoxFullWidth
 				sx={{
@@ -211,17 +210,17 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 	const handleContent = () => {
 		if (isSmall) {
 			if (landingPageData?.promotion_banners?.length === 1) {
-				return <>{singleImageManage(category6Banners)}</>;
+				return <>{singleImageManage()}</>;
 			} else {
-				return <>{sliderManage(category6Banners)}</>;
+				return <>{sliderManage()}</>;
 			}
 		} else {
 			if (landingPageData?.promotion_banners?.length === 1) {
 				return <>{singleImageManage()}</>;
 			} else if (landingPageData?.promotion_banners?.length === 2) {
-				return <>{twoItemManage(category6Banners)}</>;
+				return <>{twoItemManage()}</>;
 			} else {
-				return <>{sliderManage(category6Banners)}</>;
+				return <>{sliderManage()}</>;
 			}
 		}
 	};
@@ -229,7 +228,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 	return (
 		<CustomContainer>
 			<CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "40px" }}>
-				{handleContent(category6Banners)}
+				{handleContent()}
 			</CustomBoxFullWidth>
 		</CustomContainer>
 	);

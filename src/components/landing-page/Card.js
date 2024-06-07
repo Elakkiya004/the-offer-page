@@ -34,7 +34,7 @@ const CustomCard = () => {
                                 <Typography variant="h5" component="div" style={{textAlign: "center", fontSize: "20px"}}>
                                     {cardContents[index].name}
                                 </Typography>
-                                <Typography variant="h6" color="text.secondary" style={{textAlign: "center", fontSize: "15px"}}>
+                                <Typography variant="h6" color="text.secondary" style={{textAlign: "justify", fontSize: "15px"}}>
                                     {cardContents[index].occupation}
                                 </Typography>
                             </CardContent>
