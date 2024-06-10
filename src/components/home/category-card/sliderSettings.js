@@ -11,17 +11,17 @@ import { WhiteNext, WhitePrev } from "../visit-again/SliderSettings";
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
 
 const ButtonContainer = styled(Box)(({ theme, right, isdisabled }) => ({
-  top: 0,
-  height: "100%",
-  width: "73px",
-  background:
-    right === "true"
-      ? theme.direction === "ltr"
-        ? `linear-gradient(270deg, ${theme.palette.neutral[100]} 0%, rgba(255, 255, 255, 0) 100%)`
-        : `linear-gradient(270deg,  rgba(255, 255, 255, 0) 0%, ${theme.palette.neutral[100]} 100%)`
-      : theme.direction === "ltr"
-      ? `linear-gradient(to right, ${theme.palette.neutral[100]} 0%, rgba(255, 255, 255, 0) 100%)`
-      : `linear-gradient(to left, rgba(255, 255, 255, 0) 0%, ${theme.palette.neutral[100]} 100%)`,
+  top: "120px",
+  // height: "100%",
+  // width: "73px",
+  // background:
+  //   right === "true"
+  //     ? theme.direction === "ltr"
+  //       ? `linear-gradient(270deg, ${theme.palette.neutral[100]} 0%, rgba(255, 255, 255, 0) 100%)`
+  //       : `linear-gradient(270deg,  rgba(255, 255, 255, 0) 0%, ${theme.palette.neutral[100]} 100%)`
+  //     : theme.direction === "ltr"
+  //     ? `linear-gradient(to right, ${theme.palette.neutral[100]} 0%, rgba(255, 255, 255, 0) 100%)`
+  //     : `linear-gradient(to left, rgba(255, 255, 255, 0) 0%, ${theme.palette.neutral[100]} 100%)`,
 
   zIndex: 1,
   right: right === "true" && 0,
