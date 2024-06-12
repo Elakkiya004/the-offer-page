@@ -173,7 +173,7 @@ const LandingPageCard = (props) => {
                 position: "absolute",
                 textAlign: "center", 
                 justifyContent: "center",
-                marginLeft: "-20px"
+                marginLeft: "-0px"
               }}
             >
               {title}
