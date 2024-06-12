@@ -141,7 +141,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             handleOrderNow={handleOrderNow}
           />
 
-          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "-80px" } }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-100px", sm: "-100px" } }}>
             <CustomContainer>
               <CardCategories configData={configData} />
             </CustomContainer>
