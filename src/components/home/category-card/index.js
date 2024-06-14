@@ -346,7 +346,7 @@ const CardCategories = ({ configData }) => {
 		speed: 500,
 		autoplay: true,
 		autoplaySpeed: 3000,
-		slidesToShow: 4,
+		slidesToShow: 7,
 		slidesToScroll: 1,
 		nextArrow: moduleWiseNext(),
 		prevArrow: moduleWisePrev(),

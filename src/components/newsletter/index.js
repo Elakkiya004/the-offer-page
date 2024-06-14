@@ -55,10 +55,10 @@ import {
           height="100%"
         >
     <Typography textAlign="center" variant={isSmall ? "h7" : "h4"}>
-       Give 20%, Get $20!
+       Give 20%, Get 200!
       </Typography>
       <Typography textAlign="center" variant={isSmall ? "h7" : "h6"}>
-      Join our newsletter today and receive 20% off for a friend and $20 for yourself!
+      Join our newsletter today and receive 20% off for a friend and 200 for yourself!
       </Typography>
       <Grid
             container

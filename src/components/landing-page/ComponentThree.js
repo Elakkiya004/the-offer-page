@@ -57,12 +57,16 @@ const ComponentThree = ({ configData, landingPageData }) => {
 							<Typography variant="h3" sx={{
 								// fontSize: "20px",
 								fontweight: '200',
+								marginTop: "-20px",
+								fontFamily: "Montserrat"
 							}}>List Your Own Business</Typography>
 							<Typography variant="body1" sx={{
-								fontSize: "15px",
+								fontSize: "20px",
 								display: "flex",
 								flexDirection: "column",
 								paddingY: '20px',
+								marginTop: "-10px",
+								fontFamily: "Montserrat"
 							}}>Setup your free store and get unlimited businesses.</Typography>
 
 						</Grid>

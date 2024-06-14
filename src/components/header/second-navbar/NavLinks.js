@@ -26,7 +26,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
     >
       {zoneid && (
         <>
-          <Link href="/home">
+          {/* <Link href="/">
             <NavLinkStyle
               underline="none"
               // language_direction={language_direction}
@@ -34,7 +34,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
             >
               {t("Home")}
             </NavLinkStyle>
-          </Link>
+          </Link> */}
           {moduleType !== "parcel" ? (
             <>
               <NavCategory
@@ -46,7 +46,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
                 openModal={openRestaurantModal}
                 setModal={setRestaurantModal}
               />
-              <Link href="/referral-code">
+              {/* <Link href="/referral-code">
             <NavLinkStyle
               underline="none"
               // language_direction={language_direction}
@@ -54,7 +54,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
             >
               {t("Refer & Earn")}
             </NavLinkStyle>
-          </Link>
+          </Link> */}
             </>
           ) : (
             <Link href="/help-and-support">
@@ -72,7 +72,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
                   underline="none"
                   sx={{ cursor: "pointer", fontWeight: "bold"}}
                 >
-                  {t("List Your Business")}
+                  {t("Become a Seller")}
                 </NavLinkStyle>
               </Link>
         </>

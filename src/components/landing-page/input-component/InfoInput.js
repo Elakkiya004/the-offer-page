@@ -52,7 +52,7 @@ const InfoInput = () => {
   const handleTryItFree = async () => {
     try {
       // Send a POST request to your backend API to handle email sending
-        const response = await axios.post("/api/store@theofferpage.in", {
+        const response = await axios.post("info@theofferpage.in", {
         companyName,
         phoneNumber,
         recipientEmail: "store@theofferpage.in"
@@ -104,6 +104,7 @@ const InfoInput = () => {
           sx={{
             color: "black",
             height: "48px",
+            fontFamily: "Montserrat",
          
             input: {
                 background: "white",
@@ -122,7 +123,8 @@ const InfoInput = () => {
         onChange={(e) => setPhoneNumber(e.target.value)}
           sx={{
             color: "black",
-            height: "48px",
+            height: "48px", 
+            fontFamily: "Montserrat",
             
             input: {
                 background: "white",
@@ -141,6 +143,7 @@ const InfoInput = () => {
           sx={{
             height: "48px",
             px: "50px",
+            fontFamily: "Montserrat",
           }}
           onClick={handleTryItFree}
           startIcon={<MailOutlineIcon />}

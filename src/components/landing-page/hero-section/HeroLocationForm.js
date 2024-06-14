@@ -250,7 +250,7 @@ const HeroLocationForm = () => {
         <CustomStackFullWidth
           direction="row"
           alignItems="center"
-          sx={{ position: "relative", zIndex: 999 }}
+          sx={{ position: "absolute", zIndex: 999 }}
         >
           <Grid container>
             <Grid item xs={5.8} sm={7}>
@@ -274,12 +274,12 @@ const HeroLocationForm = () => {
                   onClick={handlePickLocation}
                   sx={{
                    backgroundColor: alpha(theme.palette.primary.main, 0.5),
-                    width: "120%",
+                    width: "40%",
                     height: "51px",
                     alignItems: "center",
                     justifyContent: "center",
                     display: "flex",
-                    marginLeft: "-0.9px",
+                    marginLeft: "-56px",
                     marginTop: "0.9px",
                     padding: {
                       xs: "0rem",
@@ -288,10 +288,10 @@ const HeroLocationForm = () => {
                     position: "relative",
                     cursor: "pointer",
                     boxShadow: pickLocation && "1px 0 5px 0 rgba(0, 0, 0, 0.5)",
-                    borderRadius: {
-                      xs: pickLocation ? "40px 40px 0 0" : "0px",
-                      sm: "0px",
-                    },
+                    // borderRadius: {
+                    //   xs: pickLocation ? "40px 40px 0 0" : "0px",
+                    //   sm: "0px",
+                    // },
                   }}
                 >
                   <CustomStackFullWidth
@@ -390,10 +390,10 @@ const HeroLocationForm = () => {
                 sx={{
                   height: "51px",
                   position: "absolute",
-                  width: "100%",
-                  borderRadius: "0px 40px 40px 0px",
+                  width: "50%",
+                  // borderRadius: "0px 40px 40px 0px",
                   color:"whiteContainer.main",
-                  marginLeft: "13px",
+                  marginLeft: "-350px",
                   marginTop: "0.9px",
                 }}
                 onClick={() => setLocationEnable()}

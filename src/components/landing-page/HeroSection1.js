@@ -40,7 +40,12 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 width: "100%",
                                 borderRadius: "5px",
                                 overflow: "hidden",
-                                marginTop:{ xs: "50px", sm: "89px" },
+                                marginTop:{ xs: "50px", sm: "50px" },
+                                "&:hover": {
+											img: {
+												transform: "scale(1.1)",
+											},
+										},
                                 
                             }}
                         >
@@ -54,7 +59,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 width="100%"
                                 objectFit="contain"
                                 borderRadius="5px"
-                                marginTop="100px"
+                                marginTop="500px"
                             />
 					
                         </Box>

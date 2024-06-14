@@ -36,21 +36,25 @@ export const AppBarStyle = styled(AppBar)(({ theme, scrolling, isSmall }) => ({
       transform: "translateY(0)",
     },
   },
+  fontFamily: "Montserrat"
 }));
 
 export const CustomBgImage = styled(Stack)(({ theme }) => ({
   backgroundImage: `url(${bgImg})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
+   fontFamily: "Montserrat"
 }));
 export const CustomStackForLoaction = styled(Stack)(({ theme }) => ({
   justifyContent: "center",
   cursor: "pointer",
   alignItems: "center",
+   fontFamily: "Montserrat"
 }));
 export const TopBarButton = styled(Button)(({ theme, formmobilemenu }) => ({
   padding: formmobilemenu === "true" ? "7px 5px" : "7px 12px",
   color: theme.palette.neutral[100],
+   fontFamily: "Montserrat"
 }));
 export const CustomSwitch = styled(Switch)(({ theme, noimage }) => ({
   width: 40,
@@ -123,6 +127,7 @@ export const CustomSwitch = styled(Switch)(({ theme, noimage }) => ({
       duration: 500,
     }),
   },
+   fontFamily: "Montserrat"
 }));
 export const StyledMenu = styled((props) => (
   <Menu
@@ -164,6 +169,7 @@ export const StyledMenu = styled((props) => (
         ),
       },
     },
+     fontFamily: "Montserrat"
   },
 }));
 export const NavLinkStyle = styled(Stack)(({ theme, language_direction }) => ({
@@ -176,12 +182,14 @@ export const NavLinkStyle = styled(Stack)(({ theme, language_direction }) => ({
     color: theme.palette.primary.main
     // color: theme.palette.primary.main,
   },
+   fontFamily: "Montserrat"
 }));
 export const SignInButton = styled(Button)(({ theme }) => ({
   width: "100%",
   color: theme.palette.neutral[100],
   backgroundColor: theme.palette.primary.main,
   borderRadius: "32px",
+   fontFamily: "Montserrat"
 }));
 export const NavMenuLink = styled(MenuLink)(({ theme }) => ({
   color: theme.palette.neutral[1000],
@@ -194,10 +202,12 @@ export const NavMenuLink = styled(MenuLink)(({ theme }) => ({
     color: theme.palette.primary.main,
     textDecoration: "none",
   },
+   fontFamily: "Montserrat"
 }));
 export const ButtonContainer = styled("div")(({ theme }) => ({
   marginLeft: "15px",
   marginRight: "15px",
+   fontFamily: "Montserrat"
 }));
 export const CustomDrawer = styled(Drawer)(({ theme, router }) => ({
   "& .MuiDrawer-paper": {
@@ -205,6 +215,7 @@ export const CustomDrawer = styled(Drawer)(({ theme, router }) => ({
     width: "80%",
     height: "80vh",
     transition: "transform 0.3s ease-in-out",
+     fontFamily: "Montserrat"
 
     // marginLeft: router.pathname === "/" && "24px",
     // marginRight: router.pathname === "/" && "24px",
@@ -226,6 +237,7 @@ export const CustomBottomNavigationAction = styled(BottomNavigationAction)(
     "&.Mui-selected": {
       color: theme.palette.primary.main,
     },
+     fontFamily: "Montserrat"
     // "& .MuiBottomNavigationAction-label": {
     //   overflow: "hidden",
     //   textOverflow: "ellipsis",

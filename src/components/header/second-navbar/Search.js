@@ -131,6 +131,7 @@ const Search = ({ zoneid, token, maxwidth, fullWidth,query }) => {
               alpha(theme.palette.moduleTheme.food, 0.4),
             padding: { xs: "8px", md: "16px" },
             borderRadius: "2px",
+            fontFamily: "Montserrat",
           }}
         >
           <CustomSearch

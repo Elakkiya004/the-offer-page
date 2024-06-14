@@ -41,6 +41,9 @@ import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';
 import PopupModal from './PopupModal';
 import Banners1 from "./Banners1";
+import HeroTitleSection from "./hero-section/HeroTitleSection";
+import HeroLocationForm from "./hero-section/HeroLocationForm";
+import { padding } from "@mui/system";
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -134,12 +137,21 @@ const LandingPage = ({ configData, landingPageData }) => {
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           /> */}
-
-          <HeroSection1
+          <Grid item xs={12} sm={12} sx={{ marginLeft: "275px" }}>
+            <HeroTitleSection
+              configData={configData}
+              landingPageData={landingPageData}
+              handleOrderNow={handleOrderNow}
+            />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+            <HeroSection1
             configData={configData}
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           />
+          
+          </Grid>
 
           <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-100px", sm: "-100px" } }}>
             <CustomContainer>
@@ -160,42 +172,50 @@ const LandingPage = ({ configData, landingPageData }) => {
             height: "100vh",
           }} />}
 
+        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-25px" : "-60px" }}>
           <OfferBanner1
             configData={configData}
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           />
+          </Grid>
 
         </Grid>
+        <Grid item xs={12} sm={12} sx={{ marginTop: "-40px" }}>
         <Card />
+        </Grid>
 
         {/* two banners */}
+        <Grid item xs={12} sm={12} sx={{ marginTop: "-50px" }}>
         <OfferBanner
           configDate={configData}
           landingPageData={landingPageData}
         />
+      </Grid>
         <CustomContainer>
           <VisitAgain configData={configData} />
 
         </CustomContainer>
 
         {/* three banners */}
+        <Grid item sx={{  marginTop: isSmall ? "-45px" : "-80px" }}>
         {landingPageData?.promotion_banners?.length > 0 && (
           <Banners landingPageData={landingPageData} isSmall={isSmall} />
         )}
+        </Grid>
         {/* <ComponentOne
           landingPageData={landingPageData}
           configData={configData}
           handleOrderNow={handleOrderNow}
         /> */}
-        <Grid item xs={12} md={12} sx={{ marginTop: "-50px" }}>
+        <Grid item xs={12} md={12} sx={{  marginTop: isSmall ? "-45px" : "-70px" }}>
           <ComponentThree
             configData={configData}
             landingPageData={landingPageData}
           />
         </Grid>
-        <Grid item xs={12} md={12} sx={{ marginTop: "-15px" }}>
-          <h1 style={{ marginLeft: isSmall ? "20px" : "280px" }}>New Arrivals</h1>
+        <Grid item xs={12} md={12} sx={{ marginTop: "-25px" }}>
+          <h1 style={{ marginLeft: isSmall ? "20px" : "370px" }}>New Arrivals</h1>
           {landingPageData?.fixed_promotional_banner && (
             <CustomBoxFullWidth>
               <DiscountBanner
@@ -205,6 +225,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             </CustomBoxFullWidth>
           )}
         </Grid>
+        <Grid xs={12} sm={12} sx={{ marginTop: "-40px" }}>
         {(landingPageData?.earning_title ||
           landingPageData?.earning_sub_title ||
           landingPageData?.earning_seller_title ||
@@ -213,6 +234,7 @@ const LandingPage = ({ configData, landingPageData }) => {
           landingPageData?.earning_dm_sub_title) && (
             <Registration data={landingPageData} isSmall={isSmall} />
           )}
+          </Grid>
 
         <PopularStore />
 
