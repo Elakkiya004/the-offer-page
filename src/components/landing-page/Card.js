@@ -2,42 +2,45 @@ import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import CustomContainer from "../container";
 import { color, fontFamily } from '@mui/system';
+import { MarginTwoTone } from '@mui/icons-material';
 
 const CustomCard = () => {
     const imageUrls = [
-        "https://img.freepik.com/premium-psd/3d-realistic-store-icon-sign_553473-277.jpg?w=996",
-        "https://initialaudio.com/wp-content/uploads/2023/09/Voucher-e1693535714796.png",
-        "https://cdn.vectorstock.com/i/1000x1000/29/71/3d-falling-gold-coins-and-leather-wallet-vector-46052971.webp",
-        "https://initialaudio.com/wp-content/uploads/2023/09/Voucher-e1693535714796.png"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_VZGQ8G2af8WHQv8pJ5GN3Ta9IqigHU9jsfHcwt4mZ8vimJRX",
+        "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRt1P7D0cNmBfxJizZa-JuQNtDi5JJkzUGUxfvrXckndy6eeQ8b",
+        "https://cdn-icons-png.flaticon.com/512/6150/6150436.png",
+        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcST-9rGUYHk1SmKjETV3AZx-tk-_EXjC3RIqG-lBiKIugLSRqEd"
     ];
 
     const cardContents = [
-        { name: "Setup Location", occupation: "Sign-in log in using your WhatsApp number or Email" },
-        { name: "Sign up & explore", occupation: "Choose your location to discover top local deals and offers" },
+        { name: "Setup Location", occupation: "Choose your location to discover top local deals and offers" },
+        { name: "Sign up & explore", occupation: "Sign-in log in using your WhatsApp number or Email" },
         { name: "Deals & Discounts", occupation: "Add your customized discounted item to your cart" },
-        { name: "Save your time", occupation: "Show your unique QR code at the store & enjoy the discount on your purchase." }
+        { name: "Save your time", occupation: "Show your unique QR code at the store & enjoy the discount on your purchase" }
     ];
 
     return (
-        <CustomContainer style={{color: "Montserrat", fontFamily: "sans-serif"}}>
-            <h1 style={{textAlign: "center"}}>How to Enjoy the Best Offers in your area</h1><br />
+        <CustomContainer style={{ fontFamily: "Montserrat" }}>
+            <h1 style={{ textAlign: "center" }}>How to Enjoy the Best Offers in your area</h1><br />
             <Grid container spacing={2}>
                 {imageUrls.map((imageUrl, index) => (
-                    <Grid item xs={12} sm={6} md={3} key={index}>
-                            <CardMedia
-                                component="img"
-                                height="100"
-                                image={imageUrl}
+                    <Grid item xs={12} sm={6} md={3} key={index} sx={{ marginTop: "-20px", fontFamily: "Montserrat" }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '' }}>
+                            <img
+                                src={imageUrl}
                                 alt={`Image ${index + 1}`}
+                                style={{ height: '80px' }}
                             />
-                            <CardContent>
-                                <Typography variant="h5" component="div" style={{textAlign: "center", fontSize: "20px"}}>
-                                    {cardContents[index].name}
-                                </Typography>
-                                <Typography variant="h6" color="text.secondary" style={{textAlign: "justify", fontSize: "15px"}}>
-                                    {cardContents[index].occupation}
-                                </Typography>
-                            </CardContent>
+                        </div>
+
+                        <CardContent>
+                            <Typography variant="h5" component="div" style={{ textAlign: "center", fontSize: "20px", fontFamily: "Montserrat" }}>
+                                {cardContents[index].name}
+                            </Typography>
+                            <Typography variant="h6" color="text.secondary" style={{ textAlign: "center", fontSize: "15px", fontFamily: "Montserrat" }}>
+                                {cardContents[index].occupation}
+                            </Typography>
+                        </CardContent>
                     </Grid>
                 ))}
             </Grid>

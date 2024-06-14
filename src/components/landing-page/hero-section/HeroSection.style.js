@@ -9,11 +9,11 @@ export const CustomSearchField = styled(Paper)(({ theme }) => ({
 }));
 export const SearchLocationTextField = styled(TextField)(
   ({ theme, language_direction, frommap, fromparcel, margin_top }) => ({
-    width: "100%",
+    width: "95%",
     backgroundColor: theme.palette.neutral[100],
     height: "52px",
-    borderTopLeftRadius: "40px",
-    borderBottomLeftRadius: "40px",
+    // borderTopLeftRadius: "40px",
+    // borderBottomLeftRadius: "40px",
     border: "none",
     "& .MuiOutlinedInput-notchedOutline": {
       border: "none",

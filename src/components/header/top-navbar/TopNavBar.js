@@ -92,10 +92,10 @@ const TopNavBar = (props) => {
 									>
 										<ThemeSwitches />
 										<CallToAdmin configData={configData} />
-										<SocialLinks
+										{/* <SocialLinks
                 configData={configData}
                 // landingPageData={landingPageData}
-              />
+              /> */}
 										{/* <CustomLanguage
 											countryCode={countryCode}
 											language={language}

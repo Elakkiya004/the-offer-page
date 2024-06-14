@@ -295,11 +295,11 @@ const SecondNavBar = ({ configData, landingPageData, handleOrderNow}) => {
           spacing={2.5}
         >
           <Search zoneid="zoneid" token={token} />
-          {!token && moduleType !== "parcel" && location && (
+          {/* {!token && moduleType !== "parcel" && location && (
             <IconButton onClick={handleTrackOrder}>
               <LocalShippingOutlinedIcon fontSize="22px" />
             </IconButton>
-          )}
+          )} */}
           {token && moduleType !== "parcel" && (
             <NavBarIcon
               icon={<ChatBubbleOutlineIcon sx={{ fontSize: "22px" }} />}
@@ -386,11 +386,11 @@ const SecondNavBar = ({ configData, landingPageData, handleOrderNow}) => {
                 marginTop: "35px"
               }}
             >
-              <HeroTitleSection
+              {/* <HeroTitleSection
 								configData={configData}
 								landingPageData={landingPageData}
 								handleOrderNow={handleOrderNow}
-							/>  
+							/>   */}
             </Grid>
             <AccountPopover
               anchorEl={anchorRef.current}

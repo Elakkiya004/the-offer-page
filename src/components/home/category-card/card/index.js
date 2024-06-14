@@ -119,7 +119,7 @@ const LandingPageCard = (props) => {
               // border: (theme) =>
               //   `1.5px solid ${alpha(theme.palette.neutral[400], 0.2)}`,
               // borderRadius: "10px",
-              // margin: "10px",
+              marginLeft: {xs: "10px", md: "-80px"},
               // "&:hover": {
               //   boxShadow: "0px 15px 25px rgba(88, 110, 125, 0.1)",
               //   border: "0px",
@@ -142,7 +142,7 @@ const LandingPageCard = (props) => {
               //   // },
               // }}
             >  
-            <CustomBoxFullWidth sx={{ px: "10px" }}>
+            <CustomBoxFullWidth sx={{ px: "" }}>
             <Typography
               // textAlign="center"
               // fontWeight="bold"
@@ -160,20 +160,23 @@ const LandingPageCard = (props) => {
           
             </Typography>
             <Typography
-              textAlign="center"
+              // textAlign="center"
               // fontWeight="bold"
               // className={classes.singleLineEllipsis}
               // maxHeight="20px"
-              // color={hover && "primary.main"}
+              color={hover && "primary.main"}
               style={{
                 // maxHeight: "20px",
-                // color: hover ? "primary.main" : "inherit",
-                textAlign: "center", // Align text to the right
-                marginTop: "95px",
+                color: hover ? "primary.main" : "inherit",
+                // textAlign: "center", // Align text to the right
+                // margin: "100px",
+                marginTop: "100px",
+                marginLeft: "-20px",
                 position: "absolute",
-                textAlign: "center", 
-                justifyContent: "center",
-                marginLeft: "-0px"
+                // textAlign: "center", 
+                // justifyContent: "center",
+                // marginLeft: "-0px",
+                fontFamily: "Montserrat"
               }}
             >
               {title}
@@ -184,7 +187,7 @@ const LandingPageCard = (props) => {
                 src={image}
                 alt={title}
                 height="80px"
-                width="100%"
+                // width="100%"
                 objectFit="cover"
               />
              

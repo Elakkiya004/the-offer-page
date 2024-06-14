@@ -45,12 +45,13 @@ const TopText = ({ data }) => {
     <CustomStackFullWidth
       alignItems="center"
       justifyContent="center"
+      fontFamily="Montserrat"
       spacing={1}
     >
-      <Typography textAlign="center" variant={isSmall ? "h7" : "h4"}>
+      <Typography textAlign="center" variant={isSmall ? "h7" : "h4"} fontFamily="Montserrat">
         <DollarSignHighlighter theme={theme} text={data?.earning_title} />
       </Typography>
-      <Subtitle1 text={data?.earning_sub_title || ""} />
+      <Subtitle1 text={data?.earning_sub_title || ""}  />
     </CustomStackFullWidth>
   );
 };
@@ -73,6 +74,7 @@ const Card = ({
     <CustomBoxFullWidth
       sx={{
         padding: { xs: ".5rem", sm: "2.5rem" },
+        fontFamily: "Montserrat",
         borderRadius: "10px",
         height: "100%",
         background: (theme) => theme.palette.background.default,

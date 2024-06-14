@@ -28,7 +28,7 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
       // return <ModuleSelectionRaw />;
     } else {
       return (
-        <CustomStackFullWidth mt="-50px">
+        <CustomStackFullWidth mt="90px">
           <HeroLocationForm />
         </CustomStackFullWidth>
       );
@@ -36,7 +36,7 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
   };
   return (
     <CustomStackFullWidth>
-      <CustomStackFullWidth spacing={0.5}>
+      <CustomStackFullWidth spacing={0.5} sx={{  }}>
         <Stack
           direction="row"
           alignItems="center"
@@ -51,10 +51,10 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
               fontWeight: "bold",
             }}
           >
-            <DollarSignHighlighter
+            {/* <DollarSignHighlighter
               theme={theme}
               text={landingPageData?.header_title}
-            />
+            /> */}
           </Typography>
         </Stack>
         <Typography
@@ -62,10 +62,10 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
           variant={isXSmall ? "body1" : "h4"}
           fontWeight="400"
         >
-          <DollarSignHighlighter
+          {/* <DollarSignHighlighter
             theme={theme}
             text={landingPageData?.header_sub_title}
-          />
+          /> */}
         </Typography>
       </CustomStackFullWidth>
       <CustomStackFullWidth spacing={2} mt="14px" sx={{ position: "relative" }}>
@@ -76,10 +76,10 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
           }}
           fontWeight="400"
         >
-          <DollarSignHighlighter
+          {/* <DollarSignHighlighter
             theme={theme}
             text={landingPageData?.header_tag_line}
-          />
+          /> */}
         </Typography>
         {!getCurrentModuleType() && (
           <Box
@@ -92,14 +92,14 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
               right: -65,
             }}
           >
-            {/* <CustomImageContainer
+           {/* <CustomImageContainer
               src={down_arrow.src}
               alt={t("Background")}
               height="100%"
               width="100%"
               borderRadius="20px"
               objectFit="cover"
-            /> */}
+            />  */}
           </Box>
         )}
       </CustomStackFullWidth>

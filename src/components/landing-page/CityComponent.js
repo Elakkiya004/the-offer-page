@@ -97,7 +97,7 @@ const CityComponent = ({ cityName = 'Tirunelveli' }) => {
           </Grid>
           {areas.map((area, index) => (
 
-            <Grid item key={index} xs={12} sm={3} md={3} align="center">
+            <Grid item key={index} xs={6} sm={3} md={3} align="center">
               <Typography variant="body1">{area}</Typography>
             </Grid>
           ))}
