@@ -58,7 +58,8 @@ const ComponentThree = ({ configData, landingPageData }) => {
 								// fontSize: "20px",
 								fontweight: '200',
 								marginTop: "-20px",
-								fontFamily: "Montserrat"
+								fontFamily: "Montserrat",
+								fontSize: { xs: '20px', sm: '30px' },
 							}}>List Your Own Business</Typography>
 							<Typography variant="body1" sx={{
 								fontSize: "20px",

@@ -357,7 +357,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 1650,
 				settings: {
-					slidesToShow: 4,
+					slidesToShow: 7,
 					slidesToScroll: 3,
 					infinite: false,
 				},
@@ -365,7 +365,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 1450,
 				settings: {
-					slidesToShow: 4,
+					slidesToShow: 7,
 					slidesToScroll: 3,
 					infinite: false,
 				},
@@ -373,7 +373,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: 3,
+					slidesToShow: 6,
 					slidesToScroll: 2,
 					infinite: false,
 				},
@@ -381,7 +381,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 840,
 				settings: {
-					slidesToShow: 3,
+					slidesToShow: 5,
 					slidesToScroll: 2,
 					infinite: false,
 				},
@@ -389,7 +389,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 790,
 				settings: {
-					slidesToShow: 3,
+					slidesToShow: 4,
 					slidesToScroll: 3,
 					infinite: false,
 				},
@@ -397,7 +397,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 700,
 				settings: {
-					slidesToShow:2,
+					slidesToShow:3,
 					slidesToScroll: 2,
 					initialSlide: 2,
 				},
@@ -405,7 +405,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 600,
 				settings: {
-					slidesToShow: 2,
+					slidesToShow: 3,
 					slidesToScroll: 2,
 					initialSlide: 2,
 				},
@@ -413,21 +413,21 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 480,
 				settings: {
-					slidesToShow: 1,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 				},
 			},
 			{
 				breakpoint: 479,
 				settings: {
-					slidesToShow: 1,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 				},
 			},
 			{
 				breakpoint: 420,
 				settings: {
-					slidesToShow: 1,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 				},
 			},

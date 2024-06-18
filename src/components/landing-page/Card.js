@@ -21,7 +21,15 @@ const CustomCard = () => {
 
     return (
         <CustomContainer style={{ fontFamily: "Montserrat" }}>
-            <h1 style={{ textAlign: "center" }}>How to Enjoy the Best Offers in your area</h1><br />
+             <Typography
+        variant="h1"
+        sx={{
+          textAlign: 'center',
+          fontSize: { xs: '20px', sm: '30px' },
+        }}
+      >
+        How to Enjoy the Best Offers in your area
+      </Typography><br />
             <Grid container spacing={2}>
                 {imageUrls.map((imageUrl, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index} sx={{ marginTop: "-20px", fontFamily: "Montserrat" }}>
