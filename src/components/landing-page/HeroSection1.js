@@ -36,7 +36,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 border: (theme) =>
                                     `0.828571px solid ${alpha('#808080')}`,
                                 position: "relative",
-                                height: `${height}px`, // Set the height dynamically
+                                height: {xs: "200px", sm: "400px"}, // Set the height dynamically
                                 width: "100%",
                                 borderRadius: "5px",
                                 overflow: "hidden",
@@ -81,7 +81,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                 <Grid container spacing={2}>
                     {/* Render slider with height 470px */}
                     <Grid item xs={12} sm={12} md={12}>
-                        {renderSlider(banners0, {xs: "100px", sm: "100px"})}
+                        {renderSlider(banners0)}
                     </Grid>
                 </Grid>
             </CustomBoxFullWidth>

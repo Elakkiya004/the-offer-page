@@ -243,9 +243,10 @@ const HeroLocationForm = () => {
   return (
     <>
       <CustomStackFullWidth
-        // backgroundColor={alpha(theme.palette.primary.main, 0.5)}
-        // padding={{ xs: "rem", md: "1rem" }}
-        // borderRadius="5px"
+        backgroundColor={alpha(theme.palette.primary.main, 0.5)}
+        padding={{ xs: "rem", md: "3rem" }}
+        borderRadius="5px"
+        sx={{width: "545px"}}
       >
         <CustomStackFullWidth
           direction="row"
@@ -274,13 +275,13 @@ const HeroLocationForm = () => {
                   onClick={handlePickLocation}
                   sx={{
                    backgroundColor: alpha(theme.palette.primary.main, 0.5),
-                    width: "40%",
-                    height: "51px",
+                    width: {xs: "80%", sm: "40%"},
+                    height: "55px",
                     alignItems: "center",
                     justifyContent: "center",
                     display: "flex",
-                    marginLeft: "-56px",
-                    marginTop: "0.9px",
+                    marginLeft:{xs: "10px", sm: "-552px"},
+                    marginTop: "-25px",
                     padding: {
                       xs: "0rem",
                       sm: lanDirection === "rtl" ? "0rem" : "12px",
@@ -288,10 +289,10 @@ const HeroLocationForm = () => {
                     position: "relative",
                     cursor: "pointer",
                     boxShadow: pickLocation && "1px 0 5px 0 rgba(0, 0, 0, 0.5)",
-                    // borderRadius: {
-                    //   xs: pickLocation ? "40px 40px 0 0" : "0px",
-                    //   sm: "0px",
-                    // },
+                    borderRadius: {
+                      xs: pickLocation ? "40px 40px 0 0" : "0px",
+                      sm: "0px",
+                    },
                   }}
                 >
                   <CustomStackFullWidth
@@ -360,6 +361,7 @@ const HeroLocationForm = () => {
                       "&:hover": {
                         color: "primary.main",
                       },
+                      marginLeft: {xs: "50px", sm: "-552px"},
                     }}
                   >
                     <CustomStackFullWidth
@@ -388,13 +390,13 @@ const HeroLocationForm = () => {
             <Grid item xs={2.1} sm={2.1}>
               <StyledButton
                 sx={{
-                  height: "51px",
+                  height: "55px",
                   position: "absolute",
-                  width: "50%",
-                  // borderRadius: "0px 40px 40px 0px",
+                  width: {xs: "", sm: "40%"},
+                  borderRadius: "0px 5px 5px 0px",
                   color:"whiteContainer.main",
-                  marginLeft: "-350px",
-                  marginTop: "0.9px",
+                  marginLeft: {xs: "-20px", sm: "-756px"},
+                  marginTop: "-25px",
                 }}
                 onClick={() => setLocationEnable()}
                 radiuschange={isXSmall ? "false" : "true"}

@@ -15,12 +15,12 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
     infinite: true,
     pauseOnHover: true,
     autoplay: true,
-		speed: 2000,
-		autoplaySpeed: 3000,
+    speed: 2000,
+    autoplaySpeed: 3000,
   };
 
   // Function to render each slider
-  const renderSlider = (banners, height) => {
+  const renderSlider = (banners, mobileHeight, desktopHeight) => {
     return (
       <SliderCustom>
         <Slider {...settings}>
@@ -31,7 +31,10 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
                 border: (theme) =>
                   `0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
                 position: "relative",
-                height: `${height}px`, // Set the height dynamically
+                height: {
+                   xs: `${mobileHeight}px`,
+                  sm: `${desktopHeight}px`
+                }, // Set the height dynamically
                 width: "100%",
                 borderRadius: "5px",
                 overflow: "hidden",
@@ -66,27 +69,27 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
 
   return (
     <CustomContainer>
-          <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "10px" }}>
-              <Grid container spacing={2}>
-                  {/* Render slider with height 470px */}
-                  <Grid item xs={12} sm={6} md={6}>
-                      {renderSlider(banners1, 470)}
-                  </Grid>
-                  {/* Render slider with height 220px */}
-                  <Grid item xs={12} sm={6} md={6}>
-                      {renderSlider(banners2, 220)}
-                  </Grid>
-                  <Grid item xs={12} sm={6} md={6}>
-                     
-                  </Grid>
-                 <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
-  {renderSlider(banners3, 215)}
-</Grid>
-<Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
-  {renderSlider(banners4, 215)}
-</Grid>
-              </Grid>
-          </CustomBoxFullWidth>
+      <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "10px" }}>
+        <Grid container spacing={2}>
+          {/* Render slider with height 470px */}
+          <Grid item xs={12} sm={6} md={6}>
+          {renderSlider(banners1, 200, 470)}
+          </Grid>
+          {/* Render slider with height 220px */}
+          <Grid item xs={12} sm={6} md={6}>
+          {renderSlider(banners2, 100, 220)}
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+
+          </Grid>
+          <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
+          {renderSlider(banners3, 120, 215)}
+          </Grid>
+          <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
+            {renderSlider(banners4, 120, 215)}
+          </Grid>
+        </Grid>
+      </CustomBoxFullWidth>
     </CustomContainer>
   );
 };
