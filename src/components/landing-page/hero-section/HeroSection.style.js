@@ -19,7 +19,7 @@ export const SearchLocationTextField = styled(TextField)(
       border: "none",
     },
     marginTop: "-25px",
-    marginLeft: "-40px",
+    marginLeft: {xs: "", sm: "-40px"},
     // backgroundColor: alpha(theme.palette.primary.main, 0.5),
     color:"whiteContainer.main",
     "& .MuiOutlinedInput-root": {
