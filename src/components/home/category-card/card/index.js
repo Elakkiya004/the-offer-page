@@ -170,7 +170,7 @@ const LandingPageCard = (props) => {
                 color: hover ? "primary.main" : "inherit",
                 // textAlign: "center", // Align text to the right
                 // margin: "100px",
-                marginTop: "100px",
+                marginTop: "60px",
                 marginLeft: "-20px",
                 position: "absolute",
                 // textAlign: "center", 
@@ -186,7 +186,7 @@ const LandingPageCard = (props) => {
               <CustomImageContainer
                 src={image}
                 alt={title}
-                height="80px"
+                height="50px"
                 // width="100%"
                 objectFit="cover"
               />

@@ -51,11 +51,11 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
 							>
 								<Box
 									sx={{
-										border: (theme) =>
-											`0.828571px solid ${alpha(
-												theme.palette.primary.main,
-												0.15
-											)}`,
+										// border: (theme) =>
+										// 	`0.828571px solid ${alpha(
+										// 		theme.palette.primary.main,
+										// 		0.15
+										// 	)}`,
 										position: "relative",
 										height: "175px",
 										width: { sm: "100%", md: "395px" },
@@ -103,11 +103,11 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
 							<Box
 								key={index}
 								sx={{
-									border: (theme) =>
-										`0.828571px solid ${alpha(
-											theme.palette.primary.main,
-											0.15
-										)}`,
+									// border: (theme) =>
+									// 	`0.828571px solid ${alpha(
+									// 		theme.palette.primary.main,
+									// 		0.15
+									// 	)}`,
 									position: "relative",
 									height: "175px",
 									width: "100%",
@@ -175,11 +175,11 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
 			>
 				<Box
 					sx={{
-						border: (theme) =>
-							`0.828571px solid ${alpha(
-								theme.palette.primary.main,
-								0.15
-							)}`,
+						// border: (theme) =>
+						// 	`0.828571px solid ${alpha(
+						// 		theme.palette.primary.main,
+						// 		0.15
+						// 	)}`,
 						position: "relative",
 						height: "175px",
 						width: { xs: "100%", sm: "90%" },

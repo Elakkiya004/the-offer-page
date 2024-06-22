@@ -28,8 +28,8 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
             <Box
               key={index}
               sx={{
-                border: (theme) =>
-                  `0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
+                // border: (theme) =>
+                //   `0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
                 position: "relative",
                 height: {
                    xs: `${mobileHeight}px`,
@@ -73,7 +73,7 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
         <Grid container spacing={2}>
           {/* Render slider with height 470px */}
           <Grid item xs={12} sm={6} md={6}>
-          {renderSlider(banners1, 200, 470)}
+          {renderSlider(banners1, 200, 445)}
           </Grid>
           {/* Render slider with height 220px */}
           <Grid item xs={12} sm={6} md={6}>

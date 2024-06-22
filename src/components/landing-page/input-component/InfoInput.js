@@ -96,7 +96,7 @@ const InfoInput = () => {
     }
   };
   return (
-    <Grid container spacing={2} alignItems="center">
+    <Grid container spacing={2} alignItems="center" marginTop="-50px" >
       <Grid item>
         <TextField
          value={companyName}

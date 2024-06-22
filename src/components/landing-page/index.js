@@ -138,7 +138,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             handleOrderNow={handleOrderNow}
           />
 
-          <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-70px", sm: "-70px"} }}>
+          <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-80px", sm: "-78px"} }}>
             <HeroSection1
             configData={configData}
             landingPageData={landingPageData}
@@ -147,13 +147,13 @@ const LandingPage = ({ configData, landingPageData }) => {
           
           </Grid>
 
-          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-100px", sm: "-100px" } }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-130px", sm: "-110px" } }}>
             <CustomContainer>
               <CardCategories configData={configData} />
             </CustomContainer>
           </Grid>
 
-          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "", sm: "-70px"} }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-90px", sm: "-70px"} }}>
             {landingPageData?.promotion_banners?.length > 0 && (
               <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
             )}
@@ -166,7 +166,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             height: "100vh",
           }} />} */}
 
-        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-25px" : "-60px" }}>
+        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-40px" : "-70px" }}>
           <OfferBanner1
             configData={configData}
             landingPageData={landingPageData}
@@ -175,24 +175,26 @@ const LandingPage = ({ configData, landingPageData }) => {
           </Grid>
 
         </Grid>
-        <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "10px" : "-10px" }}>
+        <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-10px" : "-30px" }}>
         <Card />
         </Grid>
 
         {/* two banners */}
-        <Grid item xs={12} sm={12} sx={{ marginTop: "-50px" }}>
+        <Grid item xs={12} sm={12} sx={{ marginTop: "-60px" }}>
         <OfferBanner
           configDate={configData}
           landingPageData={landingPageData}
         />
       </Grid>
         <CustomContainer>
+        <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-50px" : "-70px" }}>
           <VisitAgain configData={configData} />
+        </Grid>
 
         </CustomContainer>
 
         {/* three banners */}
-        <Grid item sx={{  marginTop: isSmall ? "-35px" : "-70px" }}>
+        <Grid item sx={{  marginTop: isSmall ? "-35px" : "-40px" }}>
         {landingPageData?.promotion_banners?.length > 0 && (
           <Banners landingPageData={landingPageData} isSmall={isSmall} />
         )}
@@ -202,7 +204,7 @@ const LandingPage = ({ configData, landingPageData }) => {
           configData={configData}
           handleOrderNow={handleOrderNow}
         /> */}
-        <Grid item xs={12} md={12} sx={{  marginTop: isSmall ? "-45px" : "-70px" }}>
+        <Grid item xs={12} md={12} sx={{  marginTop: isSmall ? "-45px" : "-50px" }}>
           <ComponentThree
             configData={configData}
             landingPageData={landingPageData}
@@ -229,10 +231,11 @@ const LandingPage = ({ configData, landingPageData }) => {
             <Registration data={landingPageData} isSmall={isSmall} />
           )}
           </Grid>
-
+      <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-10px" : "-40px" }}>
         <PopularStore />
+      </Grid>
 
-        <Grid item xs={12} sx={{ marginTop: "20px" }}>
+        <Grid item xs={12} sx={{ marginTop: isSmall ? "" : "20px" }}>
           <CustomContainer>
             <SpecialFoodOffers />
           </CustomContainer>
@@ -243,8 +246,9 @@ const LandingPage = ({ configData, landingPageData }) => {
           landingPageData={landingPageData}
         />
         <CustomContainer>
-
+        <Grid item xs={12} sx={{ marginTop: isSmall ? "10px" :"-30px" }}>
           <Stores />
+        </Grid>
         </CustomContainer>
         {/* {(landingPageData?.business_title ||
           landingPageData?.business_sub_title ||
