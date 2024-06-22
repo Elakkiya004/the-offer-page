@@ -159,12 +159,12 @@ const LandingPage = ({ configData, landingPageData }) => {
             )}
           </Grid>
 
-          {/* {showModal && <PopupModal onClose={() => setShowModal(false)} sx={{
+          {showModal && <PopupModal onClose={() => setShowModal(false)} sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "100vh",
-          }} />} */}
+          }} />}
 
         <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-40px" : "-70px" }}>
           <OfferBanner1
