@@ -74,10 +74,10 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow, isSmall }) =
 						<Box
 							key={index}
 							sx={{
-								border: (theme) =>
-									`0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
+								// border: (theme) =>
+								// 	`0.828571px solid ${alpha(theme.palette.primary.main, 0.15)}`,
 								position: "relative",
-								height: {xs: "200px", sm: "470px"}, // Set the height dynamically
+								height: {xs: "150px", sm: "350px"}, // Set the height dynamically
 								width: "100%",
 								borderRadius: "5px",
 								overflow: "hidden",
@@ -121,7 +121,7 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow, isSmall }) =
 				}}
 			>
 				<Grid container spacing={2}>
-					<Grid item xs={12} md={6}>
+					<Grid item xs={8} md={8}>
 						<Box sx={{ position: "absolute" }} className="shape">
 							<CustomImageContainer
 								src={iconicBg.src}
@@ -195,7 +195,7 @@ const HeroSection = ({ configData, landingPageData, handleOrderNow, isSmall }) =
 						</Grid>
 					</Grid>
 
-					<Grid item xs={12} md={6}>
+					<Grid item xs={4} md={4}>
 						{renderSlider(banners1)}
 					</Grid>
 				</Grid>

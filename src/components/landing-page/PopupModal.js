@@ -34,7 +34,7 @@ export default function BlurredBackdropExample({ onClose }) {
           alignItems: "center",
           height: "100vh",
           width:"100vw",
-          marginTop: ["65px", "80px"],
+          marginTop: ["65px", "90px"],
           zIndex: 9999,
           animation: isVisible ? 'fadeIn 0.5s ease-in-out' : 'none', // Apply the fadeIn animation if isVisible is true
           animationDelay: isVisible ? '1s' : 'none', // Delay the animation by 2 seconds if isVisible is true

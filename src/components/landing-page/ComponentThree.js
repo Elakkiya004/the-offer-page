@@ -38,7 +38,7 @@ const ComponentThree = ({ configData, landingPageData }) => {
 				Number.parseInt(
 					landingPageData?.download_user_app_links?.apple_store_url_status
 				) === 1) && ( */}
-			<ComponentThreeContainer paddingTop="2rem" paddingBottom="2rem">
+			<ComponentThreeContainer paddingTop="2rem" paddingBottom="rem">
 				<CustomContainer>
 					<Grid
 						container
@@ -67,7 +67,8 @@ const ComponentThree = ({ configData, landingPageData }) => {
 								flexDirection: "column",
 								paddingY: '20px',
 								marginTop: "-10px",
-								fontFamily: "Montserrat"
+								fontFamily: "Montserrat",
+								color:"text.secondary"
 							}}>Setup your free store and get unlimited businesses.</Typography>
 
 						</Grid>

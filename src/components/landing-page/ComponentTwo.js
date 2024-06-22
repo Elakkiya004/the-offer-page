@@ -32,7 +32,7 @@ const ComponentTwo = ({ configData, landingPageData }) => {
 				Number.parseInt(
 					landingPageData?.download_user_app_links?.apple_store_url_status
 				) === 1) && (
-				<ComponentTwoContainer paddingTop="2rem" paddingBottom="2rem">
+				<ComponentTwoContainer paddingTop="rem" paddingBottom="rem">
 					<CustomContainer>
 						<Grid
 							container

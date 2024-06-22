@@ -1,10 +1,15 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Grid, useMediaQuery, useTheme } from '@mui/material';
 import CustomContainer from "../container";
 import { color, fontFamily } from '@mui/system';
 import { MarginTwoTone } from '@mui/icons-material';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import { useTheme } from '@material-ui/core/styles';
 
 const CustomCard = () => {
+    const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
     const imageUrls = [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_VZGQ8G2af8WHQv8pJ5GN3Ta9IqigHU9jsfHcwt4mZ8vimJRX",
         "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRt1P7D0cNmBfxJizZa-JuQNtDi5JJkzUGUxfvrXckndy6eeQ8b",
@@ -16,7 +21,7 @@ const CustomCard = () => {
         { name: "Setup Location", occupation: "Choose your location to discover top local deals and offers" },
         { name: "Sign up & explore", occupation: "Sign-in log in using your WhatsApp number or Email" },
         { name: "Deals & Discounts", occupation: "Add your customized discounted item to your cart" },
-        { name: "Save your time", occupation: "Show your unique QR code at the store & enjoy the discount on your purchase" }
+        { name: "Save your time", occupation: "Show QR code at the store & enjoy the discount on your purchase" }
     ];
 
     return (
@@ -32,20 +37,20 @@ const CustomCard = () => {
       </Typography><br />
             <Grid container spacing={2}>
                 {imageUrls.map((imageUrl, index) => (
-                    <Grid item xs={12} sm={6} md={3} key={index} sx={{ marginTop: "-20px", fontFamily: "Montserrat" }}>
+                    <Grid item xs={6} sm={6} md={3} key={index} sx={{ marginTop: "-20px", fontFamily: "Montserrat" }}>
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '' }}>
                             <img
                                 src={imageUrl}
                                 alt={`Image ${index + 1}`}
-                                style={{ height: '80px' }}
+                                style={{ height: isMobile ? '30px' : '50px' }}
                             />
                         </div>
 
-                        <CardContent>
-                            <Typography variant="h5" component="div" style={{ textAlign: "center", fontSize: "20px", fontFamily: "Montserrat" }}>
+                        <CardContent style={{marginTop: "-30px"}}>
+                            <Typography variant="h5" component="div" style={{ textAlign: "center", fontSize: isMobile ? "10px" : "20px", fontFamily: "Montserrat" }}>
                                 {cardContents[index].name}
                             </Typography>
-                            <Typography variant="h6" color="text.secondary" style={{ textAlign: "center", fontSize: "15px", fontFamily: "Montserrat" }}>
+                            <Typography variant="h6" color="text.secondary" style={{ textAlign: "center", fontSize: isMobile ? "8px" : "15px", fontFamily: "Montserrat" }}>
                                 {cardContents[index].occupation}
                             </Typography>
                         </CardContent>

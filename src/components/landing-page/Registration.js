@@ -73,7 +73,7 @@ const Card = ({
   return (
     <CustomBoxFullWidth
       sx={{
-        padding: { xs: ".5rem", sm: "2.5rem" },
+        // padding: { xs: ".5rem", sm: "2.5rem" },
         fontFamily: "Montserrat",
         borderRadius: "10px",
         height: "100%",

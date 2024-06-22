@@ -54,10 +54,10 @@ import {
           spacing={IsSmallScreen() ? 2.5 : 5}
           height="100%"
         >
-    <Typography textAlign="center" variant={isSmall ? "h7" : "h4"}>
+    <Typography textAlign="center" variant={isSmall ? "h7" : "h4"} sx={{ marginTop: {xs: "-100px", sm: "-70px"} }} >
        Give 20%, Get 200!
       </Typography>
-      <Typography textAlign="center" variant={isSmall ? "h7" : "h6"}>
+      <Typography textAlign="center" variant={isSmall ? "h7" : "h6"} style={{marginTop: {xs: "-40px", sm: "-100px"} }} >
       Join our newsletter today and receive 20% off for a friend and 200 for yourself!
       </Typography>
       <Grid
@@ -78,6 +78,7 @@ import {
                             background: 'white',
                             borderRadius: '10px',
                         },
+                        marginTop: {xs: "-20px", sm: "-40px"} 
                     }}
                     type="email"
                     name="email"
@@ -85,7 +86,7 @@ import {
                 />
             </Grid>
             <Grid item>
-                <Button variant="contained" sx={{ height: '48px', px: '50px' }}>
+                <Button variant="contained" sx={{ height: '48px', px: '50px',  marginTop: {xs: "", sm: "-55px"} }}>
                     Sign up
                 </Button>
             </Grid>
