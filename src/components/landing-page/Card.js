@@ -30,7 +30,8 @@ const CustomCard = () => {
         variant="h1"
         sx={{
           textAlign: 'center',
-          fontSize: { xs: '20px', sm: '30px' },
+          fontSize: { xs: '12px', sm: '25px' },
+          fontWeight: {xs: "400", sm: "700"}
         }}
       >
         How to Enjoy the Best Offers in your area
@@ -47,10 +48,10 @@ const CustomCard = () => {
                         </div>
 
                         <CardContent style={{marginTop: "-30px"}}>
-                            <Typography variant="h5" component="div" style={{ textAlign: "center", fontSize: isMobile ? "10px" : "20px", fontFamily: "Montserrat" }}>
+                            <Typography variant="h5" component="div" style={{ textAlign: "center", fontWeight: isMobile ? "400" : "700" ,fontSize: isMobile ? "10px" : "16px", fontFamily: "Montserrat" }}>
                                 {cardContents[index].name}
                             </Typography>
-                            <Typography variant="h6" color="text.secondary" style={{ textAlign: "center", fontSize: isMobile ? "8px" : "15px", fontFamily: "Montserrat" }}>
+                            <Typography variant="h6" color="text.secondary" style={{ textAlign: "center", fontSize: isMobile ? "8px" : "14px", fontFamily: "Montserrat" }}>
                                 {cardContents[index].occupation}
                             </Typography>
                         </CardContent>

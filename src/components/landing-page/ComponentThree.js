@@ -56,13 +56,13 @@ const ComponentThree = ({ configData, landingPageData }) => {
 
 							<Typography variant="h3" sx={{
 								// fontSize: "20px",
-								fontweight: '200',
+								fontweight: "200",
 								marginTop: "-20px",
 								fontFamily: "Montserrat",
-								fontSize: { xs: '20px', sm: '30px' },
+								fontSize: { xs: '16px', sm: '25px' },
 							}}>List Your Own Business</Typography>
 							<Typography variant="body1" sx={{
-								fontSize: "20px",
+								fontSize: { xs: "14px", sm: "18px" },
 								display: "flex",
 								flexDirection: "column",
 								paddingY: '20px',

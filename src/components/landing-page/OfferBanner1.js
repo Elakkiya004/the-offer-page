@@ -76,16 +76,16 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
           {renderSlider(banners1, 200, 445)}
           </Grid>
           {/* Render slider with height 220px */}
-          <Grid item xs={12} sm={6} md={6}>
-          {renderSlider(banners2, 100, 220)}
+          <Grid item xs={12} sm={6} md={6} sx={{ marginTop: { xs: "-20px", sm: "0px" } }}>
+          {renderSlider(banners2, 135, 220)}
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
 
           </Grid>
-          <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
+          <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-40px", sm: "-250px" } }}>
           {renderSlider(banners3, 120, 215)}
           </Grid>
-          <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-20px", sm: "-250px" } }}>
+          <Grid item xs={6} sm={3} md={3} sx={{ marginTop: { xs: "-40px", sm: "-250px" } }}>
             {renderSlider(banners4, 120, 215)}
           </Grid>
         </Grid>

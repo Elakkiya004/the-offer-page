@@ -361,7 +361,7 @@ const HeroLocationForm = () => {
                       "&:hover": {
                         color: "primary.main",
                       },
-                      marginLeft: {xs: "50px", sm: "-552px"},
+                      marginLeft: {xs: "10px", sm: "-552px"},
                     }}
                   >
                     <CustomStackFullWidth
