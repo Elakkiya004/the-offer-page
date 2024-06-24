@@ -138,7 +138,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             handleOrderNow={handleOrderNow}
           />
 
-          <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-80px", sm: "-78px"} }}>
+          <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-60px", sm: "-78px"} }}>
             <HeroSection1
             configData={configData}
             landingPageData={landingPageData}
@@ -153,7 +153,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             </CustomContainer>
           </Grid>
 
-          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-90px", sm: "-70px"} }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-45px", sm: "-70px"} }}>
             {landingPageData?.promotion_banners?.length > 0 && (
               <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
             )}
@@ -164,9 +164,9 @@ const LandingPage = ({ configData, landingPageData }) => {
             justifyContent: "center",
             alignItems: "center",
             height: "100vh",
-          }} />}
+          }} />} 
 
-        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-40px" : "-70px" }}>
+        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-45px" : "-70px" }}>
           <OfferBanner1
             configData={configData}
             landingPageData={landingPageData}
@@ -194,7 +194,7 @@ const LandingPage = ({ configData, landingPageData }) => {
         </CustomContainer>
 
         {/* three banners */}
-        <Grid item sx={{  marginTop: isSmall ? "-35px" : "-40px" }}>
+        <Grid item sx={{  marginTop: isSmall ? "-40px" : "-40px" }}>
         {landingPageData?.promotion_banners?.length > 0 && (
           <Banners landingPageData={landingPageData} isSmall={isSmall} />
         )}
@@ -210,8 +210,8 @@ const LandingPage = ({ configData, landingPageData }) => {
             landingPageData={landingPageData}
           />
         </Grid>
-        <Grid item xs={12} md={12} sx={{ marginTop: isSmall ? "" : "-25px" }}>
-          <h1 style={{ marginLeft: isSmall ? "20px" : "280px", fontSize: isSmall ? "20px" : "30px" }}>New Arrivals</h1>
+        <Grid item xs={12} md={12} sx={{ marginTop: isSmall ? "" : "-10px" }}>
+          <h1 style={{ marginLeft: isSmall ? "20px" : "280px", fontSize: isSmall ? "14px" : "25px" }}>New Arrivals</h1>
           {landingPageData?.fixed_promotional_banner && (
             <CustomBoxFullWidth>
               <DiscountBanner

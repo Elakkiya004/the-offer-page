@@ -31,6 +31,7 @@ export const Card = styled(Box)(({ theme }) => ({
   // },
 }));
 
+
 const LandingPageCard = (props) => {
 
   const tagManagerArgs = {
@@ -165,12 +166,12 @@ const LandingPageCard = (props) => {
               // className={classes.singleLineEllipsis}
               // maxHeight="20px"
               color={hover && "primary.main"}
-              style={{
+              sx={{
                 // maxHeight: "20px",
                 color: hover ? "primary.main" : "inherit",
                 // textAlign: "center", // Align text to the right
                 // margin: "100px",
-                marginTop: "60px",
+                marginTop: {xs: "80px", md: "60px"},
                 marginLeft: "-20px",
                 position: "absolute",
                 // textAlign: "center", 
@@ -186,7 +187,7 @@ const LandingPageCard = (props) => {
               <CustomImageContainer
                 src={image}
                 alt={title}
-                height="50px"
+                height="3.2rem"
                 // width="100%"
                 objectFit="cover"
               />
