@@ -24,7 +24,7 @@ import {
 
   const TRACKING_ID = "G-FECBMFT6KW";
 
-  const NewsLetter = ({ data, isSmall }) => {
+  const NewsLetter = ({ data, isSmall, email, children }) => {
 
 
     const tagManagerArgs = {
@@ -86,8 +86,8 @@ import {
                 />
             </Grid>
             <Grid item>
-                <Button variant="contained" sx={{ height: '48px', px: '50px',  marginTop: {xs: "", sm: "-55px"} }}>
-                    Sign up
+                <Button variant="contained" href="{`mailto:${email}`}" sx={{ height: '48px', px: '50px',  marginTop: {xs: "", sm: "-55px"} }}>
+                {children} Sign up
                 </Button>
             </Grid>
         </Grid>

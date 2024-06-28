@@ -19,7 +19,7 @@ const styles = theme => ({
         color:'red'
     }
 });
-const InfoInput = () => {
+const InfoInput = ({ email, children }) => {
 
   const tagManagerArgs = {
 		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
@@ -41,66 +41,72 @@ const InfoInput = () => {
     ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
   }, []);
 
-  const [emailAddress, setEmailAddress] = useState(null);
-  const { t } = useTranslation();
-  const { mutate, isLoading } = usePostNewsletterEmail();
-  const theme = useTheme();
+  
 
-  const [companyName, setCompanyName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const [emailAddress, setEmailAddress] = useState(null);
+  // const { t } = useTranslation();
+  // const { mutate, isLoading } = usePostNewsletterEmail();
+  // const theme = useTheme();
 
-  const handleTryItFree = async () => {
-    try {
-      // Send a POST request to your backend API to handle email sending
-        const response = await axios.post("info@theofferpage.in", {
-        companyName,
-        phoneNumber,
-        recipientEmail: "store@theofferpage.in"
-      });
-      if (response.status === 200) {
-        toast.success("Email sent successfully!");
-        // Reset input fields after successful submission
-        setCompanyName("");
-        setPhoneNumber("");
-      } else {
-        toast.error("Failed to send email.");
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
-      toast.error("Failed to send email.");
-    }
-  };
+  // const [companyName, setCompanyName] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
 
-  const handleSuccess = () => {
-    toast.success(t("Subscribed Successfully"), {
-      id: "subscribed-toaster",
-    });
-    setEmailAddress("");
-  };
+  // const handleTryItFree = async () => {
+  //   try {
+  //     // Send a POST request to your backend API to handle email sending
+  //       const response = await axios.post("info@theofferpage.in", {
+  //       companyName,
+  //       phoneNumber,
+  //       recipientEmail: "store@theofferpage.in"
+  //     });
+  //     if (response.status === 200) {
+  //       toast.success("Email sent successfully!");
+  //       // Reset input fields after successful submission
+  //       setCompanyName("");
+  //       setPhoneNumber("");
+  //     } else {
+  //       toast.error("Failed to send email.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending email:", error);
+  //     toast.error("Failed to send email.");
+  //   }
+  // };
 
-  const handleSubmit = () => {
-    const regex =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (regex.test(emailAddress) === true) {
-      mutate(
-        { email: emailAddress },
-        {
-          onSuccess: handleSuccess,
-          onError: onErrorResponse,
-        }
-      );
-    } else {
-      toast.error(t("Please insert a valid email."), {
-        id: "subscribed-email-error",
-      });
-    }
-  };
+  // const handleSuccess = () => {
+  //   toast.success(t("Subscribed Successfully"), {
+  //     id: "subscribed-toaster",
+  //   });
+  //   setEmailAddress("");
+  // };
+
+  // const handleSubmit = () => {
+  //   const regex =
+  //     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  //   if (regex.test(emailAddress) === true) {
+  //     mutate(
+  //       { email: emailAddress },
+  //       {
+  //         onSuccess: handleSuccess,
+  //         onError: onErrorResponse,
+  //       }
+  //     );
+  //   } else {
+  //     toast.error(t("Please insert a valid email."), {
+  //       id: "subscribed-email-error",
+  //     });
+  //   }
+  // };
   return (
+    // <form action="https://formsubmit.co/1636a9a005108a719b7d0dcb53cd113d" method="POST">
+    //   <input type="hidden" name="_subject" value="New Contact Form Submission" />
+    //   <input type="hidden" name="_templete" value="table" />
+    //   <input type="hidden" name="_form" value="Custom-email@example.com" />
     <Grid container spacing={2} alignItems="center" marginTop="-50px" >
       <Grid item>
         <TextField
-         value={companyName}
-         onChange={(e) => setCompanyName(e.target.value)}
+        //  value={companyName}
+        //  onChange={(e) => setCompanyName(e.target.value)}
           sx={{
             color: "black",
             height: "48px",
@@ -113,14 +119,14 @@ const InfoInput = () => {
           }}
           
           type="text"
-          name="company_name"
+          name="Company Name"
           placeholder="Company Name"
         />
       </Grid>
       <Grid item>
         <TextField
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        // value={phoneNumber}
+        // onChange={(e) => setPhoneNumber(e.target.value)}
           sx={{
             color: "black",
             height: "48px", 
@@ -132,26 +138,29 @@ const InfoInput = () => {
             }
           }}
           type="phone number"
-          name="phone number"
+          name="Whatsapp Number"
           placeholder="Whatsapp Number"
          
         />
       </Grid>
       <Grid item>
       <Button
+        href="{`mailto:${email}`}"
           variant="contained"
+          type="submit"
           sx={{
             height: "48px",
             px: "50px",
             fontFamily: "Montserrat",
           }}
-          onClick={handleTryItFree}
-          startIcon={<MailOutlineIcon />}
+          // onClick={handleTryItFree}
+          // startIcon={<MailOutlineIcon />}
         >
-          Try it free
+          {children} Try it free
         </Button>
       </Grid>
     </Grid>
+    // </form>
   );
 };
 
