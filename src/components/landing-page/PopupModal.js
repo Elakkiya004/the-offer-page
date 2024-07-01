@@ -45,7 +45,7 @@ export default function BlurredBackdropExample({ onClose }) {
         }}
       >
         <img src="https://offer.theofferpage.in/storage/app/public/promotional_banner/2024-05-26-6652cce64001d.png" alt="popup image" style={{ height: isSmall ? "30%" : "500px", width:  isSmall ? "60%" : "50%",}} />
-        <Button   color="primary" onClick={onClose} style={{ marginTop: isSmall ? "-230px" :"-460px",marginLeft: "-65px", color: "black" }}>
+        <Button   color="primary" onClick={onClose} style={{ marginTop: isSmall ? "-200px" :"-460px",marginLeft: "-55px", color: "black" }}>
           <X />
         </Button>
 

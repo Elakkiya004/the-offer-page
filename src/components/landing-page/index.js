@@ -147,13 +147,13 @@ const LandingPage = ({ configData, landingPageData }) => {
           
           </Grid>
 
-          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-130px", sm: "-110px" } }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-220px", sm: "-110px" } }}>
             <CustomContainer>
               <CardCategories configData={configData} />
             </CustomContainer>
           </Grid>
 
-          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-45px", sm: "-70px"} }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-90px", sm: "-70px"} }}>
             {landingPageData?.promotion_banners?.length > 0 && (
               <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
             )}
