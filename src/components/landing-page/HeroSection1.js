@@ -53,7 +53,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 src={`${landingPageData?.base_urls?.promotional_banner_url}/${item.img}`}
                                 alt="banners"
                                 height={{
-                                    xs: "250px",
+                                    xs: "120px",
                                     sm: "400px"
                                 }}
                                 width="100%"
