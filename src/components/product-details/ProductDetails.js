@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { Grid, NoSsr } from "@mui/material";
 import ProductDetailsSection from "./product-details-section/ProductDetailsSection";
