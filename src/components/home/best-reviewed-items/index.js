@@ -142,7 +142,7 @@ const BestReviewedItems = (props) => {
       {
         breakpoint: 450,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
           slidesToScroll: 1,
           infinite: false,
         },
@@ -150,7 +150,7 @@ const BestReviewedItems = (props) => {
       {
         breakpoint: 550,
         settings: {
-          slidesToShow: 1.7,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -165,7 +165,7 @@ const BestReviewedItems = (props) => {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3.5,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },

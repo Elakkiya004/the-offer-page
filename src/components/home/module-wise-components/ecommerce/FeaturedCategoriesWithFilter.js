@@ -50,7 +50,7 @@ export const settings = {
     {
       breakpoint: 500,
       settings: {
-        slidesToShow: 1.2,
+        slidesToShow: 1,
         slidesPerRow: 1,
         rows: 3,
         slidesToScroll: 1,
@@ -59,7 +59,7 @@ export const settings = {
     {
       breakpoint: 700,
       settings: {
-        slidesToShow: 1.5,
+        slidesToShow: 1,
         slidesPerRow: 2,
         rows: 3,
         slidesToScroll: 2,
@@ -68,7 +68,7 @@ export const settings = {
     {
       breakpoint: 750,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesPerRow: 2,
         rows: 3,
         slidesToScroll: 2,

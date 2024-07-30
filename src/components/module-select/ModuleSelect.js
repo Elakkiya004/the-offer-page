@@ -1,6 +1,6 @@
 import { Skeleton, styled, Tooltip } from "@mui/material";
 import { Box, Stack } from "@mui/system";
-import React from "react";
+import React, {useEffect} from "react";
 import { setSelectedModule } from "../../redux/slices/utils";
 import CustomImageContainer from "../CustomImageContainer";
 import { setFeaturedCategories } from "../../redux/slices/storedData";
