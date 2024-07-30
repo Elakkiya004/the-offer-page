@@ -191,7 +191,7 @@ const Top = (props) => {
           };
         case ModuleTypes.ECOMMERCE:
           return {
-            bgColor: theme.palette.info.blue,
+            bgColor: theme.palette.primary.main,
           };
         case ModuleTypes.FOOD:
           return {
