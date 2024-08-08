@@ -67,7 +67,7 @@ const NavLinks = ({ zoneid, t, moduleType }) => {
               </NavLinkStyle>
             </Link>
           )}
-          <Link href="https://www.offer.theofferpage.in/store/apply">
+          <Link href="https://www.offer.theofferpage.in/store/apply" target="_blank">
                 <NavLinkStyle
                   underline="none"
                   sx={{ cursor: "pointer", fontWeight: "bold"}}

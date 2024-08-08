@@ -55,7 +55,7 @@ import {
           height="100%"
         >
     <Typography textAlign="center" variant={isSmall ? "h7" : "h4"} sx={{ marginTop: {xs: "-100px", sm: "-70px"} }} >
-       Give 20%, Get 200!
+    Shop SMART! Save BIG! Support LOCAL!
       </Typography>
       <Typography textAlign="center" variant={isSmall ? "h7" : "h6"} style={{marginTop: {xs: "-40px", sm: "-100px"} }} >
       Join our newsletter today and receive 20% off for a friend and 200 for yourself!

@@ -62,13 +62,13 @@ const PlaceOrder = (props) => {
             <CustomTypography fontSize="12px">
               {t(`I agree that placing the order places me under`)}{" "}
               <Link
-                href="/terms-and-conditions"
+                href="/terms-and-conditions" target="_blank"
                 style={{ color: primaryColor }}
               >
                 {t("Terms and Conditions")}
               </Link>{" "}
               {t("&")}
-              <Link href="/privacy-policy" style={{ color: primaryColor }}>
+              <Link href="/privacy-policy" target="_blank" style={{ color: primaryColor }}>
                 {" "}
                 {t("Privacy Policy")}
               </Link>

@@ -25,7 +25,7 @@ const CustomCard = () => {
     ];
 
     return (
-        <CustomContainer style={{ fontFamily: "Montserrat" }}>
+        <CustomContainer style={{ fontFamily: "sans-serif" }}>
              <Typography
         variant="h1"
         sx={{
