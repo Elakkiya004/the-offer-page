@@ -16,7 +16,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
 
 	borderRadius: "10px",
 	cursor: "pointer",
-	width: "225px",
+	width: "200px",
 	transition: "all ease 0.5s",
 	".MuiTypography-h7": {
 		transition: "all ease 0.5s",

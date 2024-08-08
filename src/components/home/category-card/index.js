@@ -311,7 +311,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 460,
 				settings: {
-					slidesToShow: 1,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 					infinite: false,
 				},
@@ -319,7 +319,7 @@ const CardCategories = ({ configData }) => {
 			{
 				breakpoint: 400,
 				settings: {
-					slidesToShow: 1,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 				},
 			},
