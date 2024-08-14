@@ -158,11 +158,11 @@ const LandingPage = ({ configData, landingPageData }) => {
             </CustomContainer>
           </Grid>
 
-          {/* <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-90px", sm: "-70px"} }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-90px", sm: "-55px"} }}>
             {landingPageData?.promotion_banners?.length > 0 && (
               <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
             )}
-          </Grid> */}
+          </Grid>
 
           {showModal && <PopupModal onClose={() => setShowModal(false)} sx={{
             display: "flex",
@@ -171,7 +171,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             height: "100vh",
           }} />} 
 
-        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "" : "-20px" }}>
+        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "" : "-30px" }}>
           <OfferBanner1
             configData={configData}
             landingPageData={landingPageData}
@@ -185,12 +185,12 @@ const LandingPage = ({ configData, landingPageData }) => {
         </Grid>
 
         {/* two banners */}
-        {/* <Grid item xs={12} sm={12} sx={{ marginTop: "-60px" }}>
+        <Grid item xs={12} sm={12} sx={{ marginTop: "-60px" }}>
         <OfferBanner
           configDate={configData}
           landingPageData={landingPageData}
         />
-      </Grid> */}
+      </Grid>
         <CustomContainer>
         <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-10px" : "-50px" }}>
           <VisitAgain configData={configData} />
@@ -243,22 +243,22 @@ const LandingPage = ({ configData, landingPageData }) => {
       </Grid>
 
         {/* three banners */}
-        {/* <Grid item sx={{  marginTop: isSmall ? "-40px" : "-40px" }}>
+        <Grid item sx={{  marginTop: isSmall ? "-40px" : "-40px" }}>
         {landingPageData?.promotion_banners?.length > 0 && (
           <Banners landingPageData={landingPageData} isSmall={isSmall} />
         )}
-        </Grid> */}
+        </Grid>
         {/* <ComponentOne
           landingPageData={landingPageData}
           configData={configData}
           handleOrderNow={handleOrderNow}
         /> */}
-        {/* <Grid item xs={12} md={12} sx={{  marginTop: isSmall ? "-45px" : "-50px" }}>
+        <Grid item xs={12} md={12} sx={{  marginTop: isSmall ? "-45px" : "-50px" }}>
           <ComponentThree
             configData={configData}
             landingPageData={landingPageData}
           />
-        </Grid> */}
+        </Grid>
         {/* <Grid item xs={12} md={12} sx={{ marginTop: isSmall ? "" : "-10px" }}>
           <h1 style={{ marginLeft: isSmall ? "20px" : "280px", fontSize: isSmall ? "14px" : "25px" }}>New Arrivals</h1>
           {landingPageData?.fixed_promotional_banner && (

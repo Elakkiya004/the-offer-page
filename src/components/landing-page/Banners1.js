@@ -74,6 +74,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 										},
 									}}
 								>
+									<a href={item.link} target="_blank" rel="noopener noreferrer">
 									<CustomImageContainer
 										src={`${landingPageData?.base_urls?.promotional_banner_url}/${item.img}`}
 										alt="banners"
@@ -82,6 +83,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 										obejctfit="contain"
 										borderRadius="5px"
 									/>
+									</a>
 								</Box>
 							</Grid>
 						);
@@ -121,6 +123,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 									overflow: "hidden",
 								}}
 							>
+								<a href={item.link} target="_blank" rel="noopener noreferrer">
 								<CustomImageContainer
 									src={`${landingPageData?.base_urls?.promotional_banner_url}/${item?.img}`}
 									alt="banners"
@@ -129,6 +132,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 									obejctfit="contain"
 									borderRadius="5px"
 								/>
+								</a>
 							</Box>
 						);
 					})}
@@ -194,6 +198,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 						borderRadius: "5px",
 					}}
 				>
+					<a href={item.link} target="_blank" rel="noopener noreferrer">
 					<CustomImageContainer
 						src={`${landingPageData?.base_urls?.promotional_banner_url}/${landingPageData?.promotion_banners[0]?.img}`}
 						alt="banners"
@@ -202,6 +207,7 @@ const Banners1 = ({ landingPageData, isSmall }) => {
 						obejctfit="contain"
 						borderRadius="5px"
 					/>
+					</a>
 				</Box>
 			</CustomBoxFullWidth>
 		);

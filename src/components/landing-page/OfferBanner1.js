@@ -40,6 +40,7 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
                 overflow: "hidden",
               }}
             >
+             <a href={item.link} target="_blank" rel="noopener noreferrer"> 
               <CustomImageContainer
                 src={`${landingPageData?.base_urls?.promotional_banner_url}/${item.img}`}
                 alt="banners"
@@ -48,6 +49,7 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
                 objectFit="contain"
                 borderRadius="5px"
               />
+            </a>
             </Box>
           ))}
         </Slider>
