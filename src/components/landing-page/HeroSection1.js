@@ -49,6 +49,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 
                             }}
                         >
+                            <a href={item.link} target="_blank" rel="noopener noreferrer">
                             <CustomImageContainer
                                 src={`${landingPageData?.base_urls?.promotional_banner_url}/${item.img}`}
                                 alt="banners"
@@ -61,7 +62,7 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
                                 borderRadius="5px"
                                 marginTop="500px"
                             />
-					
+                            </a>
                         </Box>
                     ))}
                 </Slider>
