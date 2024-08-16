@@ -26,7 +26,7 @@ import ScheduleDelivery from "./ScheduleDelivery";
 import { today, tomorrow } from "../../../utils/formatedDays";
 import RestaurantScheduleTime from "./RestaurantScheduleTime";
 import { getToken } from "../../../helper-functions/getToken";
-import MyDatePicker from "./datepicker";
+// import MyDatePicker from "./datepicker";
 
 const DeliveryDetails = (props) => {
   const {
@@ -75,7 +75,7 @@ const DeliveryDetails = (props) => {
     <CustomStackFullWidth spacing={{ xs: 1.5, md: 3 }}>
       <DeliveryCaption const id="demo-row-radio-buttons-group-label">
         {t("Delivery Options")}
-        <MyDatePicker />
+        {/* <MyDatePicker /> */}
       </DeliveryCaption>
       {storeData && (
         <Stack
