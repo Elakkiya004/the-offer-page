@@ -158,20 +158,20 @@ const LandingPage = ({ configData, landingPageData }) => {
             </CustomContainer>
           </Grid>
 
-          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-90px", sm: "-55px"} }}>
+          <Grid item xs={12} md={12} sx={{ marginTop: {xs: "-10px", sm: "-55px"} }}>
             {landingPageData?.promotion_banners?.length > 0 && (
               <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
             )}
           </Grid>
 
-          {showModal && <PopupModal onClose={() => setShowModal(false)} sx={{
+          {showModal && <PopupModal landingPageData={landingPageData} onClose={() => setShowModal(false)} sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "100vh",
           }} />} 
 
-        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "" : "-30px" }}>
+        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-80px" : "-30px" }}>
           <OfferBanner1
             configData={configData}
             landingPageData={landingPageData}

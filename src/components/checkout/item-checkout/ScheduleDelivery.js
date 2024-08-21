@@ -1,29 +1,15 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import { CustomStackFullWidth } from "../../../styled-components/CustomStyles.style";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import dayjs from "dayjs";
-import { CustomDatePicker, CustomTimePicker } from "../CheckOut.style";
-import {
-  FormControlLabel,
-  FormGroup,
-  Input,
-  InputAdornment,
-  styled,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { Stack } from "@mui/system";
+import { TextField } from "@mui/material";
+import { CustomDatePicker } from "../CheckOut.style";
+import { styled, Switch, Typography, Stack } from "@mui/material";
 import { t } from "i18next";
-import { InputLabel } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import moment from "moment/moment";
+import moment from "moment";
 import { getDayNumber } from "../../../utils/CustomFunctions";
 import { useSelector } from "react-redux";
-import { dateAndTimeConverter } from "../../../utils/DateAndTimeConverter";
 
 const TimeInput = styled(TextField)(({ theme }) => ({
   border: "none",
@@ -43,11 +29,11 @@ const TimeInput = styled(TextField)(({ theme }) => ({
     border: "none",
   },
 }));
+
 const MaterialUISwitch = styled(Switch)(({ theme, timeValue }) => ({
   width: 100,
   height: 30,
   padding: 0,
-
   "& .MuiSwitch-switchBase": {
     background: "rgba(118, 118, 128, 0.12)",
     margin: 2,
@@ -59,14 +45,12 @@ const MaterialUISwitch = styled(Switch)(({ theme, timeValue }) => ({
         borderRadius: 5,
       },
     },
-
     "&.Mui-checked": {
       color: "#fff",
       transform: "translateX(45px)",
       "& .MuiSwitch-thumb:before": {
         content: `"${timeValue}"`,
         position: "absolute",
-
         left: "50%",
         top: "50%",
         transform: "translate(-50%, -50%)",
@@ -78,12 +62,10 @@ const MaterialUISwitch = styled(Switch)(({ theme, timeValue }) => ({
     color: "#3E594D",
     width: 48,
     height: 26,
-
     borderRadius: "5px",
     "&:before": {
       content: `"${timeValue}"`,
       position: "absolute",
-
       left: "50%",
       top: "50%",
       transform: "translate(-50%, -50%)",
@@ -95,9 +77,10 @@ const MaterialUISwitch = styled(Switch)(({ theme, timeValue }) => ({
   },
 }));
 
-const ScheduleDelivery = ({ customDispatch, scheduleTime, setDayNumber }) => {
+const ScheduleDelivery = ({ customDispatch = () => {}, scheduleTime = "00:00", setDayNumber = () => {} }) => {
   const { configData } = useSelector((state) => state.configData);
   const [timeValue, setTimeValue] = useState("AM");
+
   const handleChange = (e) => {
     const input = e.target.value;
     const hour = parseInt(input.split(":")[0], 10);
@@ -113,23 +96,37 @@ const ScheduleDelivery = ({ customDispatch, scheduleTime, setDayNumber }) => {
       payload: formattedTime,
     });
   };
+
   const handleChangeCheck = (event) => {
-    if (event.target.checked) {
-      customDispatch({ type: "SET_AMPM", payload: timeValue });
-    } else {
-      customDispatch({ type: "SET_AMPM", payload: timeValue });
-    }
+    const amPm = timeValue; // Adjust if needed based on check state
+    customDispatch({ type: "SET_AMPM", payload: amPm });
   };
+
   const handleDateChange = (newValue) => {
-    const dayName = moment(newValue?.$d).format("dddd");
-    const selectedDayNumber = getDayNumber(dayName);
-    setDayNumber(selectedDayNumber);
-    customDispatch({ type: "SET_SCHEDULE_MONTH", payload: newValue });
+    if (newValue?.$d) {
+      const dayName = moment(newValue.$d).format("dddd");
+      const selectedDayNumber = getDayNumber(dayName);
+      if (typeof setDayNumber === 'function') {
+        if (selectedDayNumber !== undefined) {
+          setDayNumber(selectedDayNumber);
+        } else {
+          console.error('Invalid day number returned from getDayNumber');
+        }
+      } else {
+        console.error('setDayNumber is not a function');
+      }
+    } else {
+      console.error('Invalid date value');
+    }
+    if (typeof customDispatch === 'function') {
+      customDispatch({ type: "SET_SCHEDULE_MONTH", payload: newValue });
+    } else {
+      console.error('customDispatch is not a function');
+    }
   };
 
   return (
     <CustomStackFullWidth p="1rem">
-      {" "}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <CustomDatePicker
           renderInput={(params) => <TextField {...params} />}
@@ -144,7 +141,7 @@ const ScheduleDelivery = ({ customDispatch, scheduleTime, setDayNumber }) => {
           pl="1.25rem"
           alignItems="center"
         >
-          <Typography fontWeight="400" fontSize="16px">
+          {/* <Typography fontWeight="400" fontSize="16px">
             {t("Time")}
           </Typography>
           <Stack direction="row" spacing={1.7}>
@@ -153,17 +150,22 @@ const ScheduleDelivery = ({ customDispatch, scheduleTime, setDayNumber }) => {
               value={scheduleTime}
               onChange={(e) => handleChange(e)}
             />
-
             <MaterialUISwitch
               timeValue={timeValue}
               defaultChecked
               onChange={handleChangeCheck}
             />
-          </Stack>
+          </Stack> */}
         </Stack>
       </LocalizationProvider>
     </CustomStackFullWidth>
   );
+};
+
+ScheduleDelivery.propTypes = {
+  customDispatch: PropTypes.func,
+  scheduleTime: PropTypes.string,
+  setDayNumber: PropTypes.func,
 };
 
 export default ScheduleDelivery;

@@ -1,32 +1,21 @@
-import React, { useReducer, useState } from "react";
-// import { DeliveryCaption, DeliveryTitle, StyledPaper } from "./CheckOut.style";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-
 import {
-  CustomPaperBigCard,
   CustomStackFullWidth,
 } from "../../../styled-components/CustomStyles.style";
-import { DeliveryCaption, DeliveryTitle } from "../CheckOut.style";
+import { DeliveryCaption } from "../CheckOut.style";
 import DeliveryAddress from "../delivery-address";
-import { Stack, textAlign } from "@mui/system";
+import { Stack, Typography } from "@mui/material";
 import {
-  CustomButtonPrimary,
   DeliveryOptionButton,
 } from "../../../styled-components/CustomButtons.style";
 import homeImg from "../assets/image 1256.png";
 import takeaway from "../assets/takeaway.png";
 import schedule from "../assets/schedule.png";
 import CustomImageContainer from "../../CustomImageContainer";
-import { Popover, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@emotion/react";
-import { handleClick, handleCloseModal } from "../../address/HelperFunctions";
-import { initialState, reducer } from "../../address/states";
-import CustomModal from "../../modal";
 import ScheduleDelivery from "./ScheduleDelivery";
-import { today, tomorrow } from "../../../utils/formatedDays";
 import RestaurantScheduleTime from "./RestaurantScheduleTime";
-import { getToken } from "../../../helper-functions/getToken";
-// import MyDatePicker from "./datepicker";
 
 const DeliveryDetails = (props) => {
   const {
@@ -41,7 +30,6 @@ const DeliveryDetails = (props) => {
     customDispatch,
     scheduleTime,
     setDayNumber,
-
     handleChange,
     today,
     tomorrow,
@@ -50,32 +38,28 @@ const DeliveryDetails = (props) => {
   } = props;
   const { t } = useTranslation();
   const theme = useTheme();
-  const isSmall = useMediaQuery("(max-width:490px)");
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [showSchedule, setShowSchedule] = useState(false);
   const [showText, setShowText] = useState(false);
-
-  const handleClick = (event) => {
-    setOrderType("schedule_order");
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
 
   const handleOrderType = (value) => {
     if (value === "take_away") {
       setDeliveryTip(0);
     }
     setOrderType(value);
+    // Show ScheduleDelivery if the order type is delivery or take_away
+    if (value === "delivery" || value === "take_away") {
+      setShowSchedule(true);
+    } else {
+      setShowSchedule(false);
+    }
   };
+
   return (
     <CustomStackFullWidth spacing={{ xs: 1.5, md: 3 }}>
-      <DeliveryCaption const id="demo-row-radio-buttons-group-label">
+      <DeliveryCaption id="demo-row-radio-buttons-group-label">
         {t("Delivery Options")}
-        {/* <MyDatePicker /> */}
+        {/* Show ScheduleDelivery component based on state */}
+        {showSchedule && <ScheduleDelivery />}
       </DeliveryCaption>
       {storeData && (
         <Stack
@@ -86,14 +70,12 @@ const DeliveryDetails = (props) => {
           sx={{ flexWrap: { xs: "wrap", sm: "wrap", md: "nowrap" } }}
         >
           <DeliveryOptionButton
-
             onMouseEnter={() => setShowText(true)}
             onMouseLeave={() => setShowText(false)}
-
             fullwidth="true"
             orderType={orderType === "delivery"}
             onClick={() => handleOrderType("delivery")}
-            hover="true" // Use the hover prop here
+            hover="true"
             sx={{
               "&:hover": {
                 color: (theme) => theme.palette.whiteContainer.main,
@@ -118,20 +100,16 @@ const DeliveryDetails = (props) => {
               }
             >
               {t("Home Delivery")}
-             
+              {showText && <span style={{ marginLeft: '-15px', fontSize: "14px" }}>Coming Soon</span>}
             </Typography>
-            {showText && 
-            
-           <span style={{marginLeft: '-15px', fontSize: "14px"}} >Coming Soon</span>}
           </DeliveryOptionButton>
-         
-          {!forprescription &&
+
+          {!forprescription && (
             <DeliveryOptionButton
               fullwidth="true"
               orderType={orderType === "take_away"}
               onClick={() => handleOrderType("take_away")}
             >
-              {" "}
               <CustomImageContainer
                 src={takeaway.src}
                 width="30px"
@@ -151,14 +129,15 @@ const DeliveryDetails = (props) => {
               >
                 {t("I’ll Pick It Up MySelf")}
               </Typography>
-            </DeliveryOptionButton>}
+            </DeliveryOptionButton>
+          )}
+
           {storeData?.schedule_order && (
             <DeliveryOptionButton
               fullwidth="true"
               orderType={orderType === "schedule_order"}
-              onClick={handleClick}
+              onClick={() => handleOrderType("schedule_order")}
             >
-              {" "}
               <CustomImageContainer
                 src={schedule.src}
                 width="30px"
@@ -200,29 +179,6 @@ const DeliveryDetails = (props) => {
         storeZoneId={storeData?.zone_id}
         orderType={orderType}
       />
-      {/*{orderType !== "take_away" && (*/}
-
-      {/*)}*/}
-
-      {/*<Popover*/}
-      {/*  open={open}*/}
-      {/*  anchorEl={anchorEl}*/}
-      {/*  onClose={handleClose}*/}
-      {/*  anchorOrigin={{*/}
-      {/*    vertical: "bottom",*/}
-      {/*    horizontal: "left",*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  <RestaurantScheduleTime*/}
-      {/*    storeData={storeData}*/}
-      {/*    handleChange={handleChange}*/}
-      {/*    today={today}*/}
-      {/*    tomorrow={tomorrow}*/}
-      {/*    numberOfDay={numberOfDay}*/}
-      {/*    configData={configData}*/}
-      {/*    setScheduleAt={setScheduleAt}*/}
-      {/*  />*/}
-      {/*</Popover>*/}
     </CustomStackFullWidth>
   );
 };
