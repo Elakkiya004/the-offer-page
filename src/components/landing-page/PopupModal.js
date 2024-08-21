@@ -1,8 +1,12 @@
-import React, { useEffect , useRef, useState } from 'react';
-import { Box, Button,useTheme, useMediaQuery } from '@mui/material';
-import { X } from 'lucide-react'; // Ensure you have installed lucide-react
+import React, { useEffect, useRef, useState } from 'react';
+import Slider from "react-slick";
+import { Grid, Box, Button, useTheme, useMediaQuery } from "@mui/material";
+import { CustomBoxFullWidth, SliderCustom } from "../../styled-components/CustomStyles.style";
+import CustomImageContainer from "../CustomImageContainer";
+import CustomContainer from "../container";
+import { X } from 'lucide-react';
 
-export default function BlurredBackdropExample({ onClose }) {
+const BlurredBackdropExample = ({ landingPageData, onClose }) => {
   const modalRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
   const theme = useTheme();
@@ -20,36 +24,93 @@ export default function BlurredBackdropExample({ onClose }) {
     if (modalRef.current === e.target) {
       onClose();
     }
-  }
+  };
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    pauseOnHover: true,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 3000,
+  };
+
+  const banners1 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 8');
 
   return (
-    <>
-      <Box ref={modalRef} onClick={closeModal} className={isVisible ? 'popup-show show' : 'popup-show'}
-        sx={{
-          display: "flex",
-          position: "absolute",
-          position: "fixed",
-          marginLeft:["20px", ""],
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          width:"100vw",
-          marginTop: ["65px", "90px"],
-          zIndex: 9999,
-          animation: isVisible ? 'fadeIn 0.5s ease-in-out' : 'none', // Apply the fadeIn animation if isVisible is true
-          animationDelay: isVisible ? '1s' : 'none', // Delay the animation by 2 seconds if isVisible is true
-          opacity: isVisible ? 1 : 0, // Show the popup if isVisible is true
+    <CustomContainer>
+      {isVisible && (
+        <Box
+          ref={modalRef}
+          onClick={closeModal}
+          sx={{
+            display: "flex",
+            position: "fixed",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
+            top: 0,
+            left: 0,
+            zIndex: 9999,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backdropFilter: 'blur(10px)',
+            animation: 'fadeIn 0.5s ease-in-out',
+            opacity: 1,
+          }}
+        >
+          <Box
+            sx={{
+              position: "relative",
+              width: isSmall ? "90vw" : "800px", // Responsive width
+              maxHeight: "90vh", // Constrain height on mobile
+              overflowY: "auto", // Allow scrolling if content overflows
+              padding: isSmall ? "20px" : "0", // Add padding for mobile view
+            }}
+          >
+            <SliderCustom>
+              <Slider {...settings}>
+                {banners1.map((item, index) => (
+                  <Box key={index}>
+                    <a href={item.link} target="_blank" rel="noopener noreferrer">
+                      <CustomImageContainer
+                        src={`${landingPageData?.base_urls?.promotional_banner_url}/${item.img}`}
+                        alt="banners"
+                        width="100%" // Set to 100% to fill the box
+                        objectFit="contain"
+                        borderRadius="5px"
+                        style={{ height: isSmall ? "30vh" : "500px" }}
+                      />
+                    </a>
+                  </Box>
+                ))}
+              </Slider>
+            </SliderCustom>
+            <Button
+              color="primary"
+              onClick={onClose}
+              sx={{
+                position: "absolute",
+                top: isSmall ? "20px" : "10px",
+                right: isSmall ? "10px" : "10px",
+                color: "white",
+              }}
+            >
+              <X />
+            </Button>
+          </Box>
+        </Box>
+      )}
 
-          backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background color
-          backdropFilter: 'blur(10px)', // Blur effect
-        }}
-      >
-        <img src="https://offer.theofferpage.in/storage/app/public/promotional_banner/2024-05-26-6652cce64001d.png" alt="popup image" style={{ height: isSmall ? "30%" : "500px", width:  isSmall ? "60%" : "50%", marginTop: isSmall ? "-80px" : ""}} />
-        <Button   color="primary" onClick={onClose} style={{ marginTop: isSmall ? "-320px" :"-460px",marginLeft: "-55px", color: "black" }}>
-          <X />
-        </Button>
-
-      </Box>
-    </>
+      <CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "10px" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6} md={6}>
+            {/* You can still render the sliders here if needed */}
+          </Grid>
+        </Grid>
+      </CustomBoxFullWidth>
+    </CustomContainer>
   );
-}
+};
+
+export default BlurredBackdropExample;

@@ -212,7 +212,7 @@ const MyOrders = (props) => {
                     index={index}
                     order={order}
                     t={t}
-                    configData={configData}
+                    // configData={configData}
                     dispatch={dispatch}
                   />
                 </Grid>
