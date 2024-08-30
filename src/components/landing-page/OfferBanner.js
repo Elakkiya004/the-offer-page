@@ -87,8 +87,12 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
 		);
 	};
 	const sliderManage = () => {
-		const filteredBanners = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 5');
+		const filteredBanners = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 5') || [];
 
+		if (filteredBanners.length === 0) {
+			return <div>No banners available for this category.</div>;
+		}
+		
 		return (
 			<SliderCustom
 				sx={{
@@ -225,7 +229,7 @@ const OfferBanner = ({ landingPageData, isSmall }) => {
 		<CustomContainer>
 			<CustomBoxFullWidth sx={{ marginY: isSmall ? "22px" : "40px" }}>
 				{handleContent()}
-			</CustomBoxFullWidth>
+			</CustomBoxFullWidth>	
 		</CustomContainer>
 	);
 };

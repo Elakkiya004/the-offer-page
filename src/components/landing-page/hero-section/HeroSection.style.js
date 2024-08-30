@@ -9,19 +9,15 @@ export const CustomSearchField = styled(Paper)(({ theme }) => ({
 }));
 export const SearchLocationTextField = styled(TextField)(
   ({ theme, language_direction, frommap, fromparcel, margin_top }) => ({
-    width:  "35%",
+    width: "100%",
     backgroundColor: theme.palette.neutral[100],
-    height: "55px",
-    // borderTopLeftRadius: "40px",
-    // borderBottomLeftRadius: "40px",
+    height: "100%",
+    borderTopLeftRadius: "4px",
+    borderBottomLeftRadius: "4px",
     border: "none",
     "& .MuiOutlinedInput-notchedOutline": {
       border: "none",
     },
-    marginTop: "-25px",
-    marginLeft: "-40px",
-    // backgroundColor: alpha(theme.palette.primary.main, 0.5),
-    color:"whiteContainer.main",
     "& .MuiOutlinedInput-root": {
       fontSize: fromparcel === "true" && "12px",
       padding: fromparcel === "true" && "5px",
@@ -50,8 +46,6 @@ export const SearchLocationTextField = styled(TextField)(
       },
       [theme.breakpoints.down("sm")]: {
         borderRadius: "4px",
-        width: "300px",
-        marginLeft: "10px"
       },
     },
   })
@@ -61,8 +55,8 @@ export const StyledButton = styled(CustomButtonPrimary)(
     color: theme.palette.whiteContainer.main,
     width: "500px",
     padding: "9px 7px 10.5px 7px",
-    paddingTop: "10px",
-    paddingBottom: "9px",
+    // paddingTop: "10px",
+    // paddingBottom: "9px",
     marginLeft: language_direction === "rtl" && "15px",
     borderTopLeftRadius:
       (language_direction === "ltr" || !language_direction) &&

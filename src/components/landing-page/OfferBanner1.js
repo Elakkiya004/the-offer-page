@@ -58,15 +58,15 @@ const OfferBanner1 = ({ landingPageData, isSmall }) => {
   };
 
   const banners = landingPageData?.promotion_banners
-  const banners1 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 1');
-  const banners2 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 2');
-  const banners3 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 3');
-  const banners4 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 4');
+  const banners1 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 1') || [];
+  const banners2 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 2') || [];
+  const banners3 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 3') || [];
+  const banners4 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 4') || [];
 
-  const category1Banners = banners.filter(item => item.category === 'Category 1');
-  const category2Banners = banners.filter(item => item.category === 'Category 2');
-  const category3Banners = banners.filter(item => item.category === 'Category 3');
-  const category4Banners = banners.filter(item => item.category === 'Category 4');
+  // const category1Banners = banners.filter(item => item.category === 'Category 1');
+  // const category2Banners = banners.filter(item => item.category === 'Category 2');
+  // const category3Banners = banners.filter(item => item.category === 'Category 3');
+  // const category4Banners = banners.filter(item => item.category === 'Category 4');
 
 
   return (

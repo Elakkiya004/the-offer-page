@@ -151,8 +151,6 @@ const HeroLocationForm = () => {
   //
   useEffect(() => {
     if (placeDetails) {
-      console.log(placeDescription)
-
       setLocation(placeDetails?.result?.geometry?.location);
     }
   }, [placeDetails]);
@@ -208,7 +206,7 @@ const HeroLocationForm = () => {
   const handleCloseModuleModal = (item) => {
     if (item) {
       toast.success(t(module_select_success));
-      router.push("/", undefined, { shallow: true });
+      router.push("/home", undefined, { shallow: true });
     }
     setOpenModuleSelection(false);
   };
@@ -244,14 +242,13 @@ const HeroLocationForm = () => {
     <>
       <CustomStackFullWidth
         backgroundColor={alpha(theme.palette.primary.main, 0.5)}
-        padding={{ xs: "rem", md: "3rem" }}
+        padding={{ xs: ".7rem", md: "1.2rem" }}
         borderRadius="5px"
-        sx={{width: "545px"}}
       >
         <CustomStackFullWidth
           direction="row"
           alignItems="center"
-          sx={{ position: "absolute", zIndex: 999 }}
+          sx={{ position: "relative", zIndex: 999 }}
         >
           <Grid container>
             <Grid item xs={5.8} sm={7}>
@@ -266,7 +263,6 @@ const HeroLocationForm = () => {
                 handleCloseLocation={handleCloseLocation}
                 frommap="false"
                 fromparcel="false"
-                
               />
             </Grid>
             <Grid item xs={3.9} sm={2.9}>
@@ -274,14 +270,12 @@ const HeroLocationForm = () => {
                 <Box
                   onClick={handlePickLocation}
                   sx={{
-                   backgroundColor: alpha(theme.palette.primary.main, 0.5),
-                    width: {xs: "80%", sm: "40%"},
+                    backgroundColor: (theme) => theme.palette.neutral[100],
+                    width: "100%",
                     height: "55px",
                     alignItems: "center",
                     justifyContent: "center",
                     display: "flex",
-                    marginLeft:{xs: "10px", sm: "-552px"},
-                    marginTop: "-25px",
                     padding: {
                       xs: "0rem",
                       sm: lanDirection === "rtl" ? "0rem" : "12px",
@@ -290,7 +284,7 @@ const HeroLocationForm = () => {
                     cursor: "pointer",
                     boxShadow: pickLocation && "1px 0 5px 0 rgba(0, 0, 0, 0.5)",
                     borderRadius: {
-                      xs: pickLocation ? "40px 40px 0 0" : "0px",
+                      xs: pickLocation ? "5px 5px 0 0" : "0px",
                       sm: "0px",
                     },
                   }}
@@ -299,7 +293,7 @@ const HeroLocationForm = () => {
                     alignItems="center"
                     justifyContent="space-between"
                     direction="row"
-                    spacing={0.8}
+                    spacing={0.4}
                     sx={{
                       marginInlineEnd: "5px",
                       width: "170px",
@@ -311,14 +305,11 @@ const HeroLocationForm = () => {
                   >
                     <GpsFixedIcon
                       onClick={handleAgreeLocation}
-                      sx={{ fontSize: { xs: "14px", sm: "18px" },  color:"whiteContainer.main" }}
-                     
+                      sx={{ fontSize: { xs: "14px", sm: "18px" } }}
                     />
-                    <Typography 
+                    <Typography
                       variant={isXSmall ? "body3" : "body1"}
                       onClick={handleAgreeLocation}
-                      color="whiteContainer.main"
-                      fontWeight="600"
                       sx={{
                         cursor: "pointer",
                         "&:hover": {
@@ -336,7 +327,7 @@ const HeroLocationForm = () => {
                     ) : (
                       <KeyboardArrowDownIcon
                         id={`${divId}-Locate-me`}
-                        sx={{ fontSize: { xs: "14px", sm: "18px" }, color:"whiteContainer.main" }}
+                        sx={{ fontSize: { xs: "14px", sm: "18px" } }}
                       />
                     )}
                   </CustomStackFullWidth>
@@ -357,11 +348,9 @@ const HeroLocationForm = () => {
                       cursor: "pointer",
                       boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)",
                       borderRadius: "0px 0px 5px 5px",
-                      color: "primary.main",
                       "&:hover": {
                         color: "primary.main",
                       },
-                      marginLeft: {xs: "10px", sm: "-552px"},
                     }}
                   >
                     <CustomStackFullWidth
@@ -390,24 +379,21 @@ const HeroLocationForm = () => {
             <Grid item xs={2.1} sm={2.1}>
               <StyledButton
                 sx={{
-                  height: "55px",
-                  position: "absolute",
-                  width: {xs: "", sm: "40%"},
-                  borderRadius: "0px 5px 5px 0px",
-                  color:"whiteContainer.main",
-                  marginLeft: {xs: "-20px", sm: "-756px"},
-                  marginTop: "-25px",
+                  height: "100%",
+                  width: "100%",
+                  borderRadius: "0px 8px 8px 0px",
                 }}
                 onClick={() => setLocationEnable()}
                 radiuschange={isXSmall ? "false" : "true"}
                 disabled={!location?.lat || isLoadingGeoCode}
               >
-                <Typography
-                 color="whiteContainer.main"
-                fontWeight="bold"
-                >
+                {/*<Typography*/}
+                {/*  variant={isXSmall ? "body3" : "body1"}*/}
+                {/*  color="whiteContainer.main"*/}
+                {/*  fontWeight="bold"*/}
+                {/*>*/}
                 {t("Explore")}
-                </Typography>
+                {/*</Typography>*/}
               </StyledButton>
             </Grid>
           </Grid>

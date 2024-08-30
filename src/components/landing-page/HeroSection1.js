@@ -71,9 +71,9 @@ const HeroSection1 = ({ landingPageData, isSmall, configData, handleOrderNow }) 
     };
 
     const banners = landingPageData?.promotion_banners
-    const banners0 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 0');
+    const banners0 = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 0') || [];
 
-    const category0Banners = banners.filter(item => item.category === 'Category 0');
+    // const category0Banners = banners.filter(item => item.category === 'Category 0') || [];
 
 
     return (

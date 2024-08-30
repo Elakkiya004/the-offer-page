@@ -297,6 +297,8 @@ const MapModal = ({
                                                 borderRadius: "4px",
                                                 border: (theme) =>
                                                     `1px solid ${theme.palette.neutral[200]}`,
+                                                marginLeft: "8px",
+                                                marginTop: "2px"
                                             }}
                                             frommap="true"
                                             label={null}

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useWishListGet } from "../../api-manage/hooks/react-query/wish-list/useWishListGet";
 import { setWishList } from "../../redux/slices/wishList";
 import PushNotificationLayout from "../PushNotificationLayout";
-import { styled, useMediaQuery, useTheme } from "@mui/material";
+import { styled, useMediaQuery, useTheme, Grid, NoSsr } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import TopBanner from "./top-banner";
 import SearchWithTitle from "./SearchWithTitle";
@@ -23,6 +23,22 @@ import useGetAllCartList from "../../api-manage/hooks/react-query/add-cart/useGe
 import { setCartList } from "../../redux/slices/cart";
 import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';
+import OfferBanner from "../landing-page/OfferBanner";
+import HeroSection1 from "../landing-page/HeroSection1";
+import Banners1 from "../landing-page/Banners1";
+import Banners from "./banners";
+import OfferBanner1 from "../landing-page/OfferBanner1";
+import CityComponent from "../landing-page/CityComponent";
+import CookiesConsent from "../CookiesConsent";
+import CardCategories from "./category-card";
+import VisitAgain from "./visit-again";
+import PopularItemsNearby from "./popular-items-nearby";
+import SpecialFoodOffers from "./special-food-offers";
+import FeaturedStores from "./module-wise-components/pharmacy/featured-stores";
+import BestReviewedItems from "./best-reviewed-items";
+import NewArrivals from "./module-wise-components/ecommerce/NewArrivals";
+import FeaturedCategoriesWithFilter from "./module-wise-components/ecommerce/FeaturedCategoriesWithFilter";
+import Stores from "./stores";
 
 const TRACKING_ID = "G-FECBMFT6KW";
 
@@ -30,9 +46,11 @@ const TRACKING_ID = "G-FECBMFT6KW";
 export const HomeComponentsWrapper = styled(Stack)(({ theme }) => ({
   width: "100%",
   gap: "8px",
+  marginBottom: 0, 
+  paddingBottom: 0,
 }));
 
-const HomePageComponents = ({ configData }) => {
+const HomePageComponents = ({ configData, landingPageData }) => {
 
   const tagManagerArgs = {
 		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
@@ -105,10 +123,25 @@ const HomePageComponents = ({ configData }) => {
     }
   };
 
+  const handleOrderNow = () => {
+    if (location) {
+      if (location === "null") {
+        setOpen(true);
+      } else {
+        router.push("/home", undefined, { shallow: true });
+      }
+    } else {
+      setOpen(true);
+    }
+  };
+  const menus = ["All", "Beauty", "Bread & Juice", "Drinks", "Milks"];
+  
+  const { data: guestData, refetch: guestRefetch, isLoading } = useGetGuest();
+
   return (
     <PushNotificationLayout>
       <CustomStackFullWidth>
-        <CustomStackFullWidth sx={{ position: "relative" }}>
+        <CustomStackFullWidth sx={{ position: "relative", marginTop: {xs: "60px", sm: "95px"} }}>
           <TopBanner />
           <CustomStackFullWidth
             alignItems="center"
@@ -122,7 +155,88 @@ const HomePageComponents = ({ configData }) => {
             <SearchWithTitle zoneid={zoneid} token={token} query={router.query.search} />
           </CustomStackFullWidth>
         </CustomStackFullWidth>
-        {/*SEARCH ARE HAPPENING hERE*/}
+        <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-50px", sm: "-50px"} }}>
+            <HeroSection1
+            configData={configData}
+            landingPageData={landingPageData}
+            handleOrderNow={handleOrderNow}
+          />
+          </Grid>
+           <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-110px", sm: "-30px" } }}>
+            <CustomContainer>
+              <CardCategories configData={configData} />
+            </CustomContainer>
+          </Grid>
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-20px", sm: "-40px" } }}>
+          <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
+          </Grid>
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-30px", sm: "-60px" } }}>
+          <OfferBanner1
+            configData={configData}
+            landingPageData={landingPageData}
+            handleOrderNow={handleOrderNow}
+          />
+          </Grid>
+          <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-50px", sm: "-80px" } }}>
+        <OfferBanner 
+            configDate={configData}
+            landingPageData={landingPageData}
+          />
+          </Grid>
+          <CustomContainer>
+        <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-30px" : "-50px" }}>
+          <VisitAgain configData={configData} />
+        </Grid>
+
+        </CustomContainer>
+        <Grid item xs={12}>
+        <CustomContainer>
+          <PopularItemsNearby
+            title="Most Popular Products"
+            subTitle="We provide best quality & valuable products around the world"
+          />
+        </CustomContainer>
+      </Grid>
+      <CustomContainer>
+      <Banners landingPageData={landingPageData} isSmall={isSmall} />
+      </CustomContainer>
+      <Grid item xs={12} sx={{ marginTop: isSmall ? "" : "20px" }}>
+          <CustomContainer>
+            <SpecialFoodOffers />
+          </CustomContainer>
+        </Grid>
+        <Grid item xs={12} sx={{ marginTop: isSmall ? "" : "20px" }}>
+        <CustomContainer>
+          <FeaturedStores title="Popular Store" configData={configData} />
+        </CustomContainer>
+      </Grid>{" "}
+      <Grid item xs={12}>
+        <CustomContainer>
+          <BestReviewedItems
+            menus={menus}
+            title="Best Reviewed Items"
+            bannerIsLoading={isLoading}
+            // url={`${data?.promotional_banner_url}/${data?.best_reviewed_section_banner}`}
+          />
+        </CustomContainer>
+      </Grid>
+      <Grid item xs={12}>
+        <CustomContainer>
+          <NewArrivals />
+        </CustomContainer>
+      </Grid>
+      <Grid item xs={12}>
+        <CustomContainer>
+          <FeaturedCategoriesWithFilter title="Featured Categories" />
+        </CustomContainer>
+      </Grid>
+      <CustomContainer>
+        <Grid item xs={12} sx={{ marginTop: isSmall ? "10px" :"-30px" }}>
+          <Stores />
+        </Grid>
+        </CustomContainer>
+
+        {/* SEARCH ARE HAPPENING hERE
         {router.query.search ? (
           <SearchResult
             key={router.query.id}
@@ -131,8 +245,13 @@ const HomePageComponents = ({ configData }) => {
           />
         ) : (
           <Box width="100%">{getModuleWiseComponents()}</Box>
-        )}
+        )} */}
       </CustomStackFullWidth>
+      <Grid sx={{ marginTop: isSmall ? "-1000px" : "-700px" }}>
+        <NoSsr>
+          <CookiesConsent text={configData?.cookies_text} />
+        </NoSsr>
+        </Grid>
     </PushNotificationLayout>
   );
 };
