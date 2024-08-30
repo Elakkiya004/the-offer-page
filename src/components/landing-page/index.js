@@ -143,7 +143,13 @@ const LandingPage = ({ configData, landingPageData }) => {
             handleOrderNow={handleOrderNow}
           />
 
-          <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-60px", sm: "-78px"} }}>
+          <ComponentOne
+            configData={configData}
+            landingPageData={landingPageData}
+            handleOrderNow={handleOrderNow}
+          />
+
+          {/* <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-60px", sm: "-78px"} }}>
             <HeroSection1
             configData={configData}
             landingPageData={landingPageData}
@@ -162,7 +168,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             {landingPageData?.promotion_banners?.length > 0 && (
               <Banners1 landingPageData={landingPageData} isSmall={isSmall} />
             )}
-          </Grid>
+          </Grid> */}
 
           {showModal && <PopupModal landingPageData={landingPageData} onClose={() => setShowModal(false)} sx={{
             display: "flex",
@@ -171,21 +177,21 @@ const LandingPage = ({ configData, landingPageData }) => {
             height: "100vh",
           }} />} 
 
-        <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-80px" : "-30px" }}>
+        {/* <Grid item xs={12} sm={12} sx={{  marginTop: isSmall ? "-80px" : "-30px" }}>
           <OfferBanner1
             configData={configData}
             landingPageData={landingPageData}
             handleOrderNow={handleOrderNow}
           />
-          </Grid>
+          </Grid> */}
 
         </Grid>
-        <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-10px" : "-30px" }}>
+        <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-10px" : "-10px" }}>
         <Card />
         </Grid>
 
         {/* two banners */}
-        <Grid item xs={12} sm={12} sx={{ marginTop: "-60px" }}>
+        {/* <Grid item xs={12} sm={12} sx={{ marginTop: "-60px" }}>
         <OfferBanner
           configDate={configData}
           landingPageData={landingPageData}
@@ -240,25 +246,25 @@ const LandingPage = ({ configData, landingPageData }) => {
         <CustomContainer>
           <FeaturedCategoriesWithFilter title="Featured Categories" />
         </CustomContainer>
-      </Grid>
+      </Grid> */}
 
         {/* three banners */}
-        <Grid item sx={{  marginTop: isSmall ? "-40px" : "-40px" }}>
+        {/* <Grid item sx={{  marginTop: isSmall ? "-40px" : "-40px" }}>
         {landingPageData?.promotion_banners?.length > 0 && (
           <Banners landingPageData={landingPageData} isSmall={isSmall} />
         )}
-        </Grid>
+        </Grid> */}
         {/* <ComponentOne
           landingPageData={landingPageData}
           configData={configData}
           handleOrderNow={handleOrderNow}
         /> */}
-        <Grid item xs={12} md={12} sx={{  marginTop: isSmall ? "-45px" : "-50px" }}>
+        {/* <Grid item xs={12} md={12} sx={{  marginTop: isSmall ? "-45px" : "-50px" }}>
           <ComponentThree
             configData={configData}
             landingPageData={landingPageData}
           />
-        </Grid>
+        </Grid> */}
         {/* <Grid item xs={12} md={12} sx={{ marginTop: isSmall ? "" : "-10px" }}>
           <h1 style={{ marginLeft: isSmall ? "20px" : "280px", fontSize: isSmall ? "14px" : "25px" }}>New Arrivals</h1>
           {landingPageData?.fixed_promotional_banner && (
@@ -270,7 +276,7 @@ const LandingPage = ({ configData, landingPageData }) => {
             </CustomBoxFullWidth>
           )}
         </Grid> */}
-        {/* <Grid xs={12} sm={12} sx={{ marginTop: "-40px" }}>
+        <Grid xs={12} sm={12} sx={{ marginTop: "-40px" }}>
         {(landingPageData?.earning_title ||
           landingPageData?.earning_sub_title ||
           landingPageData?.earning_seller_title ||
@@ -279,7 +285,7 @@ const LandingPage = ({ configData, landingPageData }) => {
           landingPageData?.earning_dm_sub_title) && (
             <Registration data={landingPageData} isSmall={isSmall} />
           )}
-          </Grid> */}
+          </Grid>
       {/* <Grid item xs={12} sm={12} sx={{ marginTop: isSmall ? "-10px" : "10px" }}>
         <PopularStore />
       </Grid> */}
@@ -294,11 +300,11 @@ const LandingPage = ({ configData, landingPageData }) => {
           configData={configData}
           landingPageData={landingPageData}
         /> */}
-        <CustomContainer>
+        {/* <CustomContainer>
         <Grid item xs={12} sx={{ marginTop: isSmall ? "10px" :"-30px" }}>
           <Stores />
         </Grid>
-        </CustomContainer>
+        </CustomContainer> */}
         {/* {(landingPageData?.business_title ||
           landingPageData?.business_sub_title ||
           landingPageData?.business_image) && (
@@ -319,9 +325,11 @@ const LandingPage = ({ configData, landingPageData }) => {
             disableAutoFocus
           />
         )}
+        <Grid sx={{ marginTop: isSmall ? "" : "30px" }}>
         <NoSsr>
           <CookiesConsent text={configData?.cookies_text} />
         </NoSsr>
+        </Grid>
       </PushNotificationLayout>
     </>
   );

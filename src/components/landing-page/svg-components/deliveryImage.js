@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';

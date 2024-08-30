@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import ModuleSelect from "../module-select/ModuleSelect";
-import HomePageComponents from "../home/HomePageComponents";
+// import HomePageComponents from "../home/HomePageComponents";
 import PercelComponents from "../parcel";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedModule } from "../../redux/slices/utils";
@@ -87,7 +87,7 @@ const ModuleWiseLayout = ({ configData }) => {
           dispatch={dispatch}
         />
       )}
-      <HomePageComponents key={rerender} configData={configData} />
+      {/* <HomePageComponents key={rerender} configData={configData}  /> */}
     </CustomStackFullWidth>
   );
 };

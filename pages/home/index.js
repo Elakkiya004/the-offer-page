@@ -8,6 +8,8 @@ import { setConfigData } from "../../src/redux/slices/configData";
 import ZoneGuard from "../../src/components/route-guard/ZoneGuard";
 // import { getServerSideProps } from "../index";
 import SEO from "../../src/components/seo";
+import HomePageComponents from "../../src/components/home/HomePageComponents";
+
 
 const Home = ({ configData, landingPageData }) => {
   const dispatch = useDispatch();
@@ -31,8 +33,7 @@ const Home = ({ configData, landingPageData }) => {
   return (
     <>
       <CssBaseline />
-    
-      
+      <HomePageComponents configData={configData} landingPageData={landingPageData} />
       <MainLayout configData={configData} landingPageData={landingPageData}>
       {configData && <SEO
         title="Home"

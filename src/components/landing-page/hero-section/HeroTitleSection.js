@@ -25,10 +25,10 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
   const currentLanguage = getLanguage();
   const getSearchOrModulesBySelectedModules = () => {
     if (getCurrentModuleType()) {
-      // return <ModuleSelectionRaw />;
+      return <ModuleSelectionRaw />;
     } else {
       return (
-        <CustomStackFullWidth mt="90px">
+        <CustomStackFullWidth mt="45px">
           <HeroLocationForm />
         </CustomStackFullWidth>
       );
@@ -36,7 +36,7 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
   };
   return (
     <CustomStackFullWidth>
-      <CustomStackFullWidth spacing={0.5} sx={{  }}>
+      <CustomStackFullWidth spacing={0.5}>
         <Stack
           direction="row"
           alignItems="center"
@@ -92,18 +92,18 @@ const HeroTitleSection = ({ configData, landingPageData, handleOrderNow }) => {
               right: -65,
             }}
           >
-           <CustomImageContainer
+            <CustomImageContainer
               src={down_arrow.src}
               alt={t("Background")}
               height="100%"
               width="100%"
               borderRadius="20px"
               objectFit="cover"
-            /> 
+            />
           </Box>
         )}
       </CustomStackFullWidth>
-      {getSearchOrModulesBySelectedModules()}
+      {!isXSmall && getSearchOrModulesBySelectedModules()}
     </CustomStackFullWidth>
   );
 };

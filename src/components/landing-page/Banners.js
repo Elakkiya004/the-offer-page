@@ -94,7 +94,7 @@ const Banners = ({ landingPageData, isSmall }) => {
 		);
 	};
 	const sliderManage = () => {
-		const filteredBanners = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 6');
+		const filteredBanners = landingPageData?.promotion_banners?.filter(item => item.category === 'Category 6') || [];
 
 		return (
 			<SliderCustom
