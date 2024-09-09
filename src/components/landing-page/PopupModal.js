@@ -62,8 +62,8 @@ const BlurredBackdropExample = ({ landingPageData, onClose }) => {
           <Box
             sx={{
               position: "relative",
-              width: isSmall ? "90vw" : "800px", // Responsive width
-              maxHeight: "90vh", // Constrain height on mobile
+              width: isSmall ? "90vw" : "1600px", // Responsive width
+              maxHeight: "1500px", // Constrain height on mobile
               overflowY: "auto", // Allow scrolling if content overflows
               padding: isSmall ? "20px" : "0", // Add padding for mobile view
             }}
@@ -91,7 +91,7 @@ const BlurredBackdropExample = ({ landingPageData, onClose }) => {
               onClick={onClose}
               sx={{
                 position: "absolute",
-                top: isSmall ? "20px" : "10px",
+                top: isSmall ? "20px" : "80px",
                 right: isSmall ? "10px" : "10px",
                 color: "white",
               }}
