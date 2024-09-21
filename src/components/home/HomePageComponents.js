@@ -169,7 +169,8 @@ const HomePageComponents = ({ configData, landingPageData }) => {
             configData={configData}
           />
         ) : (
-          <Box width="100%"></Box>
+          // <Box width="100%">{getModuleWiseComponents()}</Box>
+          <Box width="100%">{getModuleWiseComponents()}</Box>
         )}
           </Grid>
           <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-20px", sm: "-40px" } }}>
