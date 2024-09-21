@@ -21,7 +21,7 @@ const CardWrapper = styled(Stack)(({ theme, bg_change }) => ({
   //   bg_change === "true"
   //     ? theme.palette.primary.main
   //     : theme.palette.background.paper,
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: "red",
   //color: bg_change === "true" ? theme.palette.whiteContainer.main : "inherit",
   color: "inherit",
   minWidth: "163px",

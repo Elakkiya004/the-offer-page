@@ -1,6 +1,6 @@
 import { alpha, Skeleton, Stack, styled, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CustomImageContainer from "../../../CustomImageContainer";
 
 import { btoa } from "next/dist/compiled/@edge-runtime/primitives/encoding";
@@ -8,10 +8,6 @@ import Link from "next/link";
 import { getModuleId } from "../../../../helper-functions/getModuleId";
 import { CustomBoxFullWidth } from "../../../../styled-components/CustomStyles.style";
 import { textWithEllipsis } from "../../../../styled-components/TextWithEllipsis";
-import ReactGA from "react-ga4";
-import TagManager from "react-gtm-module";
-
-const TRACKING_ID = "G-FECBMFT6KW";
 
 export const Card = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -32,28 +28,6 @@ export const Card = styled(Box)(({ theme }) => ({
 }));
 
 const FeaturedItemCard = (props) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-
-  if (typeof window !== 'undefined') {
-    TagManager.initialize(tagManagerArgs);
-  
-    useEffect(() => {
-      TagManager.dataLayer({
-        event: 'pageview',
-        path: '/'
-      });
-    }, []);
-  }
-  
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { image, title, id, onlyshimmer, slug } = props;
   const [hover, setHover] = useState(false);
   const classes = textWithEllipsis();

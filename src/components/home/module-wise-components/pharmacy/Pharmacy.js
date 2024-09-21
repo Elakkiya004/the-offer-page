@@ -13,36 +13,10 @@ import PharmacyStaticBanners from "./pharmacy-banners/PharmacyStaticBanners";
 import CommonConditions from "./common-conditions";
 import RedirectBanner from "./pharmacy-banners/RedirectBanner";
 import useGetOtherBanners from "../../../../api-manage/hooks/react-query/useGetOtherBanners";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
 
 const menus = ["All", "New", "Baby Care", "Womans Care", "Mens"];
 
 const Pharmacy = ({ configData }) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-    if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { data, refetch, isLoading } = useGetOtherBanners();
   useEffect(() => {
     refetch();

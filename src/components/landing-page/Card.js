@@ -31,7 +31,8 @@ const CustomCard = () => {
         sx={{
           textAlign: 'center',
           fontSize: { xs: '12px', sm: '25px' },
-          fontWeight: {xs: "400", sm: "700"}
+          fontWeight: {xs: "400", sm: "700"},
+          color: "red"
         }}
       >
         How to Enjoy the Best Offers in your area

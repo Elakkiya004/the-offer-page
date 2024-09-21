@@ -6,11 +6,6 @@ import { Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import { IsSmallScreen } from "../../utils/CommonValues";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
-
 
 const CustomSpan = styled("span")(({ theme, mr }) => ({
   color: theme.palette.primary.main,
@@ -19,28 +14,6 @@ const CustomSpan = styled("span")(({ theme, mr }) => ({
   fontWeight: "bold",
 }));
 const DiscountedProductRedirectBanner = (props) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-    if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { t } = useTranslation();
   return (
     <CustomStackFullWidth

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     CustomStackFullWidth,
     SliderCustom,
@@ -16,33 +16,8 @@ import { settings } from "./SliderSettings";
 import { IsSmallScreen } from "../../../utils/CommonValues";
 import CustomContainer from "../../container";
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
 
 const VisitAgain = (props) => {
-
-    const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-	 if (typeof window !== 'undefined') {
-        TagManager.initialize(tagManagerArgs);
-      
-        useEffect(() => {
-          TagManager.dataLayer({
-            event: 'pageview',
-            path: '/'
-          });
-        }, []);
-      }
-
-    ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
     const { configData } = props;
     const theme = useTheme();
     const visitedStores = localStorage.getItem("visitedStores")
@@ -60,8 +35,7 @@ const VisitAgain = (props) => {
                     heading: "Visit Again!",
                     subHeading:
                         "Get your recent purchase from the shop you recently visited",
-                    // bgColor: alpha(theme.palette.primary.main, 0.2),
-                    bgColor: 'white',
+                    bgColor: alpha(theme.palette.primary.main, 0.2),
                 };
             case ModuleTypes.PHARMACY:
                 return {
@@ -69,8 +43,7 @@ const VisitAgain = (props) => {
                     heading: "Visit Again!",
                     subHeading:
                         "Get your recent medicine from the store you recently visited",
-                        bgColor: 'white',
-                    // bgColor: alpha(theme.palette.primary.main, 0.2),
+                    bgColor: alpha(theme.palette.primary.main, 0.2),
                 };
             case ModuleTypes.ECOMMERCE:
                 return {
@@ -78,8 +51,7 @@ const VisitAgain = (props) => {
                     heading: "Visit Again!",
                     subHeading:
                         "Get your recent purchase from the shop you recently visited",
-                    // bgColor: alpha(theme.palette.primary.main, 0.2),
-                    bgColor: 'white',
+                    bgColor: alpha(theme.palette.primary.main, 0.2),
                 };
             case ModuleTypes.FOOD:
                 return {
@@ -87,8 +59,7 @@ const VisitAgain = (props) => {
                     heading: "Wanna Try  Again!",
                     subHeading:
                         "Get your recent food from the restaurant you recently visited",
-                    // bgColor: alpha(theme.palette.primary.main, 0.2),
-                    bgColor: 'white',
+                    bgColor: alpha(theme.palette.primary.main, 0.2),
                 };
         }
     };

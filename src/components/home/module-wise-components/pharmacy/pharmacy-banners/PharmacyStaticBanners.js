@@ -14,10 +14,6 @@ import { BannersWrapper } from "../../../banners";
 import { useSelector } from "react-redux";
 import { getModuleId } from "../../../../../helper-functions/getModuleId";
 import { useRouter } from "next/router";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomTypography = styled(Typography)(({ theme }) => ({
   fontFamily: "Quicksand",
@@ -85,28 +81,6 @@ const DataCard = ({ title, image, buttonText, pink }) => {
   );
 };
 const PharmacyStaticBanners = (props) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-    if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const router = useRouter();
   const { configData } = useSelector((state) => state.configData);
   const settings = {
