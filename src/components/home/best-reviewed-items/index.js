@@ -20,35 +20,8 @@ import Menus from "./Menus";
 import { NextFood, PrevFood } from "./SliderSettings";
 import { Stack } from "@mui/system";
 import CustomImageContainer from "../../CustomImageContainer";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
-
 
 const BestReviewedItems = (props) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-	  if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { title, info, bannerIsLoading } = props;
   const url = `${info?.promotional_banner_url}/${info?.best_reviewed_section_banner}`;
   const [menu, setMenu] = useState([]);
@@ -142,7 +115,7 @@ const BestReviewedItems = (props) => {
       {
         breakpoint: 450,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
           infinite: false,
         },
@@ -150,7 +123,7 @@ const BestReviewedItems = (props) => {
       {
         breakpoint: 550,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.7,
           slidesToScroll: 1,
         },
       },
@@ -165,7 +138,7 @@ const BestReviewedItems = (props) => {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 3.5,
           slidesToScroll: 1,
         },
       },

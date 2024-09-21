@@ -30,7 +30,6 @@ import Banners from "./banners";
 import OfferBanner1 from "../landing-page/OfferBanner1";
 import CityComponent from "../landing-page/CityComponent";
 import CookiesConsent from "../CookiesConsent";
-import CardCategories from "./category-card";
 import VisitAgain from "./visit-again";
 import PopularItemsNearby from "./popular-items-nearby";
 import SpecialFoodOffers from "./special-food-offers";
@@ -142,8 +141,8 @@ const HomePageComponents = ({ configData, landingPageData }) => {
     <PushNotificationLayout>
       <CustomStackFullWidth>
         <CustomStackFullWidth sx={{ position: "relative", marginTop: {xs: "60px", sm: "95px"} }}>
-          <TopBanner />
-          <CustomStackFullWidth
+          {/* <TopBanner /> */}
+          {/* <CustomStackFullWidth
             alignItems="center"
             justifyContent="center"
             sx={{
@@ -153,7 +152,7 @@ const HomePageComponents = ({ configData, landingPageData }) => {
             }}
           >
             <SearchWithTitle zoneid={zoneid} token={token} query={router.query.search} />
-          </CustomStackFullWidth>
+          </CustomStackFullWidth> */}
         </CustomStackFullWidth>
         <Grid item xs={12} sm={12} sx={{ marginTop: {xs: "-50px", sm: "-50px"} }}>
             <HeroSection1
@@ -163,9 +162,15 @@ const HomePageComponents = ({ configData, landingPageData }) => {
           />
           </Grid>
            <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-110px", sm: "-30px" } }}>
-            <CustomContainer>
-              <CardCategories configData={configData} />
-            </CustomContainer>
+           {router.query.search ? (
+          <SearchResult
+            key={router.query.id}
+            searchValue={router.query.search}
+            configData={configData}
+          />
+        ) : (
+          <Box width="100%"></Box>
+        )}
           </Grid>
           <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-20px", sm: "-40px" } }}>
           <Banners1 landingPageData={landingPageData} isSmall={isSmall} />

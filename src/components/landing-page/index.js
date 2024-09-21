@@ -24,7 +24,6 @@ import DiscountBanner from "./DiscountBanner";
 import CookiesConsent from "../CookiesConsent";
 import useGetGuest from "../../api-manage/hooks/react-query/guest/useGetGuest";
 import CustomContainer from "../container";
-import CardCategories from "../home/category-card";
 
 import {
   CustomBoxFullWidth,

@@ -6,35 +6,8 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { Box } from "@mui/system";
 import {LoadingButton} from "@mui/lab";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
-
 
 const CardsGrid = ({ data, totalSize, handleMore, isFetching }) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-    if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { t } = useTranslation();
   return (
     <Box>

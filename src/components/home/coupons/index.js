@@ -10,10 +10,6 @@ import couponsBG from "../assets/coupons_bg.png";
 import useGetCoupons from "../../../api-manage/hooks/react-query/useGetCoupons";
 import toast from "react-hot-toast";
 import { getAmountWithSign } from "../../../helper-functions/CardHelpers";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
 
 const CustomBox = styled(Box)(({ theme }) => ({
   background: alpha(theme.palette.primary.main, 0.3),
@@ -34,28 +30,6 @@ const settings = {
 };
 
 const CouponBox = ({ item }) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-	  if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { t } = useTranslation();
   const [copy, setCopy] = useState(null);
   const handleCopy = (coupon_code) => {

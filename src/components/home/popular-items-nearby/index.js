@@ -26,34 +26,8 @@ import {
 import { NextFood, PrevFood } from "../best-reviewed-items/SliderSettings";
 import { useGetFlashSales } from "../../../api-manage/hooks/react-query/useGetFlashSales";
 import {getLanguage} from "../../../helper-functions/getLanguage";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
 
 const PopularItemsNearby = ({ title, subTitle }) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-    if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { popularItemsNearby } = useSelector((state) => state.storedData);
   const { t } = useTranslation();
   const limit = 2;
@@ -121,7 +95,7 @@ const PopularItemsNearby = ({ title, subTitle }) => {
       {
         breakpoint: 500,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.15,
           slidesPerRow: 1,
           rows: 2,
           slidesToScroll: 1,
@@ -130,7 +104,7 @@ const PopularItemsNearby = ({ title, subTitle }) => {
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
           slidesPerRow: 2,
           rows: 2,
           slidesToScroll: 1,
@@ -139,7 +113,7 @@ const PopularItemsNearby = ({ title, subTitle }) => {
       {
         breakpoint: 900,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.55,
           slidesPerRow: 1,
           rows: 2,
           slidesToScroll: 1,
@@ -148,7 +122,7 @@ const PopularItemsNearby = ({ title, subTitle }) => {
       {
         breakpoint: 1150,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.55,
           slidesPerRow: 1,
           rows: 3,
           slidesToScroll: 1,

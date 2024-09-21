@@ -16,35 +16,9 @@ import PromotionalBanner from "../PromotionalBanner";
 import LoveItem from "../love-item";
 import useGetOtherBanners from "../../../api-manage/hooks/react-query/useGetOtherBanners";
 import PharmacyStaticBanners from "./pharmacy/pharmacy-banners/PharmacyStaticBanners";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
 
 const menus = ["All", "Beauty", "Bread & Juice", "Drinks", "Milks"];
 const Grocery = (props) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-    if (typeof window !== 'undefined') {
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-    }
-
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const { configData } = props;
   const { data, refetch, isLoading } = useGetOtherBanners();
   useEffect(() => {
@@ -53,7 +27,7 @@ const Grocery = (props) => {
 
   return (
     <Grid container spacing={1}>
-      <Grid item xs={12} md={12} sx={{ marginTop: { xs: "-10px", sm: "10px" } }}>
+      <Grid item xs={12} sx={{ marginTop: { xs: "-10px", sm: "10px" } }}>
         <CustomContainer>
           <FeaturedCategories configData={configData} />
         </CustomContainer>
@@ -67,6 +41,7 @@ const Grocery = (props) => {
           </CustomContainer>
         )}
       </Grid>
+
       <Grid item xs={12}>
         <CustomContainer>
           <PopularItemsNearby
@@ -100,11 +75,11 @@ const Grocery = (props) => {
           />
         </CustomContainer>
       </Grid>
-      {/* <Grid item xs={12}>
-      <CustomContainer>
-        <DiscountedProductRedirectBanner />
-     </CustomContainer>
-      </Grid> */}
+      {/*<Grid item xs={12}>*/}
+      {/*  <CustomContainer>*/}
+      {/*    <DiscountedProductRedirectBanner />*/}
+      {/*  </CustomContainer>*/}
+      {/*</Grid>*/}
       <Grid item xs={12}>
         <CustomContainer>
           <RunningCampaigns />

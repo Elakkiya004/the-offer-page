@@ -1,16 +1,11 @@
 import { Button, styled, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { IsSmallScreen } from "../../utils/CommonValues";
 import CustomImageContainer from "../CustomImageContainer";
 import promotionalBanner from "./assets/promotional_banner.png";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
-
 
 export const BannerWrapper = styled(Box)(({ theme }) => ({
 	width: "100%",
@@ -40,27 +35,6 @@ export const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const PromotionalBanner = ({ bannerData }) => {
-
-	const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-	  if (typeof window !== 'undefined') {
-		TagManager.initialize(tagManagerArgs);
-	  
-		useEffect(() => {
-		  TagManager.dataLayer({
-			event: 'pageview',
-			path: '/'
-		  });
-		}, []);
-	  }
-
-	ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
 	const { t } = useTranslation();
 	const data = {
 		img: promotionalBanner,

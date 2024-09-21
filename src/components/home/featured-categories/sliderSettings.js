@@ -1,28 +1,17 @@
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import React from "react";
 import { ButtonLeft, ButtonRight } from "./index";
 import { alpha, styled, useMediaQuery, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { getLanguage } from "../../../helper-functions/getLanguage";
-import PrevIcon from "../../icons/PrevIcon";
-import NextIcon from "../../icons/NextIcon";
 import { getCurrentModuleType } from "../../../helper-functions/getCurrentModuleType";
 import { WhiteNext, WhitePrev } from "../visit-again/SliderSettings";
 import { ModuleTypes } from "../../../helper-functions/moduleTypes";
 
+// Styling for the button container
 const ButtonContainer = styled(Box)(({ theme, right, isdisabled }) => ({
-  top: 0,
-  height: "100%",
-  width: "73px",
-  background:
-    right === "true"
-      ? theme.direction === "ltr"
-        ? `linear-gradient(270deg, ${theme.palette.neutral[100]} 0%, rgba(255, 255, 255, 0) 100%)`
-        : `linear-gradient(270deg,  rgba(255, 255, 255, 0) 0%, ${theme.palette.neutral[100]} 100%)`
-      : theme.direction === "ltr"
-      ? `linear-gradient(to right, ${theme.palette.neutral[100]} 0%, rgba(255, 255, 255, 0) 100%)`
-      : `linear-gradient(to left, rgba(255, 255, 255, 0) 0%, ${theme.palette.neutral[100]} 100%)`,
-
+  top: "80px",
   zIndex: 1,
   right: right === "true" && 0,
   left: right !== "true" && 0,
@@ -34,28 +23,34 @@ const ButtonContainer = styled(Box)(({ theme, right, isdisabled }) => ({
     display: "none",
   },
 }));
+
+// Styling for the Prev button wrapper with red arrow color
 const PrevWrapper = styled(Box)(({ theme, isdisabled }) => ({
   zIndex: 1,
-  top: "50%",
-  left: 0,
-  display: isdisabled && "none",
-  background: (theme) =>
-    `linear-gradient(180deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.main} 54.03%, ${theme.palette.primary.main} 100%)`,
+  top: "40%",
+  left: "-50px",
+  display: isdisabled ? "none" : "flex",
+  background: `linear-gradient(180deg, ${alpha(theme.palette.primary.main, 0.1)} 0%, ${alpha(theme.palette.primary.main, 0.2)} 54.03%, ${alpha(theme.palette.primary.main, 0.3)} 100%)`,
+  borderRadius: "50%",
+  color: "red",
+  height: "40px",
+  width: "40px",
 }));
+
 const NextWrapper = styled(Box)(({ theme, isdisabled }) => ({
   top: "50%",
   zIndex: 1,
-  right: 8,
-  display: isdisabled && "none",
-  background: `linear-gradient(180deg, ${alpha(
-    theme.palette.primary.main,
-    0.1
-  )} 0%, ${alpha(theme.palette.primary.main, 0.2)} 54.03%, ${alpha(
-    theme.palette.primary.main,
-    0.3
-  )} 100%)`,
+  right: "-10px",
+  display: isdisabled ? "none" : "flex",
+  background: `linear-gradient(180deg, ${alpha(theme.palette.primary.main, 0.1)} 0%, ${alpha(theme.palette.primary.main, 0.2)} 54.03%, ${alpha(theme.palette.primary.main, 0.3)} 100%)`,
   borderRadius: "50%",
+  color: "red",
+  height: "40px",
+  width: "40px",
 }));
+
+
+// Custom Next button component
 const Next = ({ onClick, className, displayNoneOnMobile }) => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
@@ -75,6 +70,8 @@ const Next = ({ onClick, className, displayNoneOnMobile }) => {
     </ButtonContainer>
   );
 };
+
+// Custom Prev button component
 const Prev = ({ onClick, className, displayNoneOnMobile }) => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
@@ -94,6 +91,16 @@ const Prev = ({ onClick, className, displayNoneOnMobile }) => {
   );
 };
 
+// Custom icons with red color applied (No redefinition)
+const PrevIcon = (props) => (
+  <KeyboardArrowLeftIcon {...props} style={{ color: "red", fontSize: "40px" }} /> // Red color
+);
+
+const NextIcon = (props) => (
+  <KeyboardArrowRightIcon {...props} style={{ color: "red", fontSize: "40px" }} /> // Red color
+);
+
+// Module-wise rendering for Next button
 export const moduleWiseNext = () => {
   switch (getCurrentModuleType()) {
     case ModuleTypes.GROCERY:
@@ -106,6 +113,8 @@ export const moduleWiseNext = () => {
       return <WhiteNext noboxshadow displayNoneOnMobile />;
   }
 };
+
+// Module-wise rendering for Prev button
 export const moduleWisePrev = () => {
   switch (getCurrentModuleType()) {
     case ModuleTypes.GROCERY:
@@ -118,4 +127,3 @@ export const moduleWisePrev = () => {
       return <WhitePrev displayNoneOnMobile noboxshadow />;
   }
 };
-

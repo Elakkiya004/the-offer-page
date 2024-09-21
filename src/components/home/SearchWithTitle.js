@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style";
 import { alpha, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ManageSearch from "../header/second-navbar/ManageSearch";
@@ -7,33 +7,8 @@ import { useTranslation } from "react-i18next";
 import { ModuleTypes } from "../../helper-functions/moduleTypes";
 import { Box } from "@mui/system";
 import TrackParcelFromHomePage from "../parcel/TrackParcelFromHomePage";
-import ReactGA from "react-ga4";
-import TagManager from 'react-gtm-module';
-
-const TRACKING_ID = "G-FECBMFT6KW";
-
 
 const SearchWithTitle = (props) => {
-
-  const tagManagerArgs = {
-		gtmId: 'G-FECBMFT6KW', // Replace 'GTM-XXXXXXX' with your GTM container ID
-	  };
-   
-      TagManager.initialize(tagManagerArgs);
-    
-      useEffect(() => {
-        TagManager.dataLayer({
-          event: 'pageview',
-          path: '/'
-        });
-      }, []);
-
-  ReactGA.initialize(TRACKING_ID);
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Home" });
-  }, []);
-
   const moduleType = getCurrentModuleType();
   const { zoneid, token,query } = props;
   const theme = useTheme();
