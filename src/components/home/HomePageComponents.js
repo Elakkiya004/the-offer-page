@@ -169,6 +169,7 @@ const HomePageComponents = ({ configData, landingPageData }) => {
             configData={configData}
           />
         ) : (
+          // <Box width="100%">{getModuleWiseComponents()}</Box>
           <Box width="100%">{getModuleWiseComponents()}</Box>
         )}
           </Grid>
